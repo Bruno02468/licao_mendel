@@ -74,7 +74,7 @@
     
     <body>
         <center>
-            <h1>Visualisação de lições da <?php echo $nome; ?></h1>
+            <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
