@@ -4,6 +4,12 @@
     right: 0;
 }
 
+.valeu {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .importante {
     color: #53CF53;
     font-size: 125%;
