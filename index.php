@@ -23,8 +23,10 @@
             if ('..' === $file) continue;
             if ('.qc' === $file) continue;
             
+            $final = "<table>";
+            
             $arquivo = file($pasta . $file);
-            $materia = "<span class='semiimportante'>Matéria:</span> " . trim($arquivo[0]) . ".<br>";
+            $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . ".<br></td></tr>";
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
@@ -34,14 +36,14 @@
             }
             
             $datafin = date("d/m/Y", $entrega); 
-            $datapre = "<span class='semiimportante'>Data de entrega:</span> " . $datafin . ".<br>";
+            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . ".<br></td></tr>";
             
             $dadosarr = $arquivo;
             unset($dadosarr[0]);
             unset($dadosarr[1]);
-            $dados = join("<br>", $dadosarr) . "<br>";
+            $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>";
             
-            $final = $materia . $datapre . $dados. "<br><br>";
+            $final .= $materia . $datapre . $dados. "</table><br><br>";
             
             $amanha = strtotime('+1 day', $agora);
             if ($entrega <= $amanha) {
