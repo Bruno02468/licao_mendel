@@ -13,3 +13,12 @@
     color: #83FF83;
     font-weight: bold;
 }
+
+table {
+    border: 2px double #A4FFA4;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px double #A4FFA4;
+}
