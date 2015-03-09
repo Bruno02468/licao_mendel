@@ -1,4 +1,4 @@
-Order deny,allow
-Deny from all
-Allow from 192.168.25.114
-Allow from 127.0.0.1
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile "/etc/htpasswd/.htpasswd"
+Require valid-user
