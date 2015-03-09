@@ -24,7 +24,7 @@
             if ('.qc' === $file) continue;
             
             $arquivo = file($pasta . $file);
-            $materia = "<b>Matéria:</b> " . $arquivo[0] . ".<br>";
+            $materia = "<b>Matéria:</b> " . trim($arquivo[0]) . ".<br>";
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
@@ -39,7 +39,7 @@
             $dadosarr = $arquivo;
             unset($dadosarr[0]);
             unset($dadosarr[1]);
-            $dados = "<b>Informações:</b> <br>" . join("<br>", $dadosarr) . "<br>";
+            $dados = join("<br>", $dadosarr) . "<br>";
             
             $final = $materia . $datapre . $dados. "<br><br>";
             
