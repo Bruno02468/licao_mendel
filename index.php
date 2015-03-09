@@ -1,5 +1,7 @@
 <?php
     
+    date_default_timezone_set("America/Sao_Paulo");
+    
     $sala = "1E";
     if (isset($_GET['sala'])) {
         $sala = $_GET['sala'];
@@ -26,7 +28,10 @@
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
-            if ($entrega < $agora) continue;
+            if ($entrega < $agora) {
+                unlink($pasta . $file);
+                continue;
+            }
             
             $datafin = date("d/m/Y", $entrega); 
             $datapre = "<b>Data de entrega:</b> " . $datafin . ".<br>";
@@ -36,7 +41,7 @@
             unset($dadosarr[1]);
             $dados = "<b>Informações:</b> <br>" . join("<br>", $dadosarr) . "<br>";
             
-            $final = $materia . $datapre . $dados. "<br><br><br>";
+            $final = $materia . $datapre . $dados. "<br><br>";
             
             $amanha = strtotime('+1 day', $agora);
             if ($entrega <= $amanha) {
@@ -50,7 +55,7 @@
     }
     
     if ($amanhas == "") {
-        $amanhas = "<i>Oba! Sem lição pra amanhã!</i>";
+        $amanhas = "<i>Oba! Sem lição pra amanhã!</i><br><br>";
     }
     if ($outras == "") {
         $outras = "<i>Sem outras lições.</i>";
@@ -79,8 +84,6 @@
         <br>
         Lições para amanhã:<br><br>
         <?php echo $amanhas; ?>
-        <br>
-        <br>
         <br>
         <br>
         Lições para outros dias:<br><br>
