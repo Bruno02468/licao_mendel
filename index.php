@@ -26,7 +26,7 @@
             $final = "<table>";
             
             $arquivo = file($pasta . $file);
-            $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . ".<br></td></tr>";
+            $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>";
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
@@ -36,7 +36,7 @@
             }
             
             $datafin = date("d/m/Y", $entrega); 
-            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . ".<br></td></tr>";
+            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . "<br></td></tr>";
             
             $dadosarr = $arquivo;
             unset($dadosarr[0]);

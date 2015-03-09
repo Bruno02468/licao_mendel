@@ -29,6 +29,4 @@
     file_put_contents($filename, $arquivo);
     header("Location: http://bruno02468.com/licao/ademir/cadastra.html" . $sala);
     
-    //echo "Debug: " . $arquivo . " em " . $filename;
-    
 ?>
