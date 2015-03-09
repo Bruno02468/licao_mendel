@@ -82,10 +82,10 @@
         <div class="ir"><small>
             Acesse outra sala (ano + letra): <input type="text" id="sala"><input type="button" onclick="ir()" value="Ir">
         </small></div>
-        <div class="valeu"><small>
-            <input type="button" onclick="vlw()" value="Me ajudou!"> 
+        <div class="valeu">
+            <input type="button" onclick="vlw()" value="Esta página me ajudou!"> 
             (<span id="vlw"><?php echo trim(file_get_contents("contador.txt")); ?></span>)
-        </small></div>
+        </div>
         <br>
         <br>
         <br>
