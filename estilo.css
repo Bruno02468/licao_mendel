@@ -3,3 +3,13 @@
     top: 0;
     right: 0;
 }
+
+.importante {
+    color: #66FF66;
+    font-weight: bold;
+}
+
+.semiimportante {
+    color: #83FF83;
+    font-weight: bold;
+}

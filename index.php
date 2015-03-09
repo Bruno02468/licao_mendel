@@ -24,7 +24,7 @@
             if ('.qc' === $file) continue;
             
             $arquivo = file($pasta . $file);
-            $materia = "<b>Matéria:</b> " . trim($arquivo[0]) . ".<br>";
+            $materia = "<span class='semiimportante'>Matéria:</span> " . trim($arquivo[0]) . ".<br>";
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
@@ -34,7 +34,7 @@
             }
             
             $datafin = date("d/m/Y", $entrega); 
-            $datapre = "<b>Data de entrega:</b> " . $datafin . ".<br>";
+            $datapre = "<span class='semiimportante'>Data de entrega:</span> " . $datafin . ".<br>";
             
             $dadosarr = $arquivo;
             unset($dadosarr[0]);
@@ -82,11 +82,10 @@
         <br>
         <br>
         <br>
-        Lições para amanhã:<br><br>
+        <span class="importante">Lições para amanhã:</span><br><br>
         <?php echo $amanhas; ?>
-        <br>
-        <br>
-        Lições para outros dias:<br><br>
+        <hr>
+        <span class="importante">Lições para outros dias:</span><br><br>
         <?php echo $outras; ?>
 
         <script src="javascript.js"></script>
