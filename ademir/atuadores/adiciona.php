@@ -27,6 +27,6 @@
     $arquivo = $materia . "\n" . $data . "\n" . $dados;
     $filename = proximo_nome($sala);
     file_put_contents($filename, $arquivo);
-    header("Location: http://bruno02468.com/licao/ademir/cadastra.html" . $sala);
+    header("Location: http://bruno02468.com/licao/ademir/cadastra.html");
     
 ?>
