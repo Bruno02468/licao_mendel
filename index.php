@@ -77,13 +77,11 @@
     <body>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
+            <a href="salas/">Acesse outra sala</a><br>
             <a href="horario.png" target="_blank">Horário da 1ª E</a><br>
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
-        <div class="ir"><small>
-            <a href="salas/">Acesse outra sala</a>
-        </small></div>
         <div class="valeu">
             <input type="button" onclick="vlw()" value="Esta página me ajudou!"> 
             (<span id="vlw"><?php echo trim(file_get_contents("contador.txt")); ?></span>)
