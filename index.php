@@ -11,6 +11,7 @@
     $pasta = "salas/" . $sala . "/";
     if (!file_exists($pasta)) {
         header("Location: http://bruno02468.com/licao/");
+        die();
     }
     
     $agora = time();
@@ -22,6 +23,7 @@
             if ('.' === $file) continue;
             if ('..' === $file) continue;
             if ('.qc' === $file) continue;
+            if ('index.php' === $file) continue;
             
             $final = "<table>";
             
@@ -80,7 +82,7 @@
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
         <div class="ir"><small>
-            Acesse outra sala (ano + letra): <input type="text" id="sala"><input type="button" onclick="ir()" value="Ir">
+            <a href="salas/">Acesse outra sala</a>
         </small></div>
         <div class="valeu">
             <input type="button" onclick="vlw()" value="Esta página me ajudou!"> 
