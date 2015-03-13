@@ -25,7 +25,7 @@
             if ('.qc' === $file) continue;
             if ('index.php' === $file) continue;
             
-            $final = "<table>";
+            $final = "<acronym title='ID de lição: " . $file . "'><table>";
             
             $arquivo = file($pasta . $file);
             $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>";
@@ -45,7 +45,7 @@
             unset($dadosarr[1]);
             $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>";
             
-            $final .= $materia . $datapre . $dados. "</table><br><br>";
+            $final .= $materia . $datapre . $dados. "</table></acronym><br><br>";
             
             $amanha = strtotime('+1 day', $agora);
             if ($entrega <= $amanha) {
