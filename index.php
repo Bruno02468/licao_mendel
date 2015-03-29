@@ -77,7 +77,7 @@
     <body>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
-            <a href="salas/">Acesse outra sala</a><br>
+            <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
             <a href="horario.png" target="_blank">Horário da 1ª E</a><br>
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
