@@ -15,6 +15,7 @@
     }
     
     $agora = time();
+    $amanha = strtotime('+1 day', $agora);
     $amanhas = "";
     $outras = "";
     
@@ -25,10 +26,10 @@
             if ('.qc' === $file) continue;
             if ('index.php' === $file) continue;
             
-            $final = "<acronym title='ID de lição: " . $file . "'><table>";
+            $final = "<acronym title='ID de lição: " . $file . "'><table>\n";
             
             $arquivo = file($pasta . $file);
-            $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>";
+            $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>\n";
             $datastr = $arquivo[1];
             $entrega = strtotime($datastr);
             
@@ -38,19 +39,20 @@
             }
             
             $datafin = date("d/m/Y", $entrega); 
-            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . "<br></td></tr>";
+            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . "<br></td></tr>\n";
             
             $dadosarr = $arquivo;
             unset($dadosarr[0]);
             unset($dadosarr[1]);
-            $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>";
+            $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
+            $final .= $materia;
             
-            $final .= $materia . $datapre . $dados. "</table></acronym><br><br>";
             
-            $amanha = strtotime('+1 day', $agora);
             if ($entrega <= $amanha) {
+                $final .= $dados. "</table></acronym><br><br>\n";
                 $amanhas .= $final;
             } else {
+                $final .= $datapre . $dados. "</table></acronym><br><br>\n";
                 $outras .= $final;
             }
             
@@ -59,10 +61,10 @@
     }
     
     if ($amanhas == "") {
-        $amanhas = "<i>Oba! Sem lição pra amanhã!</i><br><br>";
+        $amanhas = "<i>Oba! Sem lição pra amanhã!</i><br><br>\n";
     }
     if ($outras == "") {
-        $outras = "<i>Sem outras lições.</i>";
+        $outras = "<i>Sem outras lições.</i>\n";
     }
     
 ?>
@@ -71,6 +73,8 @@
         <title>Lições - <?php echo $nome; ?></title>
         <link rel="stylesheet" href="/stylesheets/dark.css">
         <link rel="stylesheet" href="estilo.css">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <meta charset="UTF-8">
     </head>
     
