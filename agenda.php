@@ -17,6 +17,7 @@
     $hojes = "";
     $outras = "";
     $hoje = date("d/m/Y");
+    $amanha = strtotime('+1 day', time());
     
     $arquivos = glob($pasta . "*");
     usort($arquivos, function($a, $b) {
@@ -29,43 +30,48 @@
         if ('.qc' === $file) continue;
         if ($pasta . 'index.php' === $file) continue;
         
-        $final = "<acronym title='ID de lição: " . basename($file) . "'><table>";
+        $final = "<acronym title='ID de lição: " . basename($file) . "'><table>\n";
         
         $arquivo = file($file);
         $datacri = filectime($file);
         $pass = date("d/m/Y", $datacri);
-        $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>";
+        $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>" . trim($arquivo[0]) . "<br></td></tr>\n";
         $passada = "<tr><td valign='top'><span class='semiimportante'>Passada em:</span> </td><td valign='top'>" . $pass . "<br></td></tr>";
         $datastr = $arquivo[1];
         $entrega = strtotime($datastr);
         
         if ($entrega < $agora) {
-            //unlink($pasta . $file);
+            unlink($pasta . $file);
             continue;
         }
         
-        $datafin = date("d/m/Y", $entrega); 
-        $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . "<br></td></tr>";
+        $datafin = date("d/m/Y", $entrega);
+        if (date("d/m/Y", $amanha) == $datafin) {
+            $datafin .= "<b> (amanhã)</b>";
+        }
+        $datapre = "<tr><td valign='top'><span class='semiimportante'>Data de entrega:</span> </td><td valign='top'>" . $datafin . "<br></td></tr>\n";
         
         $dadosarr = $arquivo;
         unset($dadosarr[0]);
         unset($dadosarr[1]);
-        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>";
+        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
         
-        $final .= $materia . $passada . $datapre . $dados. "</table></acronym><br><br>";
+        $final .= $materia;
         if ($pass == $hoje) {
+            $final .= $datapre . $dados. "</table></acronym><br><br>\n";
             $hojes .= $final;
         } else {
+            $final .= $passada . $datapre . $dados. "</table></acronym><br><br>\n";
             $outras .= $final;
         }
         
     }
     
     if ($amanhas == "") {
-        $amanhas = "<i>Nenhuma lição foi passada hoje.</i><br><br>";
+        $amanhas = "<i>Nenhuma lição foi passada hoje.</i><br><br>\n";
     }
     if ($outras == "") {
-        $outras = "<i>Nenhuma lição foi passada em outros dias...</i>";
+        $outras = "<i>Nenhuma lição foi passada em outros dias...</i>\n";
     }
     
 ?>
