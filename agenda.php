@@ -55,13 +55,14 @@
         unset($dadosarr[0]);
         unset($dadosarr[1]);
         $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
-        
         $final .= $materia;
+        
+        $check = "<tr><td valign='top'><span class='semiimportante'>Feita?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'><br></td></tr>\n";
         if ($pass == $hoje) {
-            $final .= $datapre . $dados. "</table></acronym><br><br>\n";
+            $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
             $hojes .= $final;
         } else {
-            $final .= $passada . $datapre . $dados. "</table></acronym><br><br>\n";
+            $final .= $passada . $datapre . $dados . $check . "</table></acronym><br><br>\n";
             $outras .= $final;
         }
         

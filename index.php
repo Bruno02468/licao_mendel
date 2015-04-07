@@ -1,5 +1,8 @@
 <?php
-    
+    /* Página inicial para o site de lições.
+     * Escrito pelo Bruno Borges Paschoalinoto.
+     * Altas programações :-)
+     */
     date_default_timezone_set("America/Sao_Paulo");
     
     $sala = "1E";
@@ -45,14 +48,16 @@
             unset($dadosarr[0]);
             unset($dadosarr[1]);
             $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
+            
+            $check = "<tr><td valign='top'><span class='semiimportante'>Feita?</span> </td><td valign='top'><input type='checkbox' id='" . $file . "' onclick='toggleFeita(this.id)'><br></td></tr>\n";
             $final .= $materia;
             
             
             if ($entrega <= $amanha) {
-                $final .= $dados. "</table></acronym><br><br>\n";
+                $final .= $dados . $check . "</table></acronym><br><br>\n";
                 $amanhas .= $final;
             } else {
-                $final .= $datapre . $dados. "</table></acronym><br><br>\n";
+                $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
                 $outras .= $final;
             }
             

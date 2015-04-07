@@ -1,6 +1,6 @@
 #!/bin/sh
 
 git add .
-git commit -am "Atualizado via script";
+git commit -am "$1";
 git push origin master
-echo "Pronto"
+echo "Pronto!"
