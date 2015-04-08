@@ -49,7 +49,7 @@
             unset($dadosarr[1]);
             $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
             
-            $check = "<tr><td valign='top'><span class='semiimportante'>Feita?</span> </td><td valign='top'><input type='checkbox' id='" . $file . "' onclick='toggleFeita(this.id)'><br></td></tr>\n";
+            $check = "<tr><td valign='top'><span class='semiimportante'>Já fez?</span> </td><td valign='top'><input type='checkbox' id='" . $file . "' onclick='toggleFeita(this.id)'>Gabaritei<br></td></tr>\n";
             $final .= $materia;
             
             
@@ -84,6 +84,7 @@
     </head>
     
     <body>
+        <?php include_once("ga.php"); ?>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>

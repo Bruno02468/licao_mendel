@@ -57,7 +57,7 @@
         $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . join("<br>", $dadosarr) . "<br></td></tr>\n";
         $final .= $materia;
         
-        $check = "<tr><td valign='top'><span class='semiimportante'>Feita?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'><br></td></tr>\n";
+        $check = "<tr><td valign='top'><span class='semiimportante'>Já fez?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'> Gabaritei<br></td></tr>\n";
         if ($pass == $hoje) {
             $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
             $hojes .= $final;
@@ -85,6 +85,7 @@
     </head>
     
     <body>
+        <?php include_once("ga.php"); ?>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="index.php">[Ver lições por data de entrega]</a><br></b>
