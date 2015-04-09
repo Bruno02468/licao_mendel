@@ -89,12 +89,13 @@
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="index.php">[Ver lições por data de entrega]</a><br></b>
-            <a href="horario.png" target="_blank">Horário da 1ª E</a><br>
+            <a href="javascript:horario()">Horário da 1ª E</a><br>
+            <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
         <div class="valeu">
-            <input type="button" onclick="vlw()" value="Esta página me ajudou!"> 
+            <input type="button" onclick="vlw()" value="Esta página me ajudou!">
             (<span id="vlw"><?php echo trim(file_get_contents("contador.txt")); ?></span>)
         </div>
         <br>

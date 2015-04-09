@@ -58,3 +58,13 @@ function toggleFeita(id) {
         document.cookie = "feito=" + getCookie("feito") + "," + id + "; path=/licao;";
     }
 }
+
+function horario() {
+    var hor = document.getElementById("hor");
+    var img = "<img style='max-width: 25%;' src='horario.png' alt='Horário da 1ª E'><br>";
+    if (hor.innerHTML == "") {
+        hor.innerHTML = img;
+    } else {
+        hor.innerHTML = "";
+    }
+}
