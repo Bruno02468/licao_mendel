@@ -100,6 +100,12 @@
         </div>
         <br>
         <br>
+        <img src="ui.png" style="max-width: 8%" alt="Pois é..." title="Pois é...">
+        <br>
+        <i><b>Se for para comer pizza junto a pessoas ingratas que não levam em conta todo<br>
+        o tempo que eu dediquei a ajudá-las, comerei pizza em casa mil vezes mais satisfeito.<br>
+        Eu só queria ajudar, pessoal, só isso. :-(<br>
+        ~ Bruno<br></b></i>
         <br>
         <span class="importante">Lições passadas hoje:</span><br><br>
         <?php echo $hojes; ?>
