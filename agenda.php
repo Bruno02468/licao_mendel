@@ -40,7 +40,7 @@
         $datastr = $arquivo[1];
         $entrega = strtotime($datastr);
         
-        if ($entrega < $agora) {
+        if ($entrega < time()) {
             unlink($pasta . $file);
             continue;
         }
@@ -68,24 +68,15 @@
         
     }
     
-    if ($amanhas == "") {
-        $amanhas = "<i>Nenhuma lição foi passada hoje.</i><br><br>\n";
+    if ($hojes == "") {
+        $hojes = "<i>Nenhuma lição foi passada hoje.</i><br><br>\n";
     }
     if ($outras == "") {
         $outras = "<i>Nenhuma lição foi passada em outros dias...</i>\n";
     }
     
 ?>
-<html>
-    <head>
-        <title>Lições - <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="/stylesheets/dark.css">
-        <link rel="stylesheet" href="estilo.css">
-        <meta charset="UTF-8">
-    </head>
-    
-    <body>
-        <?php include_once("ga.php"); ?>
+<?php include("extras/top.php"); ?>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="index.php">[Ver lições por data de entrega]</a><br></b>
@@ -94,10 +85,6 @@
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
-        <div class="valeu">
-            <input type="button" onclick="vlw()" value="Esta página me ajudou!">
-            (<span id="vlw"><?php echo trim(file_get_contents("contador.txt")); ?></span>)
-        </div>
         <br>
         <br>
         <span class="importante">Lições passadas hoje:</span><br><br>
@@ -106,6 +93,6 @@
         <span class="importante">Lições passadas em outros dias:</span><br><br>
         <?php echo $outras; ?>
 
-        <script src="javascript.js"></script>
+        <script src="extras/javascript.js"></script>
     </body>
 </html>

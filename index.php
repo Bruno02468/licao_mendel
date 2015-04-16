@@ -73,18 +73,7 @@
     }
     
 ?>
-<html>
-    <head>
-        <title>Lições - <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="/stylesheets/dark.css">
-        <link rel="stylesheet" href="estilo.css">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <meta charset="UTF-8">
-    </head>
-    
-    <body>
-        <?php include_once("ga.php"); ?>
+<?php include("extras/top.php") ?>
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
@@ -93,10 +82,6 @@
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
-        <div class="valeu">
-            <input type="button" onclick="vlw()" value="Esta página me ajudou!">
-            (<span id="vlw"><?php echo trim(file_get_contents("contador.txt")); ?></span>)
-        </div>
         <br>
         <br>
         <span class="importante">Lições para amanhã:</span><br><br>
@@ -105,6 +90,6 @@
         <span class="importante">Lições para outros dias:</span><br><br>
         <?php echo $outras; ?>
 
-        <script src="javascript.js"></script>
+        <script src="extras/javascript.js"></script>
     </body>
 </html>

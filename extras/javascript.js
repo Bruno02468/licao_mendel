@@ -68,3 +68,8 @@ function horario() {
         hor.innerHTML = "";
     }
 }
+
+function brasil() {
+    var hue = document.getElementById("hue");
+    hue.play();
+}
