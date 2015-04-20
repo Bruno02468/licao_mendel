@@ -73,3 +73,5 @@ function brasil() {
     var hue = document.getElementById("hue");
     hue.play();
 }
+
+ajaxGet("http://bruno02468.com/licao/hit.php");
