@@ -21,6 +21,11 @@
     font-weight: bold;
 }
 
+.prova {
+    border: 2px double darkorange;
+    border-collapse: collapse;
+}
+
 table {
     border: 2px double #A4FFA4;
     border-collapse: collapse;
