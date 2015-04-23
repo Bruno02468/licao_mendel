@@ -57,8 +57,6 @@
                 continue;
             }
             
-            
-            
             $datafin = date("d/m/Y", $entrega); 
             $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin<br></td></tr>\n";
             
