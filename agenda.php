@@ -29,6 +29,7 @@
         if ('..' === $file) continue;
         if ('.qc' === $file) continue;
         if ($pasta . 'index.php' === $file) continue;
+        if ($pasta . 'get.php' === $file) continue;
         
         $arquivo = file($file);
         
