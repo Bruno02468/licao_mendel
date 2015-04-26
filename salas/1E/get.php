@@ -6,6 +6,6 @@
         if ('.qc' === $file) continue;
         if ('index.php' === $file) continue;
         if ('get.php' === $file) continue;
-        echo $file . "$";
+        echo $file . "#";
     }
 ?>
