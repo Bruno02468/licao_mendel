@@ -101,6 +101,7 @@
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
             <br>Por um WhatsApp menos confuso :-)</small>
         </center>
+        <?php echo file_get_contents("motd.html"); ?>
         <br>
         <br>
         <span class="importante">Lições passadas hoje:</span><br><br>
