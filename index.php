@@ -94,11 +94,6 @@
         <center>
             <h1>Visualização de lições da <?php echo $nome; ?></h1>
             <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
-            <a href="javascript:horario()">Horário da 1ª E</a><br>
-            <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
-            <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
-            <br>Por um WhatsApp menos confuso :-)</small>
-        </center>
         <?php echo file_get_contents("motd.html"); ?>
         <br>
         <br>
