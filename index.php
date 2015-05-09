@@ -4,7 +4,28 @@
      * Altas programações :-)
      */
     date_default_timezone_set("America/Sao_Paulo");
-    
+
+    function semana($dia) {
+        switch ($dia) {
+            case "Sunday":
+                return "domingo";
+            case "Monday":
+                return "segunda";
+            case "Tuesday":
+                return "terça";
+            case "Wednesday":
+                return "quarta";
+            case "Thursday":
+                return "quinta";
+            case "Friday":
+                return "sexta";
+            case "Saturday":
+                return "sábado";
+            default:
+                return "<b>erro de dia da semana, wtf</b>";
+        }
+    }
+
     $sala = "1E";
     if (isset($_GET['sala'])) {
         $sala = $_GET['sala'];
@@ -16,12 +37,16 @@
         header("Location: http://bruno02468.com/licao/");
         die();
     }
-    
-    $agora = time();
-    $amanha = strtotime('+1 day', $agora);
+
+    $formato = "Y/m/d";
+    $hoje = date($formato, time());
+    $hoje_semana = semana(date("l", time()));
+    $amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
+    $ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
+    $hojes = "";
     $amanhas = "";
     $outras = "";
-    
+    $segundas = "";
     if ($handle = opendir($pasta)) {
         while (false !== ($file = readdir($handle))) {
             if ('.' === $file) continue;
@@ -51,15 +76,18 @@
             
             $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>$mat<br></td></tr>\n";
             $datastr = $arquivo[1];
-            $entrega = strtotime($datastr);
-            
-            if ($entrega < $agora) {
+            $entrega_time = strtotime($datastr);
+            $entrega = date($formato, $entrega_time);
+
+            if ($entrega_time < strtotime($hoje)) {
                 unlink($pasta . $file);
+                //echo "<script>console.log(\"deletei o $file\")</script>";
                 continue;
             }
             
-            $datafin = date("d/m/Y", $entrega); 
-            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin<br></td></tr>\n";
+            $datafin = date("d/m/Y", $entrega_time); 
+            $semanal = semana(date("l", $entrega_time));
+            $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin ($semanal)<br></td></tr>\n";
             
             $dadosarr = $arquivo;
             unset($dadosarr[0]);
@@ -68,20 +96,26 @@
             
             $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
             $final .= $materia;
-            
-            
-            if ($entrega <= $amanha) {
-                $final .= $dados . $check . "</table></acronym><br><br>\n";
-                $amanhas .= $final;
+            $final_sem_data = $final . $dados . $check . "</table></acronym><br><br>\n";
+            $final_com_data = $final . $datapre . $dados. $check . "</table></acronym><br><br>\n";
+
+            if ($entrega == $hoje) {
+                $hojes .= $final_sem_data;
+            } else if ($entrega == $amanha) {
+                $amanhas .= $final_sem_data;
+            } else if ($semanal == "segunda" && $hoje_semana == "sexta") {
+                $segundas .= $final_sem_data;
             } else {
-                $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
-                $outras .= $final;
+                $outras .= $final_com_data;
             }
             
         }
         closedir($handle);
     }
-    
+
+    if ($hojes == "") {
+        $hojes = "<i>Sem lição para hoje. Vai dormir.<br><br></i>";
+    }
     if ($amanhas == "") {
         $amanhas = "<i>Oba! Sem lição pra amanhã!</i><br><br>\n";
     }
@@ -97,9 +131,19 @@
         <?php echo file_get_contents("motd.html"); ?>
         <br>
         <br>
+        <span class="importante">Lições para hoje:</span><br><br>
+        <?php echo $hojes; ?>
+        <hr>
+        <br>
+        <?php 
+            if ($segundas != "") {
+                echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
+            }
+        ?>
         <span class="importante">Lições para amanhã:</span><br><br>
         <?php echo $amanhas; ?>
         <hr>
+        <br>
         <span class="importante">Lições para outros dias:</span><br><br>
         <?php echo $outras; ?>
 
