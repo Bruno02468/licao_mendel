@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile "/etc/htpasswd/.htpasswd_site"
+Require valid-user
