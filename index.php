@@ -96,8 +96,8 @@
             
             $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
             $final .= $materia;
-            $final_sem_data = $final . $dados . $check . "</table></acronym><br><br>\n";
-            $final_com_data = $final . $datapre . $dados. $check . "</table></acronym><br><br>\n";
+            $final_sem_data = $final . $dados . $check . "</table></acronym><br>\n";
+            $final_com_data = $final . $datapre . $dados. $check . "</table></acronym><br>\n";
 
             if ($entrega == $hoje) {
                 $hojes .= $final_sem_data;
@@ -114,13 +114,13 @@
     }
 
     if ($hojes == "") {
-        $hojes = "<i>Sem lição para hoje. Vai dormir.<br><br></i>";
+        $hojes = "<i>Sem lição para hoje, descanse.<br><br></i>";
     }
     if ($amanhas == "") {
-        $amanhas = "<i>Oba! Sem lição pra amanhã!</i><br><br>\n";
+        $amanhas = "<i>Oba! Sem lição para amanhã! Mas não se esqueça de fazer as outras!</i><br><br>\n";
     }
     if ($outras == "") {
-        $outras = "<i>Sem outras lições.</i>\n";
+        $outras = "<i>Sem outras lições, legal!</i>\n";
     }
     
 ?>
