@@ -41,11 +41,13 @@
     $formato = "Y/m/d";
     $hoje = date($formato, time());
     $hoje_semana = semana(date("l", time()));
+    $final_de_semana = ($hoje_semana == "sexta" || $hoje_semana == "sábado");
     $amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
     $ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
     $hojes = "";
     $amanhas = "";
     $outras = "";
+    $segundas_span = "<span class='importante'>Lições para segunda:</span><br><br>";
     $segundas = "";
     if ($handle = opendir($pasta)) {
         while (false !== ($file = readdir($handle))) {
@@ -103,7 +105,7 @@
                 $hojes .= $final_sem_data;
             } else if ($entrega == $amanha) {
                 $amanhas .= $final_sem_data;
-            } else if ($semanal == "segunda" && $hoje_semana == "sexta") {
+            } else if ($semanal == "segunda" && $final_de_semana) {
                 $segundas .= $final_sem_data;
             } else {
                 $outras .= $final_com_data;
@@ -114,7 +116,7 @@
     }
 
     if ($hojes == "") {
-        $hojes = "<i>Sem lição para hoje, descanse.<br><br></i>";
+        $hojes = "<i>Sem lição para hoje, descanse.<br><br></i>\n";
     }
     if ($amanhas == "") {
         $amanhas = "<i>Oba! Sem lição para amanhã! Mas não se esqueça de fazer as outras!</i><br><br>\n";
@@ -122,31 +124,36 @@
     if ($outras == "") {
         $outras = "<i>Sem outras lições, legal!</i>\n";
     }
+    if ($segundas == "") {
+        $segundas = "<i>Sem lição para segunda, boa!<br><br></i>\n";
+    }
     
 ?>
 <?php include("extras/top.php") ?>
-        <center>
-            <h1>Visualização de lições da <?php echo $nome; ?></h1>
-            <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
-        <?php echo file_get_contents("motd.html"); ?>
-        <br>
-        <br>
-        <span class="importante">Lições para hoje:</span><br><br>
-        <?php echo $hojes; ?>
-        <hr>
-        <br>
-        <?php 
-            if ($segundas != "") {
-                echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
-            }
-        ?>
-        <span class="importante">Lições para amanhã:</span><br><br>
-        <?php echo $amanhas; ?>
-        <hr>
-        <br>
-        <span class="importante">Lições para outros dias:</span><br><br>
-        <?php echo $outras; ?>
 
-        <script src="extras/javascript.js"></script>
-    </body>
+<center>
+    <h1>Visualização de lições da <?php echo $nome; ?></h1>
+    <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
+<?php echo file_get_contents("motd.html"); ?>
+<br>
+<br>
+<span class="importante">Lições para hoje:</span><br><br>
+<?php echo $hojes; ?>
+<hr>
+<br>
+<?php 
+    if ($final_de_semana) {
+        echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
+    }
+?>
+<span class="importante">Lições para amanhã:</span><br><br>
+<?php echo $amanhas; ?>
+<hr>
+<br>
+<span class="importante">Lições para outros dias:</span><br><br>
+<?php echo $outras; ?>
+
+<script type="text/javascript" src="extras/javascript.js"></script>
+
+</body>
 </html>
