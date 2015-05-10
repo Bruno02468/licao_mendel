@@ -41,7 +41,6 @@
     $formato = "Y/m/d";
     $hoje = date($formato, time());
     $hoje_semana = semana(date("l", time()));
-    $final_de_semana = ($hoje_semana == "sexta" || $hoje_semana == "sábado");
     $amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
     $ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
     $hojes = "";
@@ -80,7 +79,7 @@
             $datastr = $arquivo[1];
             $entrega_time = strtotime($datastr);
             $entrega = date($formato, $entrega_time);
-
+            
             if ($entrega_time < strtotime($hoje)) {
                 unlink($pasta . $file);
                 //echo "<script>console.log(\"deletei o $file\")</script>";
@@ -105,7 +104,7 @@
                 $hojes .= $final_sem_data;
             } else if ($entrega == $amanha) {
                 $amanhas .= $final_sem_data;
-            } else if ($semanal == "segunda" && $final_de_semana) {
+            } else if ($semanal == "segunda" && ($hoje_semana == "sexta" || $hoje_semana == "sábado")) {
                 $segundas .= $final_sem_data;
             } else {
                 $outras .= $final_com_data;
@@ -142,7 +141,7 @@
 <hr>
 <br>
 <?php 
-    if ($final_de_semana) {
+    if ($hoje_semana == "sexta" || $hoje_semana == "sábado") {
         echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
     }
 ?>
