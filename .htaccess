@@ -1,4 +1,6 @@
 AuthType Basic
-AuthName "Authentication Required"
+AuthName "Pegue a senha com o Bruno pessoalmente ou por WhatsApp. Sem choro."
 AuthUserFile "/etc/htpasswd/.htpasswd_site"
 Require valid-user
+ErrorDocument 401 "Pegue a senha com o Bruno pessoalmente ou por WhatsApp. Sem choro."
+ErrorDocument 403 "Pegue a senha com o Bruno pessoalmente ou por WhatsApp. Sem choro."
