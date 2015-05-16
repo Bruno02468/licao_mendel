@@ -1,7 +1,29 @@
 <?php
     
     date_default_timezone_set("America/Sao_Paulo");
-    
+
+    function semana($dia) {
+        switch ($dia) {
+            case "Sunday":
+                return "domingo";
+            case "Monday":
+                return "segunda";
+            case "Tuesday":
+                return "terça";
+            case "Wednesday":
+                return "quarta";
+            case "Thursday":
+                return "quinta";
+            case "Friday":
+                return "sexta";
+            case "Saturday":
+                return "sábado";
+            default:
+                return "<b>erro de dia da semana, wtf</b>";
+        }
+    }
+
+
     $sala = "1E";
     if (isset($_GET['sala'])) {
         $sala = $_GET['sala'];
@@ -62,10 +84,12 @@
         }
         
         $datafin = date("d/m/Y", $entrega);
+        $semanal = semana(date("l", $entrega));
         if (date("d/m/Y", $amanha) == $datafin) {
-            $datafin .= "<b> (amanhã)</b>";
+            $semanal = "<b>amanhã</b>";
         }
-        $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin<br></td></tr>\n";
+        
+        $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin ($semanal)<br></td></tr>\n";
         
         $dadosarr = $arquivo;
         unset($dadosarr[0]);
@@ -93,18 +117,14 @@
     
 ?>
 <?php include("extras/top.php"); ?>
-        <center>
-            <h1>Visualização de lições da <?php echo $nome; ?></h1>
-            <b><a href="index.php">[Ver lições por data de entrega]</a><br></b>
-        <?php echo file_get_contents("motd.html"); ?>
-        <br>
-        <br>
-        <span class="importante">Lições passadas hoje:</span><br><br>
-        <?php echo $hojes; ?>
-        <hr>
-        <span class="importante">Lições passadas em outros dias:</span><br><br>
-        <?php echo $outras; ?>
+<br>
+<br>
+<span class="importante">Lições passadas hoje:</span><br><br>
+<?php echo $hojes; ?>
+<hr>
+<span class="importante">Lições passadas em outros dias:</span><br><br>
+<?php echo $outras; ?>
 
-        <script src="extras/javascript.js"></script>
-    </body>
+<script src="extras/javascript.js"></script>
+</body>
 </html>

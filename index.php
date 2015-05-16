@@ -42,6 +42,8 @@
     $hoje = date($formato, time());
     $hoje_semana = semana(date("l", time()));
     $amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
+    $dois = date($formato, strtotime('+2 day', strtotime($hoje)));
+    $tres= date($formato, strtotime('+3 day', strtotime($hoje)));
     $ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
     $hojes = "";
     $amanhas = "";
@@ -104,7 +106,7 @@
                 $hojes .= $final_sem_data;
             } else if ($entrega == $amanha) {
                 $amanhas .= $final_sem_data;
-            } else if ($semanal == "segunda" && ($hoje_semana == "sexta" || $hoje_semana == "sábado")) {
+            } else if (($hoje_semana == "sexta" || $hoje_semana == "sábado") && $semanal == "segunda" && ($entrega == $dois || $entrega == $tres)) {
                 $segundas .= $final_sem_data;
             } else {
                 $outras .= $final_com_data;
@@ -129,11 +131,6 @@
     
 ?>
 <?php include("extras/top.php") ?>
-
-<center>
-    <h1>Visualização de lições da <?php echo $nome; ?></h1>
-    <b><a href="agenda.php">[Ver lições passadas hoje]</a><br></b>
-<?php echo file_get_contents("motd.html"); ?>
 <br>
 <br>
 <span class="importante">Lições para hoje:</span><br><br>

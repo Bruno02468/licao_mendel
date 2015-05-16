@@ -74,4 +74,8 @@ function brasil() {
     hue.play();
 }
 
-ajaxGet("http://bruno02468.com/licao/hit.php");
+var link = document.getElementById("meulink");
+if (location.href.indexOf("agenda") > -1) {
+    link.innerHTML = "[Ver lições por ordem de entrega]";
+    link.href = "index.php";
+}
