@@ -21,9 +21,8 @@
         <a href="javascript:horario()">Horário da 1ª E</a><br>
         <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
         <small>
-            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)
-            <br>Altas programações, rumo à pizza!<br>
-            <b>Aviso: eu estou programando algumas programações programosas para
-            <br>aprimorar o site de acordo com sugestões da comunidade. Qualquer problema, avise!</b>
+            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
+            <br>Mensagem do dia:<br>
+            <b>Boa sorte nas provas!</b>
         </small>
         </center>
