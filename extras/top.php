@@ -23,6 +23,6 @@
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <br>Mensagem do dia:<br>
-            <b>Boa sorte nas provas!</b>
+            <b>AHAHAHAHAH CHEGA DE PROVAS</b>
         </small>
         </center>
