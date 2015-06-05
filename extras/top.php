@@ -23,6 +23,7 @@
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <br>Mensagem do dia:<br>
-            <b>Espero que você tenha ido bem! ^^</b>
+            <b>Obrigado por aceitar o contrato de licença.<br>
+            Agora a sua casa é minha!</b>
         </small>
         </center>
