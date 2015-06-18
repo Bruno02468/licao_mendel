@@ -1,8 +1,8 @@
 <?php
     
-    $sala = htmlspecialchars(req('sala'));
-    $id = htmlspecialchars(req('id'));
-    $dados = htmlspecialchars(req('dados'));
+    $sala = req('sala');
+    $id = req('id');
+    $dados = req('dados');
     
     function req($str) {
         if (!isset($_GET[$str])) {

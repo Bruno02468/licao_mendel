@@ -57,7 +57,7 @@ foreach ($arquivos as $file) {
     
     $arquivo = file($file);
     
-    $mat = trim($arquivo[0]);
+    $mat = formatar(trim($arquivo[0]));
     $v = "fez";
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
@@ -80,11 +80,6 @@ foreach ($arquivos as $file) {
     $datastr = $arquivo[1];
     $entrega = strtotime($datastr);
     
-    if ($entrega < time()) {
-        unlink($pasta . $file);
-        continue;
-    }
-    
     $datafin = date("d/m/Y", $entrega);
     $semanal = semana(date("l", $entrega));
     if (date("d/m/Y", $amanha) == $datafin) {
@@ -96,7 +91,7 @@ foreach ($arquivos as $file) {
     $dadosarr = $arquivo;
     unset($dadosarr[0]);
     unset($dadosarr[1]);
-    $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar(join("<br>", $dadosarr)) . "<br></td></tr>\n";
+    $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar(join("§", $dadosarr)) . "<br></td></tr>\n";
     $final .= $materia;
     
     $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";

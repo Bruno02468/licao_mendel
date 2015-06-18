@@ -63,7 +63,7 @@ if ($handle = opendir($pasta)) {
         
         $arquivo = file($pasta . $file);
         
-        $mat = trim($arquivo[0]);
+        $mat = formatar(trim($arquivo[0]));
         $v = "fez";
         $ent = "de entrega";
         $gabaritei = "Gabaritei";
@@ -86,7 +86,6 @@ if ($handle = opendir($pasta)) {
         
         if ($entrega_time < strtotime($hoje)) {
             unlink($pasta . $file);
-            //echo "<script>console.log(\"deletei o $file\")</script>";
             continue;
         }
         
@@ -97,7 +96,7 @@ if ($handle = opendir($pasta)) {
         $dadosarr = $arquivo;
         unset($dadosarr[0]);
         unset($dadosarr[1]);
-        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar(join("<br>", $dadosarr)) . "<br></td></tr>\n";
+        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar(join("§", $dadosarr)) . "<br></td></tr>\n";
         
         $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
         $final .= $materia;

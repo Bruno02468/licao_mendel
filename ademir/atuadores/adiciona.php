@@ -1,9 +1,9 @@
 <?php
     
-    $sala = htmlspecialchars(req('sala'));
-    $materia = htmlspecialchars(req('materia'));
+    $sala = req('sala');
+    $materia = req('materia');
     $data = req('data');
-    $dados = htmlspecialchars(req('dados'));
+    $dados = req('dados');
     
     function req($str) {
         if (!isset($_GET[$str])) {
