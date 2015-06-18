@@ -9,12 +9,15 @@ function formatar($texto) {
     $nlinkrep = "<a target='_blank' href='$1'>$2</a>";
     $brreg = "/§/";
     $brrep = "<br>";
+    $nbspreg = "/ /";
+    $nbsprep = "&nbsp;";
 
     $texto = htmlspecialchars($texto);
     $texto = preg_replace($linkreg, $linkrep, $texto);
     $texto = preg_replace($nlinkreg, $nlinkrep, $texto);
     $texto = preg_replace($brreg, $brrep, $texto);
-
+    $texto = preg_replace($nbspreg, $nbsprep, $texto);
+    
     return $texto;
 }
 
