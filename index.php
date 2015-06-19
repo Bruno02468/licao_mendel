@@ -138,15 +138,15 @@ if ($segundas == "") {
 <?php echo $hojes; ?>
 <hr>
 <br>
+<span class="importante">Lições para amanhã:</span><br><br>
+<?php echo $amanhas; ?>
+<hr>
+<br>
 <?php 
     if ($hoje_semana == "sexta" || $hoje_semana == "sábado") {
         echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
     }
 ?>
-<span class="importante">Lições para amanhã:</span><br><br>
-<?php echo $amanhas; ?>
-<hr>
-<br>
 <span class="importante">Lições para outros dias:</span><br><br>
 <?php echo $outras; ?>
 
