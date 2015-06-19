@@ -7,18 +7,23 @@ function formatar($texto) {
     $linkrep = "<a href='$1'>$2</a>";
     $nlinkreg = "/\{(.+)\|(.+)\}/";
     $nlinkrep = "<a target='_blank' href='$1'>$2</a>";
-    $brreg = "/§/";
-    $brrep = "<br>";
-    $nbspreg = "/ /";
+    $nbspreg = "/^ +/";
     $nbsprep = "&nbsp;";
 
     $texto = htmlspecialchars($texto);
     $texto = preg_replace($linkreg, $linkrep, $texto);
     $texto = preg_replace($nlinkreg, $nlinkrep, $texto);
-    $texto = preg_replace($brreg, $brrep, $texto);
     $texto = preg_replace($nbspreg, $nbsprep, $texto);
     
     return $texto;
+}
+
+function formatar_array($arr) {
+    $res = "";
+    foreach ($arr as $key => $line) {
+        $res .= formatar($line) . ($key <= count($arr) ? "<br>" : "");
+    }
+    return $res;
 }
 
 ?>

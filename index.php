@@ -96,7 +96,7 @@ if ($handle = opendir($pasta)) {
         $dadosarr = $arquivo;
         unset($dadosarr[0]);
         unset($dadosarr[1]);
-        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar(join("§", $dadosarr)) . "<br></td></tr>\n";
+        $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
         
         $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
         $final .= $materia;
