@@ -20,9 +20,8 @@ function formatar($texto) {
 
 function formatar_array($arr) {
     $res = "";
-    foreach ($arr as $key => $line) {
+    foreach ($arr as $key => $line)
         $res .= formatar($line) . ($key <= count($arr) ? "<br>" : "");
-    }
     return $res;
 }
 
