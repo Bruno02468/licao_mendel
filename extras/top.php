@@ -23,8 +23,8 @@
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <br>Mensagem do dia:<br>
-            <b>As lições de ontem com as respostas de amanhã.<br>
-            Em breve, vou colocar as respostas aqui!<br>
-            <small>-zoas kkkkk nemvo</small></b>
+            <b>Moodle fora do ar???????!!!!!<br>
+            TAMO TODO MUNDO MORTO AHAHAHAHAHAH<br>
+            <small>-sériow agora... ferrou.</small></b>
         </small>
         </center>
