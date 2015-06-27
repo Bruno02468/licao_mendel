@@ -34,7 +34,9 @@ if (isset($_GET['sala'])) {
 $nome = $sala[0] . "º " . $sala[1];
 $pasta = "salas/" . $sala . "/";
 if (!file_exists($pasta)) {
-    header("Location: http://bruno02468.com/licao/");
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    header("Location: http://$host$uri/licao");
     die();
 }
 
