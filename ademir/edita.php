@@ -1,24 +1,25 @@
 <?php
-    if (!isset($_GET['sala'])) {
-        header("Location: http://bruno02468.com/licao/ademir/");
-        die();
+
+function req($str) {
+    if (!isset($_GET[$str])) {
+        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
+    } else {
+        return $_GET[$str];
     }
-    $sala = $_GET['sala'];
-    
-    if (!isset($_GET['id'])) {
-        header("Location: http://bruno02468.com/licao/ademir/");
-        die();
-    }
-    $id = $_GET['id'];
-    
-    $pasta = "../salas/" . $sala . "/";
-    $arquivo = $pasta . $id;
-    if (!file_exists($pasta) or !file_exists($arquivo)) {
-        header("Location: http://bruno02468.com/ademir/");
-        die();
-    }
-    
-    $conteudo = htmlspecialchars(file_get_contents($arquivo));
+}
+
+$sala = req('sala');
+$id = req('id');
+
+$pasta = "../salas/" . $sala . "/";
+$arquivo = $pasta . $id;
+if (!file_exists($pasta) or !file_exists($arquivo)) {
+    bye();
+    die();
+}
+
+$conteudo = htmlspecialchars(file_get_contents($arquivo));
+
 ?>
 
 <html>
@@ -28,7 +29,7 @@
         <link rel="stylesheet" href="estilo.css">
         <meta charset="UTF-8">
     </head>
-    
+
     <body align="center">
             <h1>Painel Administrativo - Edição</h1>
             <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)

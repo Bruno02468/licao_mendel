@@ -7,7 +7,7 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <meta charset="UTF-8">
     </head>
-    
+
     <body>
         <?php include_once("extras/ga.php"); ?>
         <audio src="zuera/brasil.mp3" id="hue" type="audio/mpeg" volume="0.3"></audio>
@@ -18,13 +18,13 @@
         <center>
         <h1>Site de lições do <?php echo $nome; ?></h1>
         <b><a href="agenda.php" id="meulink">[Ver lições passadas hoje]</a></b><br>
-        <a href="javascript:horario()">Horário da 1ª E</a><br>
+        <a href="javascript:void(0)" onclick="horario();">Horário da 1ª E</a><br>
         <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <br>Mensagem do dia:<br>
-            <b>Moodle fora do ar???????!!!!!<br>
-            TAMO TODO MUNDO MORTO AHAHAHAHAHAH<br>
-            <small>-sériow agora... ferrou.</small></b>
+            <b>Um novo projeto chegará em breve.<br>
+            E nenhum resumo jamais será enviado por WhatsApp novamente.<br>
+            <small>me aguardem.</small></b>
         </small>
         </center>

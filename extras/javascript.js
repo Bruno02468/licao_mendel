@@ -3,12 +3,6 @@
  * Altas programações :-)
  */
 
-
-function ir() {
-    var sala = document.getElementById("sala").value;
-    location.href = "http://bruno02468.com/licao?sala=" + sala;
-}
-
 function ajaxGet(url) {
     var request = null;
     request = new XMLHttpRequest();
@@ -18,7 +12,7 @@ function ajaxGet(url) {
 }
 
 function vlw() {
-    document.getElementById("vlw").innerHTML = ajaxGet("http://bruno02468.com/licao/conta.php");
+    document.getElementById("vlw").innerHTML = ajaxGet(location.host + "/licao/conta.php");
 }
 
 function getCookie(cname) {
