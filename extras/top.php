@@ -24,7 +24,7 @@
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <br>Mensagem do dia:<br>
             <b>Um novo projeto chegará em breve.<br>
-            E nenhum resumo jamais será enviado por WhatsApp novamente.<br>
+            E TEM FÉRIAS AUSHUASHUAHS BOA<br>
             <small>me aguardem.</small></b>
         </small>
         </center>
