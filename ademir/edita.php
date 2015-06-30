@@ -14,8 +14,7 @@ $id = req('id');
 $pasta = "../salas/" . $sala . "/";
 $arquivo = $pasta . $id;
 if (!file_exists($pasta) or !file_exists($arquivo)) {
-    bye();
-    die();
+    die("404");
 }
 
 $conteudo = htmlspecialchars(file_get_contents($arquivo));
@@ -38,10 +37,10 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
         <br>
         <br>
         <form method="GET" action="atuadores/edita.php">
-        <input type="hidden" value="<?php echo $sala; ?>" name="sala">
-        <input type="hidden" value="<?php echo $id; ?>" name="id">
-        <textarea rows="7" cols="50" name="dados"><?php echo $conteudo; ?></textarea><br>
-        <input type="submit" value="Atualizar">
+            <input type="hidden" value="<?php echo $sala; ?>" name="sala">
+            <input type="hidden" value="<?php echo $id; ?>" name="id">
+            <textarea rows="14" cols="60" name="dados"><?php echo $conteudo; ?></textarea><br>
+            <input type="submit" value="Atualizar">
         </form>
     </body>
 </html>

@@ -22,6 +22,7 @@
         <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
+            <small><small><a href="ademir/">[Somente pessoal autorizado]</a></small></small><br>
             <br>Mensagem do dia:<br>
             <b>Um novo projeto chegará em breve.<br>
             E TEM FÉRIAS AUSHUASHUAHS BOA<br>
