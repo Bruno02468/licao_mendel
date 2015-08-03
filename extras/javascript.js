@@ -3,6 +3,8 @@
  * Altas programações :-)
  */
 
+console.log("confia no borginhos e para de ler o console javascript po");
+
 function ajaxGet(url) {
     var request = null;
     request = new XMLHttpRequest();
