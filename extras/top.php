@@ -12,7 +12,7 @@
         <?php include_once("extras/ga.php"); ?>
         <audio src="zuera/brasil.mp3" id="hue" type="audio/mpeg" volume="0.3"></audio>
         <div class="valeu">
-            <input type="button" onclick="vlw()" value="Esta página me ajudou!">
+            <input type="button" onclick="vlw()" value="Valeu, ">
             (<span id="vlw"><?php echo trim(file_get_contents("extras/contador.txt")); ?></span>)<br>
         </div>
         <center>
@@ -23,9 +23,13 @@
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1ª E)<br>
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a></small></small><br>
-            <br>Mensagem do dia:<br>
-            <b>Um novo projeto chegará em breve.<br>
-            E TEM FÉRIAS AUSHUASHUAHS BOA<br>
-            <small>me aguardem.</small></b>
+            <br>Mensagem do dia/mes/ano/éon:<br>
+            <div class="mensagem">
+                Então, eu tenho que fazer um novo horário. Vou cuidar disso.<br>
+                Ah, e eu estou fazendo algumas atualizações; se algo quebrar, me avise!<br>
+                <small>confia no borginhos ;)</small>
+            </div>
         </small>
         </center>
+    </body>
+</html>

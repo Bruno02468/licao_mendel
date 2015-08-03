@@ -35,7 +35,7 @@ if (isset($_GET['sala'])) {
 
 $nome = $sala[0] . "º " . $sala[1];
 $pasta = "salas/" . $sala . "/";
-if (!file_exists($pasta)) {
+if (!file_exists($pasta) && isset($_GET['sala'])) {
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     header("Location: http://$host$uri/licao");
@@ -61,16 +61,16 @@ if ($handle = opendir($pasta)) {
         if ('.qc' === $file) continue;
         if ('index.php' === $file) continue;
         if ('get.php' === $file) continue;
-        
-        
+
+
         $arquivo = file($pasta . $file);
-        
+
         $mat = formatar(trim($arquivo[0]));
         $v = "fez";
         $ent = "de entrega";
         $gabaritei = "Gabaritei";
         $classe = "";
-        
+
         if (strpos($mat, "PROVA - ") !== false) {
             $mat = str_replace("PROVA - ", "", $mat);
             $v = "estudou";
@@ -78,28 +78,28 @@ if ($handle = opendir($pasta)) {
             $gabaritei = "Estou careca de estudar";
             $classe = " class='prova'";
         }
-        
+
         $final = "<acronym title='ID de lição: " . $file . "'><table$classe>\n";
-        
+
         $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>$mat<br></td></tr>\n";
         $datastr = $arquivo[1];
         $entrega_time = strtotime($datastr);
         $entrega = date($formato, $entrega_time);
-        
+
         if ($entrega_time < strtotime($hoje)) {
             unlink($pasta . $file);
             continue;
         }
-        
-        $datafin = date("d/m/Y", $entrega_time); 
+
+        $datafin = date("d/m/Y", $entrega_time);
         $semanal = semana(date("l", $entrega_time));
         $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin ($semanal)<br></td></tr>\n";
-        
+
         $dadosarr = $arquivo;
         unset($dadosarr[0]);
         unset($dadosarr[1]);
         $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
-        
+
         $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
         $final .= $materia;
         $final_sem_data = $final . $dados . $check . "</table></acronym><br>\n";
@@ -114,7 +114,7 @@ if ($handle = opendir($pasta)) {
         } else {
             $outras .= $final_com_data;
         }
-        
+
     }
     closedir($handle);
 }
@@ -131,7 +131,7 @@ if ($outras == "") {
 if ($segundas == "") {
     $segundas = "<i>Sem lição para segunda, boa!<br><br></i>\n";
 }
-    
+
 ?>
 <?php include("extras/top.php") ?>
 <br>
@@ -144,7 +144,7 @@ if ($segundas == "") {
 <?php echo $amanhas; ?>
 <hr>
 <br>
-<?php 
+<?php
     if ($hoje_semana == "sexta" || $hoje_semana == "sábado") {
         echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
     }
