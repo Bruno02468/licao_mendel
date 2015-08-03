@@ -37,6 +37,11 @@
     display: inline-block;
 }
 
+.horario {
+    max-width: 25%;
+    margin: 5px;
+}
+
 table {
     border: 2px double #A4FFA4;
     border-collapse: collapse;

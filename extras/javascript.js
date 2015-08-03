@@ -55,7 +55,7 @@ function toggleFeita(id) {
 
 function horario() {
     var hor = document.getElementById("hor");
-    var img = "<img style='max-width: 25%;' src='horario.png' alt='Horário da 1ª E'><br>";
+    var img = "<img class='horario' src='horario.png' alt='Horário do 1º E'><br>";
     if (hor.innerHTML == "") {
         hor.innerHTML = img;
     } else {
