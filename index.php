@@ -59,8 +59,10 @@ $segundas = "";
 
 $arquivos = glob($pasta . "*");
 usort($arquivos, function($a, $b) {
-    $entrega_a = strtotime(file($a)[1]);
-    $entrega_b = strtotime(file($b)[1]);
+    $fa = file($a);
+    $fb = file($b);
+    $entrega_a = strtotime($fa[1]);
+    $entrega_b = strtotime($fb[1]);
     return $entrega_b < $entrega_a;
 });
 
