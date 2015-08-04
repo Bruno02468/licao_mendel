@@ -31,7 +31,7 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
 
     <body align="center">
             <h1>Painel Administrativo - Edição</h1>
-            <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
+            <small>Tudo programado por Bruno Borges Paschoalinoto (1º E)
             <br>Por um WhatsApp menos confuso :-)</small>
         <br>
         <br>

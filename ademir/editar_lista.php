@@ -43,9 +43,9 @@ if ($final == "")
     </head>
 
     <body align="center">
-            <h1>Painel Administrativo - Edição de Lições</h1>
-            <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)
-            <br>Por um WhatsApp menos confuso :-)</small>
+        <h1>Painel Administrativo - Edição de Lições</h1>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (1º E)
+        <br>Por um WhatsApp menos confuso :-)</small>
         <br>
         <br>
         Editar uma lição:<br>
