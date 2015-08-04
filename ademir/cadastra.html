@@ -20,10 +20,16 @@
             <table align="center">
             <tr><td>Sala (número + letra): </td><td><input type="text" value="1E" name="sala"></tr>
             <tr><td>Matéria: </td><td><input type="text" name="materia"></tr>
-            <tr><td>Data de entrega <small><small>(aaaa/m/d, exemplo: 2015/3/12)</small></small>: </td><td><input type="text" name="data"></tr>
-            <tr><td>Informações: </td><td><textarea rows="10" cols="50" name="dados"></textarea></tr>
+            <tr><td>Data de entrega <small><small>(aaaa/m/d, exemplo: 2015/3/12)</small></small>: </td><td><input type="text" id="data" name="data"></tr>
+            <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="dados"></textarea></tr>
             </table>
             <input type="submit" value="Cadastrar">
         </form>
+        <script>
+            var data = new Date();
+            var ano = data.getFullYear();
+            var mes = data.getMonth() + 1;
+            document.getElementById("data").value = ano + "/" + mes + "/";
+        </script>
     </body>
 </html>

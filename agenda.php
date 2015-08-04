@@ -4,7 +4,7 @@ include("extras/formatar.php");
 
 date_default_timezone_set("America/Sao_Paulo");
 
-function semana($dia) {
+function asemana($dia) {
     switch ($dia) {
         case "Sunday":
             return "domingo";
@@ -24,6 +24,8 @@ function semana($dia) {
             return "<b>erro de dia da semana, wtf</b>";
     }
 }
+
+function semana($dia) { return "<b>" . asemana($dia) . "</b>"; }
 
 
 $sala = "1E";
@@ -56,15 +58,15 @@ foreach ($arquivos as $file) {
     if ('.qc' === $file) continue;
     if ($pasta . 'index.php' === $file) continue;
     if ($pasta . 'get.php' === $file) continue;
-    
+
     $arquivo = file($file);
-    
+
     $mat = formatar(trim($arquivo[0]));
     $v = "fez";
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
     $classe = "";
-        
+
     if (strpos($mat, "PROVA - ") !== false) {
         $mat = str_replace("PROVA - ", "", $mat);
         $v = "estudou";
@@ -72,30 +74,30 @@ foreach ($arquivos as $file) {
         $gabaritei = "Estou careca de estudar";
         $classe = " class='prova'";
     }
-    
+
     $final = "<acronym title='ID de lição: " . $file . "'><table$classe>\n";
-    
+
     $datacri = filectime($file);
     $pass = date("d/m/Y", $datacri);
     $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>$mat<br></td></tr>\n";
     $passada = "<tr><td valign='top'><span class='semiimportante'>Passada em:</span> </td><td valign='top'>$pass<br></td></tr>";
     $datastr = $arquivo[1];
     $entrega = strtotime($datastr);
-    
+
     $datafin = date("d/m/Y", $entrega);
     $semanal = semana(date("l", $entrega));
     if (date("d/m/Y", $amanha) == $datafin) {
         $semanal = "<b>amanhã</b>";
     }
-    
+
     $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin ($semanal)<br></td></tr>\n";
-    
+
     $dadosarr = $arquivo;
     unset($dadosarr[0]);
     unset($dadosarr[1]);
     $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
     $final .= $materia;
-    
+
     $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
     if ($pass == $hoje) {
         $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
@@ -104,7 +106,7 @@ foreach ($arquivos as $file) {
         $final .= $passada . $datapre . $dados . $check . "</table></acronym><br><br>\n";
         $outras .= $final;
     }
-    
+
 }
 
 if ($hojes == "") {
@@ -113,7 +115,7 @@ if ($hojes == "") {
 if ($outras == "") {
     $outras = "<i>Nenhuma lição foi passada em outros dias...</i>\n";
 }
-    
+
 ?>
 <?php include("extras/top.php"); ?>
 <br>
@@ -123,7 +125,7 @@ if ($outras == "") {
 <hr>
 <span class="importante">Lições passadas em outros dias:</span><br><br>
 <?php echo $outras; ?>
-
+<br>
 <script src="extras/javascript.js"></script>
 </body>
 </html>
