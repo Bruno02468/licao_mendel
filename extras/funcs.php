@@ -1,6 +1,7 @@
 <?php
-// Repositório comum para funções.
-// Por Bruno Borges Paschoalinoto.
+
+// Arquivo comum para funções muito usadas.
+// Escrito or Bruno Borges Paschoalinoto.
 
 // Executa um redirecionamento relativo à URL atual.
 function redir($relative) {

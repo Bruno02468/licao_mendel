@@ -1,15 +1,9 @@
 <?php
 
-function req($str) {
-    if (!isset($_GET[$str])) {
-        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
-    } else {
-        return $_GET[$str];
-    }
-}
+include("../extras/funcs.php");
 
-$sala = req('sala');
-$id = req('id');
+$sala = req_get('sala');
+$id = req_get('id');
 
 $pasta = "../salas/" . $sala . "/";
 $arquivo = $pasta . $id;
@@ -24,15 +18,13 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
 <html>
     <head>
         <title>Editando Lição <?php echo $sala . $id; ?></title>
-        <link rel="stylesheet" href="/stylesheets/dark.css">
         <link rel="stylesheet" href="estilo.css">
         <meta charset="UTF-8">
     </head>
 
     <body align="center">
-            <h1>Painel Administrativo - Edição</h1>
-            <small>Tudo programado por Bruno Borges Paschoalinoto (1º E)
-            <br>Por um WhatsApp menos confuso :-)</small>
+        <h1>Painel Administrativo - Edição</h1>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (1º E)</small>
         <br>
         <br>
         <br>

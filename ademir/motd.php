@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>Cadastro de Lições</title>
-        <link rel="stylesheet" href="/stylesheets/dark.css">
+        <title>Mensagem do Dia</title>
+        <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
     </head>
 
@@ -9,7 +9,6 @@
         <h1>Painel Administrativo - Mensagem do Dia</h1>
         <small>
             Tudo programado por Bruno Borges Paschoalinoto (1º E)<br>
-            Por um WhatsApp menos confuso :-)<br>
             <a href=".">[Voltar ao Painel]</a><br>
             <a href="..">[Página inicial]</a>
         </small>

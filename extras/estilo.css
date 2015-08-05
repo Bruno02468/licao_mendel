@@ -1,24 +1,83 @@
-/* Clase para o botão de agradecimento */
+/* Tema base. */
+
+body {
+    background-color: #10110E;
+	margin: 10px;
+}
+
+* {
+    color: #D1FFD6;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mono {
+    font-family: monospace;
+}
+
+hr {
+    color: #5FFF57;
+}
+
+a {
+    color: #5FFF57;
+}
+
+a:hover {
+    color: #3DFF33;
+}
+
+/* Entradas de texto. */
+input[type=text], textarea {
+    /*-webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;*/
+    background: #2B2C29;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 2px solid #5FFF57;
+    border-radius: 2px;
+}
+
+input[type=text]:focus, textarea:focus {
+    background: #40413E;
+    box-shadow: 0 0 7px #3DFF33;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 2px solid #3DFF33;
+}
+
+/* Botões. */
+button, input[type=button], input[type=submit] {
+    color: black;
+    background-color: #535451;
+    border: 2px solid black;
+    border-radius: 2px;
+    margin: 5px 5px;
+}
+
+/* Clase para o botão de agradecimento. */
 .valeu {
     position: absolute;
     top: 0;
     left: 0;
 }
 
-/* Classe para os indicadores de informação dentro das entradas */
+/* Classe para os indicadores de informação dentro das entradas. */
 .importante {
     color: #53CF53;
     font-size: 125%;
     font-weight: bold;
 }
 
-/* Classe para as informações específicas das entradas */
+/* Classe para as informações específicas das entradas. */
 .semiimportante {
     color: #83FF83;
     font-weight: bold;
 }
 
-/* Formatação das tabelas de entradas */
+/* Formatação das tabelas de entradas. */
 .entrada {
     border: 2px double #A4FFA4;
     border-collapse: separate;
@@ -27,20 +86,20 @@
 	margin-bottom: 10px;
 }
 
-/* Colorização específica para provas */
+/* Colorização específica para provas. */
 .prova {
     border-color: darkorange;
 }
 
-/* Formatação dos dados das entradas */
-td, th {
+/* Formatação dos dados das entradas. */
+.ent_td, .ent_th {
     border-top: 1px solid #A4FFA4;
     border-left: 1px solid #A4FFA4;
     padding: 3px;
     padding-right: 5px;
 }
 
-td:first-child {
+.ent_td:first-child {
     border-left: none;
 }
 
@@ -48,7 +107,7 @@ td:first-child {
     border-top: none;
 }
 
-/* Borda e posicionamento da mensagem do dia */
+/* Borda e posicionamento da mensagem do dia. */
 .mensagem {
     border: 2px double #A4FFA4;
     border-radius: 10px;
@@ -62,12 +121,19 @@ td:first-child {
     display: inline-block;
 }
 
-/* Dimensões do horário */
+/* Dimensões do horário. */
 .horario {
     max-width: 25%;
     margin: 5px;
 }
 
-body {
-    margin: 10px;
+/* Réplica da tag H2, para padronização. */
+.h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }

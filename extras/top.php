@@ -1,7 +1,6 @@
 <html>
     <head>
         <title>Lições do <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="/stylesheets/dark.css">
         <link rel="stylesheet" href="extras/estilo.css">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">

@@ -1,26 +1,45 @@
 <?php
 
+// Inclui o arquivo com as funções compartilhadas.
 include("extras/funcs.php");
 
+// Usar a timezone daqui.
 date_default_timezone_set("America/Sao_Paulo");
 
+// Usar a minha sala como padrão, a não ser que outra seja especificada.
 $sala = "1E";
 if (isset($_GET['sala'])) {
     $sala = $_GET['sala'];
 }
 
+// Nome da sala.
 $nome = $sala[0] . "º " . $sala[1];
+
+// Pasta com os arquivos da sala.
 $pasta = "salas/" . $sala . "/";
-if (!file_exists($pasta)) {
+
+// Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
+if (!file_exists($pasta) && isset($_GET['sala'])) {
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    header("Location: http://$host$uri/licao");
+    header("Location: http://$host$uri/.");
     die();
 }
 
+// Formato de data usado nos arquivos.
+$formato = "Y/m/d";
+
+// Formato de data mostrado ao usuário.
+$formato_display = "d/m/Y";
+
+// Lista de tabelas com as lições passadas hoje.
 $hojes = "";
+
+// Lista de tabelas com as lições passadas em outros dias.
 $outras = "";
-$hoje = date("d/m/Y");
+
+
+$hoje = date($formato_display);
 $amanha = strtotime('+1 day', time());
 
 $arquivos = glob($pasta . "*");
@@ -29,20 +48,24 @@ usort($arquivos, function($a, $b) {
 });
 
 foreach ($arquivos as $file) {
+    // Executa uma chegagem e pula arquivos padrão.
     if ('.' === $file) continue;
     if ('..' === $file) continue;
     if ('.qc' === $file) continue;
-    if ($pasta . 'index.php' === $file) continue;
-    if ($pasta . 'get.php' === $file) continue;
 
+    // Cria uma array com as linhas do arquivo.
     $arquivo = file($file);
 
+    // Matéria da lição, formatada.
     $mat = formatar(trim($arquivo[0]));
+
+    // Lista de elementos sintáticos para manter a coerência caso o arquivo se trate de uma prova.
     $v = "fez";
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
     $classe = "entrada";
 
+    // Alterar os elementos sintáticos caso o arquivo seja, de fato, uma prova.
     if (strpos($mat, "PROVA - ") !== false) {
         $mat = str_replace("PROVA - ", "", $mat);
         $v = "estudou";
@@ -51,30 +74,48 @@ foreach ($arquivos as $file) {
         $classe .= " prova";
     }
 
+    // Variável a conter a tabela a ser gerada.
     $final = "<acronym title='ID de lição: " . $file . "'><table class='$classe'>\n";
 
+    // Calcula a data de criação do arquivo.
     $datacri = filectime($file);
-    $pass = date("d/m/Y", $datacri);
-    $materia = "<tr><td valign='top' class='notop'><span class='semiimportante'>Matéria:</span> </td><td class='notop' valign='top'>$mat<br></td></tr>\n";
-    $passada = "<tr><td valign='top'><span class='semiimportante'>Passada em:</span> </td><td valign='top'>$pass<br></td></tr>";
+
+    // Data em que a lição foi criada.
+    $pass = date($formato_display, $datacri);
+
+    // Linha 1: a matéria da lição.
+    $materia = "<tr class='ent_th'><td valign='top' class='ent_td notop'><span class='semiimportante'>Matéria:</span> </td><td class='ent_td notop' valign='top'>$mat<br></td></tr>\n";
+
+    // Linha 2: a data em que a lição foi passada.
+    $passada = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Passada em:</span> </td><td class='ent_td' valign='top'>$pass<br></td></tr>";
+
+    // Calcula a data de entrega.
     $datastr = $arquivo[1];
     $entrega = strtotime($datastr);
 
-    $datafin = date("d/m/Y", $entrega);
+    // Muda o dia da semana para "amanhã", para dar destaque às lições para amanhã.
+    $datafin = date($formato_display, $entrega);
     $semanal = semana(date("l", $entrega));
-    if (date("d/m/Y", $amanha) == $datafin) {
-        $semanal = "<b>amanhã</b>";
+    if (date($formato_display, $amanha) == $datafin) {
+        $semanal = "<b><i>amanhã</i></b>";
     }
 
-    $datapre = "<tr><td valign='top'><span class='semiimportante'>Data $ent:</span> </td><td valign='top'>$datafin ($semanal)<br></td></tr>\n";
+    // Linha 2: a data de entrega da lição.
+    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin ($semanal)<br></td></tr>\n";
 
+    // Linha 3: as informações da lição, formatadas.
     $dadosarr = $arquivo;
     unset($dadosarr[0]);
     unset($dadosarr[1]);
-    $dados = "<tr><td valign='top'><span class='semiimportante'>Informações:</span> </td><td valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
+    $dados = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Informações:</span> </td><td class='ent_td' valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
+
+    // Cria a variável final para a lição.
     $final .= $materia;
 
-    $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
+    // Checkbox para o usuário manter controle sobre as lições já feitas.
+    $check = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Já $v?</span> </td><td class='ent_td' valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
+
+    // Coloca as lições na lista de tavelas de acordo com sua data de criação.
     if ($pass == $hoje) {
         $final .= $datapre . $dados. $check . "</table></acronym><br>\n";
         $hojes .= $final;
@@ -83,8 +124,10 @@ foreach ($arquivos as $file) {
         $outras .= $final;
     }
 
+    // Próximo arquivo.
 }
 
+// Checagens para cobrir casos onde uma das listas de tabelas está vazia.
 if ($hojes == "") {
     $hojes = "<i>Nenhuma lição foi passada hoje.</i><br><br>\n";
 }
@@ -92,8 +135,10 @@ if ($outras == "") {
     $outras = "<i>Nenhuma lição foi passada em outros dias...</i>\n";
 }
 
+// Imprime o início do arquivo, guardado num arquivo separado por ser muito comum.
+include("extras/top.php");
+
 ?>
-<?php include("extras/top.php"); ?>
 <br>
 <br>
 <span class="importante">Lições passadas hoje:</span><br><br>
