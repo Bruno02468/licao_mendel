@@ -1,5 +1,7 @@
-Tudo começou com samambaias verdes que não queriam anotar a lição.
+Pois é, algumas samambaias não estavam a fim de anotar a lição...
 
-E tudo terminará com este belo site em PHP onde toda e qualquer lição há de ser adicionada.
+E este site aconteceu, onde todas as lições e matérias de prova são adicionadas.
 
-Programado por Bruno Borges Paschoalinoto (1ª E).
+O link para a cópia de produção do site está aqui: http://sistema.bruno02468.com/licao
+
+Programado por Bruno Borges Paschoalinoto (1º E).
