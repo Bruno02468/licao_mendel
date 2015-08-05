@@ -35,7 +35,7 @@ function semana($dia) {
 function formatar_array($arr) {
     $res = "";
     foreach ($arr as $key => $line)
-        $res .= formatar($line) . ($key <= count($arr) ? "<br>" : "");
+        $res .= formatar($line);
     return $res;
 }
 
