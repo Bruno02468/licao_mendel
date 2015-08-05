@@ -76,10 +76,10 @@ foreach ($arquivos as $file) {
 
     $check = "<tr><td valign='top'><span class='semiimportante'>Já $v?</span> </td><td valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
     if ($pass == $hoje) {
-        $final .= $datapre . $dados. $check . "</table></acronym><br><br>\n";
+        $final .= $datapre . $dados. $check . "</table></acronym><br>\n";
         $hojes .= $final;
     } else {
-        $final .= $passada . $datapre . $dados . $check . "</table></acronym><br><br>\n";
+        $final .= $passada . $datapre . $dados . $check . "</table></acronym><br>\n";
         $outras .= $final;
     }
 
@@ -99,6 +99,7 @@ if ($outras == "") {
 <span class="importante">Lições passadas hoje:</span><br><br>
 <?php echo $hojes; ?>
 <hr>
+<br>
 <span class="importante">Lições passadas em outros dias:</span><br><br>
 <?php echo $outras; ?>
 <br>

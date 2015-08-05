@@ -12,7 +12,7 @@
         <?php include_once("extras/ga.php"); ?>
         <audio src="zuera/brasil.mp3" id="hue" type="audio/mpeg" volume="0.3"></audio>
         <div class="valeu">
-            <input type="button" onclick="vlw()" value="Valeu, ">
+            <input type="button" onclick="vlw()" value="Valeu, Bruno!">
             (<span id="vlw"><?php echo trim(file_get_contents("extras/contador.txt")); ?></span>)<br>
         </div>
         <center>
