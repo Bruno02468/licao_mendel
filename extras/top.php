@@ -23,7 +23,7 @@
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br>
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a></small></small><br>
-            <br>Mensagem do dia/mes/ano/éon:<br>
+            <br>Mensagem do dia:<br>
             <div class="mensagem">
                 <?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
             </div>
