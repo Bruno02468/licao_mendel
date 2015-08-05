@@ -1,34 +1,27 @@
 <?php
-    
-$sala = req('sala');
-$materia = req('materia');
-$data = req('data');
-$dados = req('dados');
 
-function req($str) {
-    if (!isset($_GET[$str])) {
-        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
-    } else {
-        return $_GET[$str];
-    }
-}
+include("../../extras/funcs.php");
+
+$sala = req_get('sala');
+$materia = req_get('materia');
+$data = req_get('data');
+$dados = req_get('dados');
 
 function proximo_nome($sala) {
     $pasta = "../../salas/" . $sala . "/";
     $contador = $pasta . ".qc";
     $last = file_get_contents($contador);
-    
+
     $resultado = $last + 1;
     file_put_contents($contador, $resultado);
-    
+
     return $pasta . $resultado;
-}    
+}
 
 $arquivo = $materia . "\n" . $data . "\n" . $dados;
 $filename = proximo_nome($sala);
 file_put_contents($filename, $arquivo);
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-header("Location: http://$host$uri/../cadastra.html");
-    
+
+redir("../cadastra.html");
+
 ?>

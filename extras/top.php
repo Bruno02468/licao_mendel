@@ -25,9 +25,7 @@
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a></small></small><br>
             <br>Mensagem do dia/mes/ano/éon:<br>
             <div class="mensagem">
-                Atualizei o horário, tudo normal por aqui...<br>
-                Ah, e eu estou fazendo algumas atualizações; se algo quebrar, me avise!<br>
-                <small>confia no borginhos ;)</small>
+                <?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
             </div>
         </small>
         </center>

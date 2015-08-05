@@ -1,23 +1,15 @@
 <?php
 
-$sala = req('sala');
-$id = req('id');
-$dados = req('dados');
+include("../../extras/funcs.php");
 
-function req($str) {
-    if (!isset($_GET[$str])) {
-        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
-    } else {
-        return $_GET[$str];
-    }
-}
+$sala = req_get('sala');
+$id = req_get('id');
+$dados = req_get('dados');
 
 $arquivo = "../../salas/" . $sala . "/" . $id;
 
 file_put_contents($arquivo, $dados);
 
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-header("Location: http://$host$uri/../../");
+redir("../../");
 
 ?>

@@ -1,54 +1,70 @@
-.ir {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
+/* Clase para o botão de agradecimento */
 .valeu {
     position: absolute;
     top: 0;
     left: 0;
 }
 
+/* Classe para os indicadores de informação dentro das entradas */
 .importante {
     color: #53CF53;
     font-size: 125%;
     font-weight: bold;
 }
 
+/* Classe para as informações específicas das entradas */
 .semiimportante {
     color: #83FF83;
     font-weight: bold;
 }
 
-.prova {
-    border: 2px double darkorange;
-    border-collapse: collapse;
+/* Formatação das tabelas de entradas */
+.entrada {
+    border: 2px double #A4FFA4;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px
 }
 
+/* Colorização específica para provas */
+.prova {
+    border-color: darkorange;
+}
+
+/* Formatação dos dados das entradas */
+td, th {
+    border-top: 1px solid #A4FFA4;
+    border-left: 1px solid #A4FFA4;
+    padding: 3px;
+    padding-right: 5px;
+}
+
+td:first-child {
+    border-left: none;
+}
+
+.notop {
+    border-top: none;
+}
+
+/* Borda e posicionamento da mensagem do dia */
 .mensagem {
     border: 2px double #A4FFA4;
     border-radius: 10px;
     margin-top: 5px;
     padding: 10px;
+    padding-top: 4px;
+    padding-bottom: 7px;
     font-weight: bold;
     font-style: italic;
     width: auto;
     display: inline-block;
 }
 
+/* Dimensões do horário */
 .horario {
     max-width: 25%;
     margin: 5px;
-}
-
-table {
-    border: 2px double #A4FFA4;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px double #A4FFA4;
 }
 
 body {

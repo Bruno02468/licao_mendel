@@ -1,14 +1,8 @@
 <?php
 
-$sala = htmlspecialchars(req('sala'));
+include("../../extras/funcs.php");
 
-function req($str) {
-    if (!isset($_GET[$str])) {
-        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
-    } else {
-        return $_GET[$str];
-    }
-}
+$sala = htmlspecialchars(req_get('sala'));
 
 $arquivos = glob("../../salas/" . $sala . "/*");
 foreach ($arquivos as $file) {

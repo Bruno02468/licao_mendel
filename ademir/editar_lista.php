@@ -24,10 +24,10 @@ foreach ($arquivos as $file) {
 
     $arr = file($file);
     $mat = $arr[0];
-    $data = $arr[1];
+    $data = trim($arr[1]);
 
-    $final .= "<a href='edita.php?sala=$sala&id=$bas'>$mat, para $data</a><br>";
-
+    $final .= "<a href='edita.php?sala=$sala&id=$bas'>$mat, para $data</a> -- ";
+    $final .= "<a href='atuadores/deleta.php?sala=$sala&id=$bas&lista=1'>[Deletar]</a><br>";
 }
 
 if ($final == "")

@@ -3,32 +3,10 @@
  * Escrito pelo Bruno Borges Paschoalinoto.
  * Altas programações :-)
  */
+
+include("extras/funcs.php");
+
 date_default_timezone_set("America/Sao_Paulo");
-
-include("extras/formatar.php");
-
-function asemana($dia) {
-    switch ($dia) {
-        case "Sunday":
-            return "domingo";
-        case "Monday":
-            return "segunda";
-        case "Tuesday":
-            return "terça";
-        case "Wednesday":
-            return "quarta";
-        case "Thursday":
-            return "quinta";
-        case "Friday":
-            return "sexta";
-        case "Saturday":
-            return "sábado";
-        default:
-            return "<b>erro de dia da semana, wtf</b>";
-    }
-}
-
-function semana($dia) { return "<b>" . asemana($dia) . "</b>"; }
 
 $sala = "1E";
 if (isset($_GET['sala'])) {
@@ -49,7 +27,7 @@ $hoje = date($formato, time());
 $hoje_semana = semana(date("l", time()));
 $amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
 $dois = date($formato, strtotime('+2 day', strtotime($hoje)));
-$tres= date($formato, strtotime('+3 day', strtotime($hoje)));
+$tres = date($formato, strtotime('+3 day', strtotime($hoje)));
 $ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
 $hojes = "";
 $amanhas = "";
@@ -81,19 +59,19 @@ foreach ($arquivos as $full) {
     $v = "fez";
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
-    $classe = "";
+    $classe = "entrada";
 
     if (strpos($mat, "PROVA - ") !== false) {
         $mat = str_replace("PROVA - ", "", $mat);
         $v = "estudou";
         $ent = "da prova";
         $gabaritei = "Estou careca de estudar";
-        $classe = " class='prova'";
+        $classe .= " prova";
     }
 
-    $final = "<acronym title='ID de lição: " . $file . "'><table$classe>\n";
+    $final = "<acronym title='ID de lição: " . $file . "'><table class='$classe'>\n";
 
-    $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>$mat<br></td></tr>\n";
+    $materia = "<tr><td valign='top' class='notop'><span class='semiimportante'>Matéria:</span> </td><td class='notop' valign='top'>$mat<br></td></tr>\n";
     $datastr = $arquivo[1];
     $entrega_time = strtotime($datastr);
     $entrega = date($formato, $entrega_time);

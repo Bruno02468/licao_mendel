@@ -1,32 +1,8 @@
 <?php
 
-include("extras/formatar.php");
+include("extras/funcs.php");
 
 date_default_timezone_set("America/Sao_Paulo");
-
-function asemana($dia) {
-    switch ($dia) {
-        case "Sunday":
-            return "domingo";
-        case "Monday":
-            return "segunda";
-        case "Tuesday":
-            return "terça";
-        case "Wednesday":
-            return "quarta";
-        case "Thursday":
-            return "quinta";
-        case "Friday":
-            return "sexta";
-        case "Saturday":
-            return "sábado";
-        default:
-            return "<b>erro de dia da semana, wtf</b>";
-    }
-}
-
-function semana($dia) { return "<b>" . asemana($dia) . "</b>"; }
-
 
 $sala = "1E";
 if (isset($_GET['sala'])) {
@@ -65,21 +41,21 @@ foreach ($arquivos as $file) {
     $v = "fez";
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
-    $classe = "";
+    $classe = "entrada";
 
     if (strpos($mat, "PROVA - ") !== false) {
         $mat = str_replace("PROVA - ", "", $mat);
         $v = "estudou";
         $ent = "da prova";
         $gabaritei = "Estou careca de estudar";
-        $classe = " class='prova'";
+        $classe .= " prova";
     }
 
-    $final = "<acronym title='ID de lição: " . $file . "'><table$classe>\n";
+    $final = "<acronym title='ID de lição: " . $file . "'><table class='$classe'>\n";
 
     $datacri = filectime($file);
     $pass = date("d/m/Y", $datacri);
-    $materia = "<tr><td valign='top'><span class='semiimportante'>Matéria:</span> </td><td valign='top'>$mat<br></td></tr>\n";
+    $materia = "<tr><td valign='top' class='notop'><span class='semiimportante'>Matéria:</span> </td><td class='notop' valign='top'>$mat<br></td></tr>\n";
     $passada = "<tr><td valign='top'><span class='semiimportante'>Passada em:</span> </td><td valign='top'>$pass<br></td></tr>";
     $datastr = $arquivo[1];
     $entrega = strtotime($datastr);

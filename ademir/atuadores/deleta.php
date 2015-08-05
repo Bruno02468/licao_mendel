@@ -1,21 +1,17 @@
 <?php
 
-$sala = htmlspecialchars(req('sala'));
-$id = htmlspecialchars(req('id'));
+include("../../extras/funcs.php");
 
-function req($str) {
-    if (!isset($_GET[$str])) {
-        die("Variável GET \"" . $str . "\" necessária para esta requisição.");
-    } else {
-        return $_GET[$str];
-    }
-}
+$sala = htmlspecialchars(req_get('sala'));
+$id = htmlspecialchars(req_get('id'));
 
 $arquivo = "../../salas/" . $sala . "/" . $id;
 unlink($arquivo);
 
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-header("Location: http://$host$uri/../../salas/$sala");
+if (isset($_GET["lista"])) {
+    redir("../editar_lista.php?sala=$sala");
+} else {
+    redir("../../salas/$sala");
+}
 
 ?>
