@@ -14,7 +14,7 @@ function ajaxGet(url) {
 }
 
 function vlw() {
-    document.getElementById("vlw").innerHTML = ajaxGet(location.host + "/licao/conta.php");
+    document.getElementById("vlw").innerHTML = ajaxGet(conta.php);
 }
 
 function getCookie(cname) {
