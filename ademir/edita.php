@@ -18,7 +18,7 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
 <html>
     <head>
         <title>Editando Lição <?php echo $sala . $id; ?></title>
-        <link rel="stylesheet" href="estilo.css">
+        <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
     </head>
 
