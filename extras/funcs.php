@@ -14,21 +14,21 @@ function redir($relative) {
 function semana($dia) {
     switch ($dia) {
         case "Sunday":
-            return "<b>domingo</b>";
+            return "domingo";
         case "Monday":
-            return "<b>segunda</b>";
+            return "segunda";
         case "Tuesday":
-            return "<b>terça</b>";
+            return "terça";
         case "Wednesday":
-            return "<b>quarta</b>";
+            return "quarta";
         case "Thursday":
-            return "<b>quinta</b>";
+            return "quinta";
         case "Friday":
-            return "<b>sexta</b>";
+            return "sexta";
         case "Saturday":
-            return "<b>sábado</b>";
+            return "sábado";
         default:
-            return "<b>erro de dia da semana, por favor contatar borginhos</b>";
+            return "<i>erro de dia da semana, por favor contatar borginhos</i>";
     }
 }
 

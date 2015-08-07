@@ -101,7 +101,7 @@ foreach ($arquivos as $file) {
     }
 
     // Linha 2: a data de entrega da lição.
-    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin ($semanal)<br></td></tr>\n";
+    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin (<b>$semanal</b>)<br></td></tr>\n";
 
     // Linha 3: as informações da lição, formatadas.
     $dadosarr = $arquivo;

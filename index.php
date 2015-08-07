@@ -128,7 +128,7 @@ foreach ($arquivos as $full) {
     // Ler a data de entrega e gerar a segunda linha: a data de entrega.
     $datafin = date($formato_display, $entrega_time);
     $semanal = semana(date("l", $entrega_time));
-    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin ($semanal)<br></td></tr>\n";
+    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin (<b>$semanal</b>)<br></td></tr>\n";
 
     // Ler as informações da lição, formatá-las e gerar a terceira linha: as informações.
     $dadosarr = $arquivo;
