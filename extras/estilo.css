@@ -111,8 +111,6 @@ button, input[type=button], input[type=submit] {
     padding: 10px;
     padding-top: 4px;
     padding-bottom: 7px;
-    font-weight: bold;
-    font-style: italic;
     width: auto;
     display: inline-block;
 }
