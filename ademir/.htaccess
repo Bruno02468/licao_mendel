@@ -1,4 +1,4 @@
 AuthType Basic
-AuthName "Authentication Required"
+AuthName "És o resumeiro! Prove!"
 AuthUserFile "/etc/htpasswd/.htpasswd"
 Require valid-user
