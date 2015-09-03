@@ -3,4 +3,5 @@ zuera/
 salas/*
 zuera/*
 ademir/atuadores/motd.txt
+ademir/.htaccess
 extras/contador.txt
