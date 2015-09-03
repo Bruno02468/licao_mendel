@@ -1,4 +1,4 @@
 AuthType Basic
-AuthName "És o resumeiro! Prove!"
-AuthUserFile "/etc/htpasswd/.htpasswd"
+AuthName "És o Ademir? Prove!"
+AuthUserFile "/etc/htpasswd/.htpasswd_ademir"
 Require valid-user
