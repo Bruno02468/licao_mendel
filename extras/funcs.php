@@ -34,10 +34,9 @@ function semana($dia) {
 
 // Formata uma array de linhas.
 function formatar_array($arr) {
-    $res = "";
     foreach ($arr as $key => $line)
-        $res .= formatar($line);
-    return $res;
+        $arr[$key] = formatar($line);
+    return implode("<br>" , $arr);
 }
 
 // Substicuição global em uma string.
