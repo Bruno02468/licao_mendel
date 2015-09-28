@@ -24,7 +24,7 @@
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a></small></small><br>
             <br>Mensagem do dia:<br>
             <div class="mensagem">
-                <?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
+                <?php echo formatar_array(explode("\n", file_get_contents("ademir/atuadores/motd.txt"))); ?>
             </div>
         </small>
         </center>
