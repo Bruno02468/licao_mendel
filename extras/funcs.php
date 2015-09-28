@@ -66,12 +66,13 @@ function formatar($texto) {
     $colorrep = "<span style='color: $1;'>";
     $endcolorreg = "/\[\/cor\]/";
     $endcolorrep = "</span>";
-	$nlreg = "/\n/";
-	$nlrep = "<br>";
+    $sureg = "/\[((sub|sup)|(\/(sub|sup)))\]/";
+    $surep = "<$1>";
+    $fourreg = "/    /";
+    $fourrep = "&nbsp;&nbsp;&nbsp;&nbsp;";
 
-
-	$texto = htmlspecialchars($texto);
-	$texto = substituir_global($nlreg, $nlrep, $texto);
+    $texto = htmlspecialchars($texto);
+    $texto = substituir_global($fourreg, $fourrep, $texto);
     $texto = substituir_global($linkreg, $linkrep, $texto);
     $texto = substituir_global($nbspreg, $nbsprep, $texto);
     $texto = substituir_global($imgreg, $imgrep, $texto);
@@ -80,6 +81,8 @@ function formatar($texto) {
     $texto = substituir_global($hcreg, $hcrep, $texto);
     $texto = substituir_global($colorreg, $colorrep, $texto);
     $texto = substituir_global($endcolorreg, $endcolorrep, $texto);
+    $texto = substituir_global($sureg, $surep, $texto);
+    $texto = substituir_global("/\{l\}/", "ℓ", $texto);
 
     return $texto;
 }
@@ -98,7 +101,7 @@ function req_get($str) {
 // e cancela a execução caso ela não esteja presente.
 function req_post($str) {
     if (!isset($_POST[$str])) {
-        die("Variável POST\"" . $str . "\" necessária para esta requisição.");
+        die("Variável POST \"" . $str . "\" necessária para esta requisição.");
     } else {
         return $_POST[$str];
     }
