@@ -130,3 +130,10 @@ button, input[type=button], input[type=submit] {
     margin-right: 0;
     font-weight: bold;
 }
+
+/* Tag [big] da formatação */
+.big {
+    font-size: 1.33em;
+    font-weight: bold;
+    margin-left: 10px;
+}
