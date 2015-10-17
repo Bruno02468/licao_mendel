@@ -53,7 +53,7 @@ button, input[type=button], input[type=submit] {
     margin: 5px 5px;
 }
 
-/* Clase para o botão de agradecimento. */
+/* Classe para o botão de agradecimento. */
 .valeu {
     position: absolute;
     top: 0;
@@ -82,25 +82,24 @@ button, input[type=button], input[type=submit] {
 	margin-bottom: 10px;
 }
 
-/* Colorização específica para provas. */
-.prova {
-    border-color: darkorange;
-}
-
-/* Formatação dos dados das entradas. */
-.ent_td, .ent_th {
+.entrada td, .entrada th {
     border-top: 1px solid #A4FFA4;
     border-left: 1px solid #A4FFA4;
     padding: 3px;
     padding-right: 5px;
 }
 
-.ent_td:first-child {
+.entrada td:first-child {
     border-left: none;
 }
 
-.notop {
+.entrada tr:first-child td {
     border-top: none;
+}
+
+/* Colorização específica para provas. */
+.prova {
+    border-color: darkorange;
 }
 
 /* Borda e posicionamento da mensagem do dia. */

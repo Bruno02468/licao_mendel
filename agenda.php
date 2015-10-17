@@ -8,8 +8,8 @@ date_default_timezone_set("America/Sao_Paulo");
 
 // Usar a minha sala como padrão, a não ser que outra seja especificada.
 $sala = "1E";
-if (isset($_GET['sala'])) {
-    $sala = $_GET['sala'];
+if (isset($_GET["sala"])) {
+    $sala = $_GET["sala"];
 }
 
 // Nome da sala.
@@ -19,9 +19,9 @@ $nome = $sala[0] . "º " . $sala[1];
 $pasta = "salas/" . $sala . "/";
 
 // Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
-if (!file_exists($pasta) && isset($_GET['sala'])) {
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+if (!file_exists($pasta) && isset($_GET["sala"])) {
+    $host  = $_SERVER["HTTP_HOST"];
+    $uri  = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\");
     header("Location: http://$host$uri/.");
     die();
 }
@@ -40,7 +40,7 @@ $outras = "";
 
 
 $hoje = date($formato_display);
-$amanha = strtotime('+1 day', time());
+$amanha = strtotime("+1 day", time());
 
 $arquivos = glob($pasta . "*");
 usort($arquivos, function($a, $b) {
@@ -49,9 +49,9 @@ usort($arquivos, function($a, $b) {
 
 foreach ($arquivos as $file) {
     // Executa uma chegagem e pula arquivos padrão.
-    if ('.' === $file) continue;
-    if ('..' === $file) continue;
-    if ('.qc' === $file) continue;
+    if ("." === $file) continue;
+    if (".." === $file) continue;
+    if (".qc" === $file) continue;
 
     // Cria uma array com as linhas do arquivo.
     $arquivo = file($file);
@@ -64,6 +64,8 @@ foreach ($arquivos as $file) {
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
     $classe = "entrada";
+    $top = "valign=\"top\"";
+    $semi = "class=\"semiimportante\"";
 
     // Alterar os elementos sintáticos caso o arquivo seja, de fato, uma prova.
     if (strpos($mat, "PROVA - ") !== false) {
@@ -75,7 +77,7 @@ foreach ($arquivos as $file) {
     }
 
     // Variável a conter a tabela a ser gerada.
-    $final = "<acronym title='ID de lição: " . $file . "'><table class='$classe'>\n";
+    $final = "<acronym title=\"ID de lição: " . $file . "\"><table class=\"$classe\">\n";
 
     // Calcula a data de criação do arquivo.
     $datacri = filectime($file);
@@ -84,10 +86,10 @@ foreach ($arquivos as $file) {
     $pass = date($formato_display, $datacri);
 
     // Linha 1: a matéria da lição.
-    $materia = "<tr class='ent_th'><td valign='top' class='ent_td notop'><span class='semiimportante'>Matéria:</span> </td><td class='ent_td notop' valign='top'>$mat<br></td></tr>\n";
+    $materia = "<tr><td $top><span $semi>Matéria:</span> </td><td $top>$mat<br></td></tr>\n";
 
     // Linha 2: a data em que a lição foi passada.
-    $passada = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Passada em:</span> </td><td class='ent_td' valign='top'>$pass<br></td></tr>";
+    $passada = "<tr><td $top><span $semi>Passada em:</span> </td><td $top>$pass<br></td></tr>";
 
     // Calcula a data de entrega.
     $datastr = $arquivo[1];
@@ -101,19 +103,20 @@ foreach ($arquivos as $file) {
     }
 
     // Linha 2: a data de entrega da lição.
-    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin (<b>$semanal</b>)<br></td></tr>\n";
+    $datapre = "<tr><td $top><span $semi>Data $ent:</span> </td><td $top>$datafin (<b>$semanal</b>)<br></td></tr>\n";
 
     // Linha 3: as informações da lição, formatadas.
     $dadosarr = $arquivo;
     unset($dadosarr[0]);
     unset($dadosarr[1]);
-    $dados = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Informações:</span> </td><td class='ent_td' valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
+    $dat = formatar_array($dadosarr);
+    $dados = "<tr><td $top><span $semi>Informações:</span> </td><td $top>$dat<br></td></tr>\n";
 
     // Cria a variável final para a lição.
     $final .= $materia;
 
     // Checkbox para o usuário manter controle sobre as lições já feitas.
-    $check = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Já $v?</span> </td><td class='ent_td' valign='top'><input type='checkbox' id='" . basename($file) . "' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
+    $check = "<tr><td $top><span $semi>Já $v?</span> </td><td $top><input type=\"checkbox\" id=\"" . basename($file) . "\" onclick=\"toggleFeita(this.id)\">$gabaritei<br></td></tr>\n";
 
     // Coloca as lições na lista de tavelas de acordo com sua data de criação.
     if ($pass == $hoje) {

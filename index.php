@@ -12,8 +12,8 @@ date_default_timezone_set("America/Sao_Paulo");
 
 // Usar a minha sala como padrão, a não ser que outra seja especificada.
 $sala = "1E";
-if (isset($_GET['sala'])) {
-    $sala = $_GET['sala'];
+if (isset($_GET["sala"])) {
+    $sala = $_GET["sala"];
 }
 
 // Nome da sala.
@@ -23,9 +23,9 @@ $nome = $sala[0] . "º " . $sala[1];
 $pasta = "salas/" . $sala . "/";
 
 // Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
-if (!file_exists($pasta) && isset($_GET['sala'])) {
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+if (!file_exists($pasta) && isset($_GET["sala"])) {
+    $host  = $_SERVER["HTTP_HOST"];
+    $uri  = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\");
     header("Location: http://$host$uri/.");
     die();
 }
@@ -43,16 +43,16 @@ $hoje = date($formato, time());
 $hoje_semana = semana(date("l", time()));
 
 // Data de amanhã.
-$amanha = date($formato, strtotime('+1 day', strtotime($hoje)));
+$amanha = date($formato, strtotime("+1 day", strtotime($hoje)));
 
 // Data de depois de amanhã.
-$dois = date($formato, strtotime('+2 day', strtotime($hoje)));
+$dois = date($formato, strtotime("+2 day", strtotime($hoje)));
 
 // Data de depois de depois de amanhã.
-$tres = date($formato, strtotime('+3 day', strtotime($hoje)));
+$tres = date($formato, strtotime("+3 day", strtotime($hoje)));
 
 // Data de ontem.
-$ontem = date($formato, strtotime('-1 day', strtotime($hoje)));
+$ontem = date($formato, strtotime("-1 day", strtotime($hoje)));
 
 // Lista de tabelas com as lições para hoje.
 $hojes = "";
@@ -64,7 +64,7 @@ $amanhas = "";
 $outras = "";
 
 // Tag para ser usada para acomodar as lições para segunda.
-$segundas_span = "<span class='importante'>Lições para segunda:</span><br><br>";
+$segundas_span = "<span class=\"importante\">Lições para segunda:</span><br><br>";
 
 // Lista de tabelas com as lições para segunda, caso aplicável.
 $segundas = "";
@@ -83,9 +83,9 @@ usort($arquivos, function($a, $b) {
 foreach ($arquivos as $full) {
     // Testar o nome base do arquivo para pular arquivos padrão.
     $file = basename($full);
-    if ('.' === $file) continue;
-    if ('..' === $file) continue;
-    if ('.qc' === $file) continue;
+    if ("." === $file) continue;
+    if (".." === $file) continue;
+    if (".qc" === $file) continue;
 
     // Array com as linhas do arquivo.
     $arquivo = file($full);
@@ -98,6 +98,8 @@ foreach ($arquivos as $full) {
     $ent = "de entrega";
     $gabaritei = "Gabaritei";
     $classe = "entrada";
+    $top = "valign=\"top\"";
+    $semi = "class=\"semiimportante\"";
 
     // Alterar os elementos sintáticos caso o arquivo seja, de fato, uma prova.
     if (strpos($mat, "PROVA - ") !== false) {
@@ -109,10 +111,10 @@ foreach ($arquivos as $full) {
     }
 
     // Variável a conter a tabela a ser gerada.
-    $final = "<acronym title='ID de lição: " . $file . "'><table class='$classe'>\n";
+    $final = "<acronym title=\"ID de lição: " . $file . "\"><table class=\"$classe\">\n";
 
     // Linha 1: a matéria.
-    $materia = "<tr class='ent_th'><td valign='top' class='end_td notop'><span class='semiimportante'>Matéria:</span> </td><td class='ent_td notop' valign='top'>$mat<br></td></tr>\n";
+    $materia = "<tr><td $top><span $semi>Matéria:</span> </td><td $top>$mat<br></td></tr>\n";
 
     // Ler a data de entrega do arquivo.
     $datastr = $arquivo[1];
@@ -128,16 +130,17 @@ foreach ($arquivos as $full) {
     // Ler a data de entrega e gerar a segunda linha: a data de entrega.
     $datafin = date($formato_display, $entrega_time);
     $semanal = semana(date("l", $entrega_time));
-    $datapre = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Data $ent:</span> </td><td class='ent_td' valign='top'>$datafin (<b>$semanal</b>)<br></td></tr>\n";
+    $datapre = "<tr><td $top><span $semi>Data $ent:</span> </td><td $top>$datafin (<b>$semanal</b>)<br></td></tr>\n";
 
     // Ler as informações da lição, formatá-las e gerar a terceira linha: as informações.
     $dadosarr = $arquivo;
     unset($dadosarr[0]);
     unset($dadosarr[1]);
-    $dados = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Informações:</span> </td><td class='ent_td' valign='top'>" . formatar_array($dadosarr) . "<br></td></tr>\n";
+    $dat = formatar_array($dadosarr);
+    $dados = "<tr><td $top><span $semi>Informações:</span> </td><td $top>$dat<br></td></tr>\n";
 
     // Gera uma checkbox que fica salva nos cookies, para o usuário manter uma lista das lições já feitas.
-    $check = "<tr class='ent_th'><td class='ent_td' valign='top'><span class='semiimportante'>Já $v?</span> </td><td class='ent_td' valign='top'><input type='checkbox' id='$file' onclick='toggleFeita(this.id)'>$gabaritei<br></td></tr>\n";
+    $check = "<tr><td $top><span $semi>Já $v?</span> </td><td $top><input type=\"checkbox\" id=\"$file\" onclick=\"toggleFeita(this.id)\">$gabaritei<br></td></tr>\n";
 
     // Gera a tabela final, com ou sem data, dependendo da situação.
     $final .= $materia;
@@ -189,7 +192,7 @@ include("extras/top.php")
 <?php
     // Imprime as lições para segunda caso hoje seja sexta ou sábado.
     if ($hoje_semana == "sexta" || $hoje_semana == "sábado") {
-        echo "<span class='importante'>Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
+        echo "<span class=\"importante\">Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
     }
 ?>
 <span class="importante">Lições para outros dias:</span><br><br>

@@ -1,12 +1,11 @@
 <?php
-
 // Arquivo comum para funções muito usadas.
-// Escrito or Bruno Borges Paschoalinoto.
+// Escrito por Bruno Borges Paschoalinoto.
 
 // Executa um redirecionamento relativo à URL atual.
 function redir($relative) {
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $host  = $_SERVER["HTTP_HOST"];
+    $uri  = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\");
     header("Location: http://$host$uri/$relative");
 }
 
@@ -50,37 +49,35 @@ function substituir_global($padrao, $subst, $texto) {
 function formatar($texto) {
     $not_bracket = "[^\]]";
     $linkreg = "/\[($not_bracket+)\|($not_bracket+)\]/";
-    $linkrep = "<a target='_blank' href='$1'>$2</a>";
+    $linkrep = "<a target=\"_blank\" href=\"$1\">$2</a>";
     $nbspreg = "/^ +/";
     $nbsprep = "&nbsp;";
     $imgreg = "/\[imagem:($not_bracket+)\]/";
-    $imgrep = "<a target='_blank' title='Clique para ver o tamanho completo.' href='$1'><img src='$1'></a>";
-    $bireg = "/\[(\/[biu]|[biu])\]/";
-    $birep = "<$1>";
+    $imgrep = "<a target=\"_blank\" title=\"Clique para ver o tamanho completo.\" href=\"$1\"><img src=\"$1\"></a>";
     $h4reg = "/\[big\]/";
-    $h4rep = "<div class='big'>";
+    $h4rep = "<div class=\"big\">";
     $hcreg = "/\[\/big\]/";
     $hcrep = "</div>";
     $colorreg = "/\[cor:($not_bracket+)\]/";
-    $colorrep = "<span style='color: $1;'>";
+    $colorrep = "<span style=\"color: $1;\">";
     $endcolorreg = "/\[\/cor\]/";
     $endcolorrep = "</span>";
-    $sureg = "/\[((sub|sup)|(\/(sub|sup)))\]/";
-    $surep = "<$1>";
     $fourreg = "/    /";
     $fourrep = "&nbsp;&nbsp;&nbsp;&nbsp;";
+    $tags = "sub|sup|b|i|u|s|code";
+    $tagreg = "/\[(($tags)|(\/($tags)))\]/";
+    $tagrep = "<$1>";
 
     $texto = htmlspecialchars($texto);
     $texto = substituir_global($fourreg, $fourrep, $texto);
     $texto = substituir_global($linkreg, $linkrep, $texto);
     $texto = substituir_global($nbspreg, $nbsprep, $texto);
     $texto = substituir_global($imgreg, $imgrep, $texto);
-    $texto = substituir_global($bireg, $birep, $texto);
     $texto = substituir_global($h4reg, $h4rep, $texto);
     $texto = substituir_global($hcreg, $hcrep, $texto);
     $texto = substituir_global($colorreg, $colorrep, $texto);
     $texto = substituir_global($endcolorreg, $endcolorrep, $texto);
-    $texto = substituir_global($sureg, $surep, $texto);
+    $texto = substituir_global($tagreg, $tagrep, $texto);
     $texto = substituir_global("/\{l\}/", "ℓ", $texto);
 
     return $texto;
