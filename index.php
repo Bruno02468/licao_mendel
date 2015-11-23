@@ -171,8 +171,7 @@ foreach ($licoes as $licao) {
             </div>
         </small>
         <br>
-        <br>
-        <a onclick="killHoje(this)"><big>Esconder lições para hoje</big></button>
+        <big><a href="javascript:void(0)" onclick="killHoje(this)"><br>Esconder lições para hoje</a></big>
         <br>
         <br>
         <?php echo $final; ?>
