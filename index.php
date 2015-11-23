@@ -56,10 +56,11 @@ $tres = date($formato, strtotime("+3 day", strtotime($hoje)));
 // Data de ontem.
 $ontem = strtotime("-1 day", strtotime($hoje));
 
+// Array para guardar as lições
 $licoes = array();
 
-$arquivos = glob($pasta . "*");
-foreach ($arquivos as $full) {
+// Preencher a array
+foreach (glob($pasta . "*") as $full) {
     // Testar o nome base do arquivo para pular arquivos padrão.
     $file = basename($full);
     if ("." === $file) continue;
@@ -69,6 +70,7 @@ foreach ($arquivos as $full) {
     // Array com as linhas do arquivo.
     $arquivo = file($full);
 
+    // Criar o objeto de lição
     $licao = new Licao();
     $licao->id = $file;
 
@@ -102,7 +104,13 @@ foreach ($arquivos as $full) {
     // Próximo arquivo.
 }
 
+// Variável para guardar o HTML
 $final = "";
+
+// Ordenar a array de acordo
+
+$link = "<a href=\".?hoje\">Ver lições por data de criação</a>";
+
 $ordenar = function($a, $b) {
     return strtotime($b->entrega) < strtotime($a->entrega);
 };
@@ -111,14 +119,17 @@ if (isset($_GET["hoje"])) {
     $ordenar = function($a, $b) {
         return $b->criada < $a->criada;
     };
+    $link = "<a href=\".\">Ver lições por data de entrega</a>";
 }
 
 usort($licoes, $ordenar);
 
+// Função para gerar os TRs
 function make_tr($a, $b) {
     return "<tr><td>$a</td><td>$b</td></tr>\n";
 }
 
+// Gerar o HTML das lições
 foreach ($licoes as $licao) {
     $data_criada = date($formato_display, $licao->criada);
     $semanal = semana(date("l", strtotime($licao->entrega)));
@@ -133,7 +144,7 @@ foreach ($licoes as $licao) {
 
     $tabela .= make_tr("Matéria:", $licao->materia)
         . make_tr("Informações:", $licao->info)
-        #. ($hj ? make_tr("Passada:", "<b>Hoje</b>") : "")
+        . (isset($_GET["hoje"]) ? make_tr("Passada:", ($hj ? "<b>Hoje</b>" : "$data_criada (<b>$semanal<b>)")) : "")
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date($formato_display, strtotime($licao->entrega)) . " (<b>$semanal</b>)"))))
         . make_tr("Ok?", "<input type=\"checkbox\" id=\"$licao->id\" onclick=\"toggleFeita(this.id)\">Ok!");
 
@@ -159,6 +170,7 @@ foreach ($licoes as $licao) {
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
+        <?php echo $link; ?><br><br>
         <a href="javascript:void(0)" onclick="horario();">Horário do 1º E</a><br>
         <a href='horarios/1E.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
         <br>
