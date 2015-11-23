@@ -137,7 +137,7 @@ foreach ($licoes as $licao) {
 
     $tabela .= make_tr("Matéria:", $licao->materia)
         . make_tr("Informações:", $licao->info)
-        . ($hj ? make_tr("Passada:", "<b>Hoje</b>") : "")
+        #. ($hj ? make_tr("Passada:", "<b>Hoje</b>") : "")
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date($formato_display, strtotime($licao->entrega)) . " (<b>$semanal</b>)"))))
         . make_tr("Ok?", "<input type=\"checkbox\" id=\"$licao->id\" onclick=\"toggleFeita(this.id)\">Ok!");
 
