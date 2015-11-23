@@ -24,10 +24,6 @@ if (!file_exists($pasta) && isset($_GET["sala"])) {
     die();
 }
 
-if (file_exists("horarios/$sala.png")) {
-
-}
-
 // Formato de data usado nos arquivos.
 $formato = "Y/m/d";
 
