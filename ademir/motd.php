@@ -6,7 +6,6 @@
     </head>
 
     <body style="text-align: center;">
-        <center>
         <h1>Painel Administrativo - Mensagem do Dia</h1>
         <small>
             Tudo programado por Bruno Borges Paschoalinoto (1º E)<br>
@@ -22,6 +21,5 @@
             </table>
             <input type="submit" value="Salvar MOTD">
         </form>
-    </center>
     </body>
 </html>

@@ -1,12 +1,17 @@
 /* Tema base. */
 
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
     background-color: #10110E;
     overflow-x: hidden;
-    display: inline-block;
     text-align: center;
     width: auto;
-    align-self: center;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 * {
