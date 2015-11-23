@@ -13,8 +13,13 @@ function ajaxGet(url) {
     return request.responseText;
 }
 
-function vlw() {
-    document.getElementById("vlw").innerHTML = ajaxGet("conta.php");
+var hojes = document.getElementsByClassName("parahj");
+function killHoje(but) {
+    for (i in hojes) {
+        elem = hojes[i];
+        if (elem.style) elem.style.display = "none";
+    }
+    but.style.display = "none";
 }
 
 var feitas;

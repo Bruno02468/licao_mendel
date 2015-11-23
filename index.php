@@ -1,8 +1,4 @@
 <?php
-/* Página inicial para o site de lições.
- * Escrito pelo Bruno Borges Paschoalinoto.
- * Altas programações :-)
- */
 
 // Inclui o arquivo com as funções compartilhadas.
 include("extras/funcs.php");
@@ -24,10 +20,12 @@ $pasta = "salas/" . $sala . "/";
 
 // Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
 if (!file_exists($pasta) && isset($_GET["sala"])) {
-    $host  = $_SERVER["HTTP_HOST"];
-    $uri  = rtrim(dirname($_SERVER["PHP_SELF"]), "/\\");
-    header("Location: http://$host$uri/.");
+    redir("");
     die();
+}
+
+if (file_exists("horarios/$sala.png")) {
+
 }
 
 // Formato de data usado nos arquivos.
@@ -36,10 +34,19 @@ $formato = "Y/m/d";
 // Formato de data mostrado aos usuários.
 $formato_display = "d/m/Y";
 
-// Data de hoje, no formato padrão.
-$hoje = date($formato, time());
+// Classe para lições
+class Licao {
+    public $materia = "";
+    public $info = "";
+    public $entrega = "";
+    public $criada = "";
+    public $prova = "";
+    public $id = "";
+}
 
-// Dia da semana de hoje.
+// Hoje
+$hoje = date($formato, time());
+$hoje_display = date($formato_display, time());
 $hoje_semana = semana(date("l", time()));
 
 // Data de amanhã.
@@ -50,36 +57,12 @@ $dois = date($formato, strtotime("+2 day", strtotime($hoje)));
 
 // Data de depois de depois de amanhã.
 $tres = date($formato, strtotime("+3 day", strtotime($hoje)));
-
 // Data de ontem.
-$ontem = date($formato, strtotime("-1 day", strtotime($hoje)));
+$ontem = strtotime("-1 day", strtotime($hoje));
 
-// Lista de tabelas com as lições para hoje.
-$hojes = "";
+$licoes = array();
 
-// Lista de tabelas com as lições para ontem.
-$amanhas = "";
-
-// Lista de tabelas com as lições para os demais dias.
-$outras = "";
-
-// Tag para ser usada para acomodar as lições para segunda.
-$segundas_span = "<span class=\"importante\">Lições para segunda:</span><br><br>";
-
-// Lista de tabelas com as lições para segunda, caso aplicável.
-$segundas = "";
-
-// Ler os arquivos da pasta, e ordená-los pela data de entrega especificada no arquivo.
 $arquivos = glob($pasta . "*");
-usort($arquivos, function($a, $b) {
-    $fa = file($a);
-    $fb = file($b);
-    $entrega_a = strtotime($fa[1]);
-    $entrega_b = strtotime($fb[1]);
-    return $entrega_b < $entrega_a;
-});
-
-// Ler cada arquivo já ordenado, e executar as operações.
 foreach ($arquivos as $full) {
     // Testar o nome base do arquivo para pular arquivos padrão.
     $file = basename($full);
@@ -90,116 +73,109 @@ foreach ($arquivos as $full) {
     // Array com as linhas do arquivo.
     $arquivo = file($full);
 
-    // A matéria a ser mostrada.
-    $mat = formatar(trim($arquivo[0]));
-
-    // Lista de elementos sintáticos para manter a coerência caso o arquivo se trate de uma prova.
-    $v = "fez";
-    $ent = "de entrega";
-    $gabaritei = "Gabaritei";
-    $classe = "entrada";
-    $top = "valign=\"top\"";
-    $semi = "class=\"semiimportante\"";
-
-    // Alterar os elementos sintáticos caso o arquivo seja, de fato, uma prova.
-    if (strpos($mat, "PROVA - ") !== false) {
-        $mat = str_replace("PROVA - ", "", $mat);
-        $v = "estudou";
-        $ent = "da prova";
-        $gabaritei = "Estou careca de estudar";
-        $classe .= " prova";
-    }
-
-    // Variável a conter a tabela a ser gerada.
-    $final = "<acronym title=\"ID de lição: " . $file . "\"><table class=\"$classe\">\n";
-
-    // Linha 1: a matéria.
-    $materia = "<tr><td $top><span $semi>Matéria:</span> </td><td $top>$mat<br></td></tr>\n";
+    $licao = new Licao();
+    $licao->id = $file;
 
     // Ler a data de entrega do arquivo.
-    $datastr = $arquivo[1];
-    $entrega_time = strtotime($datastr);
-    $entrega = date($formato, $entrega_time);
+    $licao->entrega = trim($arquivo[1]);
 
-    // Deletar o arquivo caso se trate de uma lição antiga (para ontem ou antes).
-    if ($entrega_time < strtotime($hoje)) {
-        unlink($pasta . $file);
+    // Ler data numérica é apagar lições antigas, para preservar espaço.
+    $entrega_time = strtotime($licao->entrega);
+    if ($entrega_time < $ontem) {
+        unlink($full);
         continue;
     }
 
-    // Ler a data de entrega e gerar a segunda linha: a data de entrega.
-    $datafin = date($formato_display, $entrega_time);
-    $semanal = semana(date("l", $entrega_time));
-    $datapre = "<tr><td $top><span $semi>Data $ent:</span> </td><td $top>$datafin (<b>$semanal</b>)<br></td></tr>\n";
+    // Ver se é prova...
+    $licao->prova = (strpos($arquivo[0], "PROVA - ") !== false);
 
-    // Ler as informações da lição, formatá-las e gerar a terceira linha: as informações.
-    $dadosarr = $arquivo;
-    unset($dadosarr[0]);
-    unset($dadosarr[1]);
-    $dat = formatar_array($dadosarr);
-    $dados = "<tr><td $top><span $semi>Informações:</span> </td><td $top>$dat<br></td></tr>\n";
+    // A matéria a ser mostrada.
+    $licao->materia = formatar(str_replace("PROVA - ", "", trim($arquivo[0])));
 
-    // Gera uma checkbox que fica salva nos cookies, para o usuário manter uma lista das lições já feitas.
-    $check = "<tr><td $top><span $semi>Já $v?</span> </td><td $top><input type=\"checkbox\" id=\"$file\" onclick=\"toggleFeita(this.id)\">$gabaritei<br></td></tr>\n";
+    // Ler as informações e formatá-las.
+    unset($arquivo[0]);
+    unset($arquivo[1]);
+    $licao->info = formatar_array($arquivo);
 
-    // Gera a tabela final, com ou sem data, dependendo da situação.
-    $final .= $materia;
-    $final_sem_data = $final . $dados . $check . "</table></acronym><br>\n";
-    $final_com_data = $final . $datapre . $dados. $check . "</table></acronym><br>\n";
+    // Ler a data de criação.
+    $licao->criada = filectime($full);
 
-    // Coloca a tabela na lista de tabelas, de acordo com a situação.
-    if ($entrega == $hoje) {
-        $hojes .= $final_sem_data;
-    } else if ($entrega == $amanha) {
-        $amanhas .= $final_sem_data;
-    } else if (($hoje_semana == "sexta" || $hoje_semana == "sábado") && $semanal == "segunda" && ($entrega == $dois || $entrega == $tres)) {
-        $segundas .= $final_sem_data;
-    } else {
-        $outras .= $final_com_data;
-    }
+    // Adicionar nossa lição à array.
+    array_push($licoes, $licao);
 
     // Próximo arquivo.
 }
 
-// Série de checagens para cobrir os casos onde não há uma lição.
-if ($hojes == "") {
-    $hojes = "<i>Sem lição para hoje, descanse.<br><br></i>\n";
-}
-if ($amanhas == "") {
-    $amanhas = "<i>Oba! Sem lição para amanhã! Mas não se esqueça de fazer as outras!</i><br><br>\n";
-}
-if ($outras == "") {
-    $outras = "<i>Sem outras lições, legal!</i>\n";
-}
-if ($segundas == "") {
-    $segundas = "<i>Sem lição para segunda, boa!<br><br></i>\n";
+$final = "";
+$ordenar = function($a, $b) {
+    return strtotime($b->entrega) < strtotime($a->entrega);
+};
+
+if (isset($_GET["hoje"])) {
+    $ordenar = function($a, $b) {
+        return $b->criada < $a->criada;
+    };
 }
 
-// Imprime o início do arquivo, guardado num arquivo separado por ser muito comum.
-include("extras/top.php")
+usort($licoes, $ordenar);
+
+function make_tr($a, $b) {
+    return "<tr><td>$a</td><td>$b</td></tr>\n";
+}
+
+foreach ($licoes as $licao) {
+    $data_criada = date($formato_display, $licao->criada);
+    $semanal = semana(date("l", strtotime($licao->entrega)));
+    $hj = ($data_criada == $hoje_display);
+    $proxima = $licao->entrega == $amanha
+        || ($semanal == "segunda" && ($hoje_semana == "sexta" || $hoje_semana == "sábado")
+            && ($licao->entrega == $dois || $licao->entrega == $tres));
+    $perto = ($semanal == "segunda") ? "<b>Segunda</b>" : "<b>Amanhã</b>";
+    $parahj = ($licao->entrega == $hoje);
+
+    $tabela = "<table class=\"entrada" . ($hj ? " hoje" : "") . ($licao->prova ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "") . "\">\n";
+
+    $tabela .= make_tr("Matéria:", $licao->materia)
+        . make_tr("Informações:", $licao->info)
+        . ($licao->prova ? "" : make_tr("Passada:", ($hj ? "<b>Hoje</b>" : $data_criada)))
+        . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : ($licao->entrega . " (<b>$semanal</b>)"))))
+        . make_tr("Ok?", "<input type=\"checkbox\" id=\"$licao->id\" onclick=\"toggleFeita(this.id)\">Ok!");
+
+
+    $tabela .= "</table>";
+    $final .= $tabela;
+}
 
 ?>
-<br>
-<br>
-<span class="importante">Lições para hoje:</span><br><br>
-<?php echo $hojes; ?>
-<hr>
-<br>
-<span class="importante">Lições para amanhã:</span><br><br>
-<?php echo $amanhas; ?>
-<hr>
-<br>
-<?php
-    // Imprime as lições para segunda caso hoje seja sexta ou sábado.
-    if ($hoje_semana == "sexta" || $hoje_semana == "sábado") {
-        echo "<span class=\"importante\">Lições para segunda:</span><br><br>$segundas</table></acronym><hr><br>\n";
-    }
-?>
-<span class="importante">Lições para outros dias:</span><br><br>
-<?php echo $outras; ?>
 
-<script type="text/javascript" src="extras/javascript.js"></script>
-<br>
 
-</body>
+
+<html>
+    <head>
+        <title>Lições do <?php echo $nome; ?></title>
+        <link rel="stylesheet" href="extras/estilo.css">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <?php include_once("extras/ga.php"); ?>
+        <h1>Site de lições do <?php echo $nome; ?></h1>
+        <small>
+            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br>
+            <small><small><a href="ademir/">[Somente pessoal autorizado]</a><br></small></small>
+            <br>Mensagem do dia:<br>
+            <div class="mensagem">
+                <?php echo formatar_array(explode("\n", file_get_contents("ademir/atuadores/motd.txt"))); ?>
+            </div>
+        </small>
+        <br>
+        <br>
+        <button onclick="killHoje(this)">Esconder lições para hoje</button>
+        <br>
+        <br>
+        <?php echo $final; ?>
+        <script src="extras/javascript.js"></script>
+    </body>
 </html>

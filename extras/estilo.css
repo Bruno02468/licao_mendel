@@ -2,7 +2,11 @@
 
 body {
     background-color: #10110E;
-	margin: 10px;
+    overflow-x: hidden;
+    display: inline-block;
+    text-align: center;
+    width: auto;
+    align-self: center;
 }
 
 * {
@@ -53,13 +57,6 @@ button, input[type=button], input[type=submit] {
     margin: 5px 5px;
 }
 
-/* Classe para o botão de agradecimento. */
-.valeu {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 /* Classe para os indicadores de informação dentro das entradas. */
 .importante {
     color: #53CF53;
@@ -79,27 +76,40 @@ button, input[type=button], input[type=submit] {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .entrada td, .entrada th {
     border-top: 1px solid #A4FFA4;
     border-left: 1px solid #A4FFA4;
-    padding: 3px;
+    padding: 5px;
     padding-right: 5px;
 }
 
 .entrada td:first-child {
     border-left: none;
+    color: #83FF83;
+    font-weight: bold;
 }
 
 .entrada tr:first-child td {
     border-top: none;
 }
 
-/* Colorização específica para provas. */
+.hoje {
+    border-color: #10A3C4;
+}
+
+.proxima {
+    border-color: #DB0B0B;
+}
+
+.parahj {
+    border-color: #117311;
+}
+
 .prova {
-    border-color: darkorange;
+    border-color: darkorange; !important
 }
 
 /* Borda e posicionamento da mensagem do dia. */
@@ -136,4 +146,9 @@ button, input[type=button], input[type=submit] {
     font-size: 1.33em;
     font-weight: bold;
     margin-left: 10px;
+}
+
+#top {
+    align-self: center;
+    width: auto;
 }
