@@ -109,7 +109,7 @@ $final = "";
 
 // Ordenar a array de acordo
 
-$link = "<a href=\".?hoje\">Ver lições por data de criação</a>";
+$link = "<a href=\".?hoje\">[Ver lições por data de criação]</a>";
 
 $ordenar = function($a, $b) {
     return strtotime($b->entrega) < strtotime($a->entrega);
@@ -119,7 +119,7 @@ if (isset($_GET["hoje"])) {
     $ordenar = function($a, $b) {
         return $b->criada < $a->criada;
     };
-    $link = "<a href=\".\">Ver lições por data de entrega</a>";
+    $link = "<a href=\".\">[Ver lições por data de entrega]</a>";
 }
 
 usort($licoes, $ordenar);
@@ -170,7 +170,6 @@ foreach ($licoes as $licao) {
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
-        <?php echo $link; ?><br><br>
         <a href="javascript:void(0)" onclick="horario();">Horário do 1º E</a><br>
         <a href='horarios/1E.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
         <br>
@@ -180,10 +179,14 @@ foreach ($licoes as $licao) {
             <br>Mensagem do dia:<br>
             <div class="mensagem">
                 <?php echo formatar_array(explode("\n", file_get_contents("ademir/atuadores/motd.txt"))); ?>
-            </div>
+            </div><br>
         </small>
-        <br>
-        <big><a href="javascript:void(0)" onclick="killHoje(this)"><br>Esconder lições para hoje</a></big>
+        <big>
+            <br>
+            <?php echo $link; ?>
+            <br>
+            <a href="javascript:void(0)" onclick="killHoje(this)"><br>[Esconder lições para hoje]</a>
+        </big>
         <br>
         <br>
         <?php echo $final; ?>
