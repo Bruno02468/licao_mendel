@@ -163,6 +163,9 @@ foreach ($licoes as $licao) {
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
+        <a href="javascript:void(0)" onclick="horario();">Horário do 1º E</a><br>
+        <a href='horario.png' title='Clique para ver o tamanho completo.' target="_blank" id="hor"></a>
+        <br>
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br>
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a><br></small></small>

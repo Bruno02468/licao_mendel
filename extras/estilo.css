@@ -131,7 +131,7 @@ button, input[type=button], input[type=submit] {
 
 /* Dimensões do horário. */
 .horario {
-    max-width: 25%;
+    max-width: 50%;
     margin: 5px;
 }
 
