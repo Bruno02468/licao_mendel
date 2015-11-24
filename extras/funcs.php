@@ -47,7 +47,6 @@ function substituir_global($padrao, $subst, $texto) {
 
 // Formata uma string.
 function formatar($texto) {
-    $texto = trim($texto);
     $not_bracket = "[^\]]";
     $linkreg = "/\[($not_bracket+)\|($not_bracket+)\]/";
     $linkrep = "<a target=\"_blank\" href=\"$1\">$2</a>";
