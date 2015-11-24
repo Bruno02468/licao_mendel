@@ -180,8 +180,7 @@ foreach ($licoes as $licao) {
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br>
             <small><small><a href="ademir/">[Somente pessoal autorizado]</a><br></small></small>
             <br>Mensagem do dia:<br>
-            <div class="mensagem">
-                <?php echo formatar_array(explode("\n", file_get_contents("ademir/atuadores/motd.txt"))); ?>
+            <div class="mensagem"><?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
             </div><br>
         </small>
         <big>

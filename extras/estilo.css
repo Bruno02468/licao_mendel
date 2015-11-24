@@ -126,6 +126,7 @@ button, input[type=button], input[type=submit] {
     padding-bottom: 7px;
     width: auto;
     display: inline-block;
+    white-space: pre-wrap;
 }
 
 /* Dimensões do horário. */

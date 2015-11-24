@@ -47,6 +47,7 @@ function substituir_global($padrao, $subst, $texto) {
 
 // Formata uma string.
 function formatar($texto) {
+    $texto = trim($texto);
     $not_bracket = "[^\]]";
     $linkreg = "/\[($not_bracket+)\|($not_bracket+)\]/";
     $linkrep = "<a target=\"_blank\" href=\"$1\">$2</a>";
@@ -64,11 +65,15 @@ function formatar($texto) {
     $endcolorrep = "</span>";
     $fourreg = "/    /";
     $fourrep = "&nbsp;&nbsp;&nbsp;&nbsp;";
-    $tags = "sub|sup|b|i|u|s|code";
+    $tags = "table|tr|td|sub|sup|b|i|u|s|code|br|hr";
     $tagreg = "/\[(($tags)|(\/($tags)))\]/";
     $tagrep = "<$1>";
+    $tablereg = "/<table>/";
+    $tablerep = "<table class=\"entrada\">";
 
     $texto = htmlspecialchars($texto);
+    $texto = substituir_global("/\{l\}/", "ℓ", $texto);
+    $texto = substituir_global("/\{g\}/", "[sup]↗[/sup]", $texto);
     $texto = substituir_global($fourreg, $fourrep, $texto);
     $texto = substituir_global($linkreg, $linkrep, $texto);
     $texto = substituir_global($nbspreg, $nbsprep, $texto);
@@ -78,7 +83,7 @@ function formatar($texto) {
     $texto = substituir_global($colorreg, $colorrep, $texto);
     $texto = substituir_global($endcolorreg, $endcolorrep, $texto);
     $texto = substituir_global($tagreg, $tagrep, $texto);
-    $texto = substituir_global("/\{l\}/", "ℓ", $texto);
+    $texto = substituir_global($tablereg, $tablerep, $texto);
 
     return $texto;
 }
