@@ -79,7 +79,7 @@ foreach (glob($pasta . "*") as $full) {
 
     // Ler data numérica é apagar lições antigas, para preservar espaço.
     $entrega_time = strtotime($licao->entrega);
-    if ($entrega_time < $ontem) {
+    if ($entrega_time <= $ontem) {
         unlink($full);
         continue;
     }
@@ -140,7 +140,10 @@ foreach ($licoes as $licao) {
     $perto = ($semanal == "segunda") ? "<b>Segunda</b>" : "<b>Amanhã</b>";
     $parahj = ($licao->entrega == $hoje);
 
-    $tabela = "<table class=\"entrada" . ($hj ? " hoje" : "") . ($licao->prova ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "") . "\">\n";
+    $display = ($parahj ? " style=\"display: 'none'\"" : "");
+    $classes = ($hj ? " hoje" : "") . ($licao->prova ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
+
+    $tabela = "<table class=\"entrada$classes\"$display>\n";
 
     $tabela .= make_tr("Matéria:", $licao->materia)
         . make_tr("Informações:", $licao->info)
@@ -185,7 +188,7 @@ foreach ($licoes as $licao) {
             <br>
             <?php echo $link; ?>
             <br>
-            <a href="javascript:void(0)" onclick="killHoje(this)"><br>[Esconder lições para hoje]</a>
+            <a href="javascript:void(0)" onclick="mostrarHoje(this)"><br>[Mostrar lições para hoje]</a>
         </big>
         <br>
         <br>

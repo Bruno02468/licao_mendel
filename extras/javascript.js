@@ -14,10 +14,14 @@ function ajaxGet(url) {
 }
 
 var hojes = document.getElementsByClassName("parahj");
-function killHoje(but) {
+for (i in hojes) {
+    elem = hojes[i];
+    if (elem.style) elem.style.display = "none";
+}
+function mostrarHoje(but) {
     for (i in hojes) {
         elem = hojes[i];
-        if (elem.style) elem.style.display = "none";
+        if (elem.style) elem.style.display = "";
     }
     but.style.display = "none";
 }
