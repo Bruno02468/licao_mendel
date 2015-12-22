@@ -52,7 +52,7 @@ for (var index in feitas) {
 
 function horario() {
     var hor = document.getElementById("hor");
-    var img = "<img class='horario' src='horarios/1E.png' alt='Horário do 1º E'><br>";
+    var img = "<img class=\"horario\" src=\"../horarios/" + sala + ".png\" alt=\"Horário do " + nome + "\"><br>";
     if (hor.innerHTML == "") {
         hor.innerHTML = img;
     } else {

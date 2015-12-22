@@ -5,15 +5,15 @@
 
 // Escrito por Bruno Borges Paschoalinoto.
 
-// Usar a timezone daqui.
-date_default_timezone_set("America/Sao_Paulo");
 
-// Sala padrão caso nenhuma outra seja especificada: a minha.
-$sala = "1E";
+// Inclui o arquivo com as funções compartilhadas.
+include("extras/funcs.php");
 
 // Usa a sala enviada pelo padrão GET "sala".
 if (isset($_GET['sala']))
     $sala = $_GET['sala'];
+else
+    redir(".");
 
 // Pasta com os arquivos da sala.
 $pasta = "../salas/$sala/";
@@ -59,7 +59,7 @@ foreach ($arquivos as $file) {
 
 // Cobre casos em que a sala é inválida ou não há nenhuma lição.
 if ($final == "")
-    $final = "Nenhuma lição disponível para edição.";
+    $final = "Nenhuma lição disponível para edição.<br><a href=\".\">Voltar ao Painel</a><br>";
 
 ?>
 <html>
@@ -67,14 +67,19 @@ if ($final == "")
         <title>Editar lições do 1ºE</title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
 
     <body align="center">
-        <h1>Painel Administrativo - Edição de Lições</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1º E)</small>
+        <h1>Edição de Lições</h1>
+        <a href=".">[Voltar ao Painel]</a><br>
+        <br>
+        <a href="..">[Página inicial]</a>
+        <br>
         <br>
         <br>
         Lista de lições do <?php echo $sala[0] . "º " . $sala[1]; ?>:<br>
+        <br>
         <br>
         <?php echo $final; ?>
         </form>

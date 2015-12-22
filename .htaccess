@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule sala/(.*) sala.php?sala=$1

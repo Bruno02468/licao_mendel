@@ -2,6 +2,9 @@
 // Arquivo comum para funções muito usadas.
 // Escrito por Bruno Borges Paschoalinoto.
 
+// Usar a timezone daqui.
+date_default_timezone_set("America/Sao_Paulo");
+
 // Executa um redirecionamento relativo à URL atual.
 function redir($relative) {
     $host  = $_SERVER["HTTP_HOST"];
