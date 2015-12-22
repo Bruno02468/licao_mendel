@@ -23,7 +23,7 @@ if (!file_exists($pasta) && isset($_GET["sala"])) {
 
 $horario = "";
 if (file_exists("horarios/$sala.png")) {
-    $horario = "<br><a href=\"javascript:void(0)\" onclick=\"horario();\">Horário do $nome</a><br>\n
+    $horario = "<br><a href=\"javascript:void(0)\" onclick=\"horario();\">[Horário do $nome]</a><br>\n
     <a href=\"../horarios/$sala.png\" title=\"Clique para ver o tamanho completo.\" target=\"_blank\" id=\"hor\"></a>";
 }
 
@@ -112,13 +112,13 @@ $final = "";
 
 // Ordenar a array de acordo
 
-$link = "<a href=\".?hoje\">[Ver lições por data de criação]</a>";
+$link = "<a href=\"./$sala\">[Ver lições por data de criação]</a>";
 
 $ordenar = function($a, $b) {
     return strtotime($b->entrega) < strtotime($a->entrega);
 };
 
-if (isset($_GET["hoje"])) {
+if (isset($_GET["recentes"])) {
     $ordenar = function($a, $b) {
         return $b->criada < $a->criada;
     };
@@ -159,6 +159,9 @@ foreach ($licoes as $licao) {
     $final .= $tabela;
 }
 
+if ($final == "")
+    $final = "Nenhuma lição por enquanto..."
+
 ?>
 <html>
     <head>
@@ -173,7 +176,7 @@ foreach ($licoes as $licao) {
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
-        <a href="..">Escolha sua sala</a><br>
+        <a href="..">[Escolha sua sala]</a><br>
         <?php echo $horario; ?>
         <br>
         <small>
@@ -183,12 +186,9 @@ foreach ($licoes as $licao) {
             <div class="mensagem"><?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
             </div><br>
         </small>
-        <big>
-            <br>
-            <?php echo $link; ?>
-            <br>
-            <a href="javascript:void(0)" onclick="mostrarHoje(this)"><br>[Mostrar lições para hoje]</a>
-        </big>
+        <br>
+        <a href="javascript:void(0)" onclick="mostrarHoje(this)"><br>[Mostrar lições para hoje]</a>
+        <br>
         <br>
         <br>
         <?php echo $final; ?>
