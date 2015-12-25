@@ -7,7 +7,7 @@
 
 
 // Inclui o arquivo com as funções compartilhadas.
-include("extras/funcs.php");
+include("../extras/funcs.php");
 
 // Usa a sala enviada pelo padrão GET "sala".
 if (isset($_GET['sala']))
@@ -59,7 +59,7 @@ foreach ($arquivos as $file) {
 
 // Cobre casos em que a sala é inválida ou não há nenhuma lição.
 if ($final == "")
-    $final = "Nenhuma lição disponível para edição.<br><a href=\".\">Voltar ao Painel</a><br>";
+    $final = "Nenhuma lição disponível para edição.<br><br><a href=\".\">Voltar ao Painel</a><br>";
 
 ?>
 <html>

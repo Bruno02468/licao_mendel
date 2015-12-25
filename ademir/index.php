@@ -1,3 +1,15 @@
+<?php
+
+$scan = scandir("../salas/");
+
+$links = array();
+foreach ($scan as $sala) {
+    if ($sala[0] == '.') continue;
+    $nome = $sala[0] . "º " . $sala[1];
+    array_push($links, "<a href=\"editar_lista.php?sala=$sala\">$nome</a>");
+}
+
+?>
 <html>
     <head>
         <title>Painel Administrativo</title>
@@ -16,11 +28,14 @@
             <br>
             <a href="cadastra.html">[Adicionar lições]</a><br>
             <br>
-            [Editar Lições]<br>
-            <form action="editar_lista.php" method="GET">
-                Código de sala: <input type="text" value="1E" name="sala"> <input type="submit" value="Editar lições"><br>
-            </form>
+            Editar lições: <?php echo implode(", ", $links); ?><br>
+            <br>
+            <a href="horarios">[Edição dos Horários]</a><br>
+            <br>
             <a href="motd.php">[Edição da Mensagem do Dia]</a>
         </div>
+        <script>
+            document.getElementById("sala").value = localStorage["sala"];
+        </script>
     </body>
 </html>

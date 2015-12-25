@@ -10,6 +10,7 @@ echo "[insira mensagem do dia aqui]" > ademir/atuadores/motd.txt
 echo "Setando permissões..."
 chmod -R 777 salas
 chmod 777 ademir/atuadores/motd.txt
+chmod -R 777 ademir/horarios/hors
 
 echo "Tudo pronto."
 echo "Crie as pastas com os IDs das salas dentro de 'salas/'."

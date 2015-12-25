@@ -6,10 +6,12 @@ include("extras/funcs.php");
 $scan = scandir("salas/");
 
 $link = "";
+$js = "var salas = [];";
 foreach ($scan as $sala) {
     if ($sala[0] == '.') continue;
     $nome = $sala[0] . "º " . $sala[1];
-    $link .= "<a href=\"sala/$sala\">$nome</a><br><br>";
+    $link .= "<a href=\"javascript:void(0)\" onclick=\"ir('$sala')\">$nome</a><br><br>";
+    $js .= "salas.push(\"$sala\");";
 }
 
 ?>
@@ -22,7 +24,6 @@ foreach ($scan as $sala) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
-
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de Lições</h1>
@@ -39,5 +40,17 @@ foreach ($scan as $sala) {
             <?php echo $link; ?>
             <br>
         </big></big>
+        <script>
+            <?php echo $js; ?>
+            var sala = localStorage["sala"];
+            if (sala != "" && salas.indexOf(sala) > -1) {
+                location.href = "sala/" + sala;
+            }
+
+            function ir(idsala) {
+                localStorage["sala"] = idsala;
+                location.href = "sala/" + idsala;
+            }
+        </script>
     </body>
 </html>

@@ -22,9 +22,9 @@ if (!file_exists($pasta) && isset($_GET["sala"])) {
 }
 
 $horario = "";
-if (file_exists("horarios/$sala.png")) {
+if (file_exists("ademir/horarios/hors/$sala.horario")) {
     $horario = "<br><a href=\"javascript:void(0)\" onclick=\"horario();\">[Horário do $nome]</a><br>\n
-    <a href=\"../horarios/$sala.png\" title=\"Clique para ver o tamanho completo.\" target=\"_blank\" id=\"hor\"></a>";
+    <span id=\"hor\"></span>";
 }
 
 // Formato de data usado nos arquivos.
@@ -66,9 +66,7 @@ $licoes = array();
 foreach (glob($pasta . "*") as $full) {
     // Testar o nome base do arquivo para pular arquivos padrão.
     $file = basename($full);
-    if ("." === $file) continue;
-    if (".." === $file) continue;
-    if (".qc" === $file) continue;
+    if ("." === $file[0]) continue;
 
     // Array com as linhas do arquivo.
     $arquivo = file($full);
@@ -176,7 +174,7 @@ if ($final == "")
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
-        <a href="..">[Escolha sua sala]</a><br>
+        <a href="javascript:void(0)" onclick="escolherSala()">[Escolha sua sala]</a><br>
         <?php echo $horario; ?>
         <br>
         <small>
@@ -197,5 +195,11 @@ if ($final == "")
             nome = "<?php echo $nome; ?>";
         </script>
         <script src="../extras/javascript.js"></script>
+        <script>
+            function escolherSala() {
+                localStorage["sala"] = "";
+                location.href = "..";
+            }
+        </script>
     </body>
 </html>

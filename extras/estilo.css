@@ -13,11 +13,6 @@ body {
     display: table-cell;
 }
 
-* {
-    color: #D1FFD6;
-    font-family: 'Open Sans', sans-serif;
-}
-
 hr {
     color: #5FFF57;
 }
@@ -55,7 +50,7 @@ input[type=text]:focus, textarea:focus {
 /* Botões. */
 button, input[type=button], input[type=submit] {
     color: black;
-    background-color: #535451;
+    background-color: #6f706e;
     border: 2px solid black;
     border-radius: 2px;
     margin: 5px 5px;
@@ -129,12 +124,6 @@ button, input[type=button], input[type=submit] {
     white-space: pre-wrap;
 }
 
-/* Dimensões do horário. */
-.horario {
-    max-width: 50%;
-    margin: 5px;
-}
-
 /* Réplica da tag H2, para padronização. */
 .h2 {
     display: block;
@@ -156,4 +145,31 @@ button, input[type=button], input[type=submit] {
 #top {
     align-self: center;
     width: auto;
+}
+
+.horario, .horario td, .horario b {
+    color: black; !important
+    font-size: 115%;
+    text-align: center;
+}
+
+.horgray {
+    background-color: #cccccc;
+}
+
+.horgreen {
+    background-color: #00ff66;
+}
+
+.hororange {
+    background-color: #ff9900;
+}
+
+.hordias td {
+    background-color: #99ccff;
+}
+
+* {
+    color: #D1FFD6;
+    font-family: 'Open Sans', sans-serif;
 }

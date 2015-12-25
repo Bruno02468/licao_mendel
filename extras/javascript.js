@@ -50,11 +50,12 @@ for (var index in feitas) {
     checkbox.checked = true;
 }
 
+
+var hor = document.getElementById("hor");
 function horario() {
-    var hor = document.getElementById("hor");
-    var img = "<img class=\"horario\" src=\"../horarios/" + sala + ".png\" alt=\"Horário do " + nome + "\"><br>";
+    var got = ajaxGet("../extras/horario2html.php?sala=" + sala);
     if (hor.innerHTML == "") {
-        hor.innerHTML = img;
+        hor.innerHTML = got;
     } else {
         hor.innerHTML = "";
     }
