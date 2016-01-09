@@ -1,9 +1,9 @@
 <?php
 
-#require_login("borginhos");
+include("authfunctions.php");
+require_login("borginhos");
 
 ?>
-
 <html>
     <head>
         <title>Adicionar credenciais</title>

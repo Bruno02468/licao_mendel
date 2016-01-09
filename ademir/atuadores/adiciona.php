@@ -2,7 +2,10 @@
 
 include("../../extras/funcs.php");
 
-$sala = req_get('sala');
+include("../auth/authfunctions.php");
+require_login();
+
+$sala = $_SERVER["PHP_AUTH_USER"];
 $materia = req_get('materia');
 $data = req_get('data');
 $dados = req_get('dados');

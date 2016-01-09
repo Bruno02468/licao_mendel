@@ -2,6 +2,7 @@
 
 include("../../extras/funcs.php");
 include("authfunctions.php");
+require_login("borginhos");
 
 $user = req_get("user");
 
@@ -23,5 +24,8 @@ $user = req_get("user");
             Senha: <input type="password" name="newpass"><br>
             <input type="submit" value="Pode rodar!">
         </form>
+        <a href="actions/remove.php?user=<?php echo $user; ?>">
+            Deletar credenciais do usuário <?php echo $user; ?>
+        </a>
     </body>
 </html>

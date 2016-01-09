@@ -1,3 +1,13 @@
+<?php
+
+include("auth/authfunctions.php");
+require_login();
+
+$sala = $_SERVER["PHP_AUTH_USER"];
+$nome = $sala[0] . "º " + $sala[1];
+
+?>
+
 <html>
     <head>
         <title>Adicionar Lições</title>
@@ -7,7 +17,7 @@
     </head>
 
     <body style="text-align: center;">
-        <h1>Adicionar Lições</h1>
+        <h1>Adicionar Lições (<?php echo $nome; ?>)</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
         <a href="..">[Página inicial]</a>
@@ -16,7 +26,6 @@
         <br>
         <form method="GET" action="atuadores/adiciona.php">
             <table align="center">
-            <tr><td>Código da sua sala (número + letra): </td><td><input type="text" value="" id="sala" name="sala"></tr>
             <tr><td>Matéria: </td><td><input type="text" name="materia"></tr>
             <tr><td>Data de entrega <small><small>(aaaa/m/d, exemplo: 2015/3/12)</small></small>: </td><td><input type="text" id="data" name="data"></tr>
             <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="dados"></textarea></tr>
@@ -28,7 +37,6 @@
             var ano = data.getFullYear();
             var mes = data.getMonth() + 1;
             document.getElementById("data").value = ano + "/" + mes + "/";
-            document.getElementById("sala").value = localStorage["sala"];
         </script>
     </body>
 </html>

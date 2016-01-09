@@ -1,7 +1,7 @@
 <?php
 
 include("authfunctions.php");
-#require_login("borginhos");
+require_login("borginhos");
 
 $links = array();
 $lines = file(".shadow");

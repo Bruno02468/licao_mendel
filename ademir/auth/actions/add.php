@@ -1,8 +1,8 @@
 <?php
 
-#require_login("borginhos");
 include("../../../extras/funcs.php");
 include("../authfunctions.php");
+require_login("borginhos");
 
 $user = req_post("user");
 $pass = req_post("pass");

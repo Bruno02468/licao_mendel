@@ -2,16 +2,19 @@
 // Gerencia funções de login. Substitui o login único HTTP: Basic de antes.
 // Escrito por Bruno Borges Paschoalinoto.
 
+// Gera um salt mais ou menos seguro.
 function make_salt() {
     return uniqid("", true);
 }
 
+// Gera uma linha para o shadowfile com salt aleatório.
 function makeshadow($user, $pass) {
     $salt = make_salt();
     $hashed = hash("sha512", "$pass:$salt");
     return "${user}§${hashed}§${salt}";
 }
 
+// Checa se um login consta no banco de dados.
 function isright($user, $pass) {
     $shadowfile = dirname(__FILE__) . "/.shadow";
     $lines = file($shadowfile);
@@ -26,6 +29,7 @@ function isright($user, $pass) {
     return false;
 }
 
+// Insere o header de login na resposta do servidor.
 function headauth($msg) {
     header("WWW-Authenticate: Basic realm=\"$msg\"");
     header("HTTP/1.0 401 Unauthorized");
@@ -33,7 +37,9 @@ function headauth($msg) {
     die();
 }
 
-function require_login($sala) {
+// Exige um certo login para a exibição da página.
+// Se $sala == "", aceita qualquer login menos "borginhos".
+function require_login($sala = "") {
     $username = null;
     $password = null;
 
@@ -45,7 +51,7 @@ function require_login($sala) {
     if (is_null($username)) {
         headauth("Voce precisa fazer login como $sala para continuar!");
     } else {
-        if ($username !== $sala && $sala != "" && $sala !== "borginhos") {
+        if (($username !== $sala && $sala != "") || ($username == "borginhos" && $sala == ""))  {
             headauth("Esse login nao e o correto! Faca login como $sala!");
         }
         if (!isright($username, $password)) {

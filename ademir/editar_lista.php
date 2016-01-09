@@ -9,14 +9,9 @@
 // Inclui o arquivo com as funções compartilhadas.
 include("../extras/funcs.php");
 
-// Usa a sala enviada pelo padrão GET "sala".
-if (isset($_GET['sala']))
-    $sala = $_GET['sala'];
-else
-    redir(".");
-
 include("auth/authfunctions.php");
-require_login($sala);
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
 
 // Pasta com os arquivos da sala.
 $pasta = "../salas/$sala/";

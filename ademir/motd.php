@@ -14,7 +14,7 @@ require_login("borginhos");
     </head>
 
     <body style="text-align: center;">
-        <h1>Painel Administrativo - Mensagem do Dia</h1>
+        <h1>Mensagem do Dia</h1>
         <small>
             Tudo programado por Bruno Borges Paschoalinoto (1º E)<br>
             <a href=".">[Voltar ao Painel]</a><br>
@@ -23,11 +23,14 @@ require_login("borginhos");
         <br>
         <br>
         <br>
-        <form method="GET" action="atuadores/set_motd.php">
+        <form method="POST" action="atuadores/set_motd.php">
             <table align="center">
-            <tr><td>Mensagem do dia: </td><td><textarea rows="20" cols="75" name="dados"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></tr>
+            <tr>
+                <td>Mensagem do dia: </td>
+                <td><textarea rows="20" cols="75" name="dados"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></td>
+            </tr>
             </table>
-            <input type="submit" value="Salvar MOTD">
+            <input type="submit" value="Salvar">
         </form>
     </body>
 </html>

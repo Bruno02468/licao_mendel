@@ -2,15 +2,8 @@
 
 include("auth/authfunctions.php");
 require_login();
-
-$scan = scandir("../salas/");
-
-$links = array();
-foreach ($scan as $sala) {
-    if ($sala[0] == '.') continue;
-    $nome = $sala[0] . "º " . $sala[1];
-    array_push($links, "<a href=\"editar_lista.php?sala=$sala\">$nome</a>");
-}
+$sala = $_SERVER["PHP_AUTH_USER"];
+$nome = $sala[0] . "º " . $sala[1];
 
 ?>
 <html>
@@ -26,17 +19,23 @@ foreach ($scan as $sala) {
         <br>
         <br>
         <br>
+        Você está logado como o representante do <?php echo $nome; ?>.
+        <br>
         <div class="h2">
             <a href="..">[Página inicial]</a><br>
             <br>
-            <a href="cadastra.html">[Adicionar lições]</a><br>
+            <a href="cadastra.php">[Adicionar lições]</a><br>
             <br>
-            Editar lições: <?php echo implode(", ", $links); ?><br>
+            <a href="editar_lista.php">[Editar lições]</a><br>
             <br>
             <a href="horarios">[Edição dos Horários]</a><br>
             <br>
-            <a href="motd.php">[Edição da Mensagem do Dia]</a>
         </div>
+        Links restritos:<br>
+        <br>
+        <a href="motd.php">[Edição da Mensagem do Dia]</a><br>
+        <br>
+        <a href="auth/">[Gerenciamento de Credenciais]</a>
         <script>
             document.getElementById("sala").value = localStorage["sala"];
         </script>
