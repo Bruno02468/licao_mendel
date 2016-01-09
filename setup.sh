@@ -15,4 +15,3 @@ chmod -R 777 ademir/horarios/hors
 chmod 77 ademir/auth/.shadow
 
 echo "Tudo pronto."
-echo "Crie as pastas com os IDs das salas dentro de 'salas/'."

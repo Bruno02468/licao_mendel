@@ -35,7 +35,9 @@ $nome = $sala[0] . "º " . $sala[1];
         <br>
         <a href="motd.php">[Edição da Mensagem do Dia]</a><br>
         <br>
-        <a href="auth/">[Gerenciamento de Credenciais]</a>
+        <a href="auth/">[Gerenciamento de Credenciais]</a><br>
+        <br>
+        <a href="salas.php">[Gerenciamento de Salas]</a>
         <script>
             document.getElementById("sala").value = localStorage["sala"];
         </script>
