@@ -1,5 +1,8 @@
 <?php
 
+include("auth/authfunctions.php");
+require_login();
+
 $scan = scandir("../salas/");
 
 $links = array();

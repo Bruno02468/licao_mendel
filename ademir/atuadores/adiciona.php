@@ -7,6 +7,9 @@ $materia = req_get('materia');
 $data = req_get('data');
 $dados = req_get('dados');
 
+include("../auth/authfunctions.php");
+require_login($sala);
+
 function proximo_nome($sala) {
     $pasta = "../../salas/" . $sala . "/";
     $contador = $pasta . ".qc";

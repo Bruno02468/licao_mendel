@@ -5,6 +5,9 @@ include("../../extras/funcs.php");
 $sala = htmlspecialchars(req_get('sala'));
 $id = htmlspecialchars(req_get('id'));
 
+include("../auth/authfunctions.php");
+require_login($sala);
+
 $arquivo = "../../salas/" . $sala . "/" . $id;
 unlink($arquivo);
 

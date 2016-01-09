@@ -15,6 +15,9 @@ if (isset($_GET['sala']))
 else
     redir(".");
 
+include("auth/authfunctions.php");
+require_login($sala);
+
 // Pasta com os arquivos da sala.
 $pasta = "../salas/$sala/";
 

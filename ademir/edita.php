@@ -5,6 +5,9 @@ include("../extras/funcs.php");
 $sala = req_get('sala');
 $id = req_get('id');
 
+include("auth/authfunctions.php");
+require_login($sala);
+
 $pasta = "../salas/" . $sala . "/";
 $arquivo = $pasta . $id;
 if (!file_exists($pasta) or !file_exists($arquivo)) {

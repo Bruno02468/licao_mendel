@@ -1,0 +1,4 @@
+<Files .shadow>
+    Order deny,allow
+    Deny from all
+</Files>

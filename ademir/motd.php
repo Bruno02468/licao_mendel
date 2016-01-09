@@ -1,3 +1,10 @@
+<?php
+
+include("auth/authfunctions.php");
+require_login("borginhos");
+
+?>
+
 <html>
     <head>
         <title>Mensagem do Dia</title>
