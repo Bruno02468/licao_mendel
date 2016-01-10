@@ -2,9 +2,6 @@
 
 include("../../extras/funcs.php");
 
-include("../auth/authfunctions.php");
-require_login();
-
 $sala = $_SERVER["PHP_AUTH_USER"];
 $id = htmlspecialchars(req_get('id'));
 

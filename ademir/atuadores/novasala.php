@@ -6,7 +6,9 @@ require_login("borginhos");
 
 $id = req_post("id");
 
-mkdir("../../salas/$id");
+$dir = "../../salas/$id";
+mkdir($dir);
+file_put_contents($dir . "/.qc", "0");
 
 redir("../salas.php");
 

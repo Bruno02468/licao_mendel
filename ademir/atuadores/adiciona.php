@@ -2,9 +2,6 @@
 
 include("../../extras/funcs.php");
 
-include("../auth/authfunctions.php");
-require_login();
-
 $sala = $_SERVER["PHP_AUTH_USER"];
 $materia = req_get('materia');
 $data = req_get('data');
@@ -28,6 +25,6 @@ $arquivo = $materia . "\n" . $data . "\n" . $dados;
 $filename = proximo_nome($sala);
 file_put_contents($filename, $arquivo);
 
-redir("../cadastra.html");
+redir("../cadastra.php");
 
 ?>

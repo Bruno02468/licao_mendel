@@ -29,7 +29,6 @@ foreach ($scan as $sala) {
         <h1>Site de Lições</h1>
         <small>
             Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br><br>
-            <a href="ademir/">[Administrar o Site]</a><br>
             </div><br>
         </small>
         <big><big>
