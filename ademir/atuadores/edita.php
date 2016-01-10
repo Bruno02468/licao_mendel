@@ -13,6 +13,6 @@ $arquivo = "../../salas/" . $sala . "/" . $id;
 
 file_put_contents($arquivo, $dados);
 
-redir("../?sala=$sala");
+redir("../");
 
 ?>

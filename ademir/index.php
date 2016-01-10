@@ -3,14 +3,7 @@
 include("auth/authfunctions.php");
 include("../extras/funcs.php");
 
-$sala = "";
-if (isset($_GET["sala"])) {
-    $sala = $_GET["sala"];
-} else {
-    die("REDIRECIONANDO PLIS<script>location.href = \"./?sala=\" + localStorage[\"sala\"]</script>;");
-}
-
-require_login($sala);
+require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
 $nome = $sala[0] . "º " . $sala[1];
 

@@ -179,7 +179,7 @@ if ($final == "")
         <br>
         <small>
             Tudo programado por <a target="_blank" href="../contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br><br>
-            <small><a href="../ademir/?sala=<?php echo $sala; ?>">[Administrar o Site]</a><br></small>
+            <small><a href="../ademir">[Administrar o Site]</a><br></small>
             <br>Mensagem do dia:<br>
             <div class="mensagem"><?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
             </div><br>
