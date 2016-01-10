@@ -2,13 +2,13 @@
 
 include("../../extras/funcs.php");
 
+include("../auth/authfunctions.php");
+require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
+
 $materia = req_get('materia');
 $data = req_get('data');
 $dados = req_get('dados');
-
-include("../auth/authfunctions.php");
-require_login($sala);
 
 function proximo_nome($sala) {
     $pasta = "../../salas/" . $sala . "/";

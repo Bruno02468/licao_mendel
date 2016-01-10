@@ -1,8 +1,10 @@
 <?php
 
 include("../../../extras/funcs.php");
+include("../auth/authfunctions.php");
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
 
-$sala = req_post("sala");
 $dias = array("segunda", "terça", "quarta", "quinta", "sexta");
 
 $arq = "";

@@ -1,16 +1,14 @@
 <?php
 
-$scan = scandir("../../salas/");
+include("../auth/authfunctions.php");
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
+$nome = $sala[0] + "º " + $sala[1];
 
-$edits = array();
-$adds = array();
-foreach ($scan as $sala) {
-    if ($sala[0] == '.') continue;
-    $nome = $sala[0] . "º " . $sala[1];
-    if (file_exists("hors/$sala.horario"))
-        array_push($edits, "<a href=\"editar.php?sala=$sala\">$nome</a>");
-    else
-        array_push($adds, "<a href=\"adicionar.php?sala=$sala\">$nome</a>");
+$link = "<a href=\"adicionar.php\">[Adicionar o horário para o $nome]</a>";
+
+if (file_exists("hors/$sala")) {
+    $link = "<a href=\"editar.php\">[Editar o horário para o $nome]</a>";
 }
 
 ?>
@@ -31,9 +29,7 @@ foreach ($scan as $sala) {
         <div class="h2">
             <a href="..">[Voltar]</a><br>
             <br>
-            Adicionar horário: <?php echo implode(", ", $adds); ?><br>
-            <br>
-            Editar horário: <?php echo implode(", ", $edits); ?>
+            <?php echo $link; ?>
         </div>
     </body>
 </html>

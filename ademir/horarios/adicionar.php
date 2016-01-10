@@ -1,6 +1,9 @@
 <?php
 
-include("../../extras/funcs.php");
+include("../auth/authfunctions.php");
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
+$nome = $sala[0] + "º " + $sala[1];
 
 ?>
 
@@ -12,7 +15,7 @@ include("../../extras/funcs.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
     <body style="text-align: center;">
-        <h1>Adicionar horário</h1>
+        <h1>Adicionar horário para o <?php echo $nome; ?></h1>
         <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
         <br>
         <br>
@@ -25,7 +28,6 @@ include("../../extras/funcs.php");
                 </tr>
             </table>
             <br>
-            <input type="hidden" name="sala" value="<?php echo req_get("sala"); ?>">
             <input type="submit" value="Adicionar horário">
         </form>
         <script>

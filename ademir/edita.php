@@ -2,11 +2,11 @@
 
 include("../extras/funcs.php");
 
-$sala = req_get('sala');
-$id = req_get('id');
+include("../auth/authfunctions.php");
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
 
-include("auth/authfunctions.php");
-require_login($sala);
+$id = req_get('id');
 
 $pasta = "../salas/" . $sala . "/";
 $arquivo = $pasta . $id;

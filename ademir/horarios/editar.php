@@ -1,8 +1,9 @@
 <?php
 
-include("../../extras/funcs.php");
-
-$sala = req_get("sala");
+include("../auth/authfunctions.php");
+require_login();
+$sala = $_SERVER["PHP_AUTH_USER"];
+$nome = $sala[0] + "º " + $sala[1];
 
 $js = "var horario = [];\n";
 $arq = file("hors/$sala.horario");
@@ -21,7 +22,7 @@ foreach ($arq as $line) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
     <body style="text-align: center;">
-        <h1>Editar horário</h1>
+        <h1>Editar horário do <?php echo $nome; ?></h1>
         <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
         <br>
         <br>
@@ -34,10 +35,9 @@ foreach ($arq as $line) {
                 </tr>
             </table>
             <br>
-            <input type="hidden" name="sala" value="<?php echo $_GET["sala"] ?>">
             <input type="submit" value="Salvar horário">
         </form>
-        ou você pode <a href="atuadores/deleta.php?sala=<?php echo $sala ?>">deletar este horário.</a>
+        ou você pode <a href="atuadores/deleta.php">deletar este horário.</a>
         <script>
             <?php echo $js; ?>
             var tabela = document.getElementById("horario");

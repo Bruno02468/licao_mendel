@@ -13,9 +13,9 @@ if (!is_dir($dir)) die("NEM É PASTA");
 if ($id[0] == ".") die("PARA DE TROLHAR");
 
 foreach(glob($dir . '/*') as $file) {
-    if(is_dir($file)) rrmdir($file);
-    else unlink($file);
+    unlink($file);
 }
+unlink($dir . "/.qc");
 rmdir($dir);
 
 
