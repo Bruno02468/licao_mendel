@@ -13,7 +13,7 @@ require_login("borginhos");
 
     <body style="text-align: center;">
         <h1>Adicionar credenciais</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         <form method="POST" action="actions/add.php">

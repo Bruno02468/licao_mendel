@@ -16,7 +16,7 @@ $user = req_get("user");
 
     <body style="text-align: center;">
         <h1>Editando credenciais</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         <form method="POST" action="actions/edit.php">

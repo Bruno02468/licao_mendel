@@ -16,7 +16,7 @@ $nome = $sala[0] + "º " + $sala[1];
     </head>
     <body style="text-align: center;">
         <h1>Adicionar horário para o <?php echo $nome; ?></h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         Digita aí seu horário.<br>

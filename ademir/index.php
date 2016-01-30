@@ -17,7 +17,7 @@ $nome = $sala[0] . "º " . $sala[1];
 
     <body style="text-align: center;">
         <h1>Painel Administrativo</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         <br>

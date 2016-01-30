@@ -21,7 +21,7 @@ foreach ($lines as $line) {
 
     <body style="text-align: center;">
         <h1>Gerenciamento de Credenciais</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         <br>

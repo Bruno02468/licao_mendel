@@ -8,4 +8,4 @@ Também coloco as matérias de prova. Legal, né?
 
 A versão de produção do Site de Lições roda aqui: http://licoes.com/licao
 
-Programado por Bruno Borges Paschoalinoto (1º E).
+Programado por Bruno Borges Paschoalinoto (2º F).

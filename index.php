@@ -28,7 +28,7 @@ foreach ($scan as $sala) {
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de Lições</h1>
         <small>
-            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (1º E)<br><br>
+            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br>
             <small><a href="ademir">[Administrar o Site]</a><br></small>
             </div><br>
         </small>

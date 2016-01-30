@@ -22,7 +22,7 @@ if (file_exists("hors/$sala")) {
     </head>
     <body style="text-align: center;">
         <h1>Horários das salas</h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         <br>

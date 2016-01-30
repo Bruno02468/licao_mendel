@@ -23,7 +23,7 @@ foreach ($arq as $line) {
     </head>
     <body style="text-align: center;">
         <h1>Editar horário do <?php echo $nome; ?></h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (1ª E)</small>
+        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
         Edita aí o horário.<br>
