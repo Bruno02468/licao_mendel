@@ -3,7 +3,7 @@
 include("../auth/authfunctions.php");
 require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
-$nome = $sala[0] + "º " + $sala[1];
+$nome = $sala[0] . "º " . $sala[1];
 
 $link = "<a href=\"adicionar.php\">[Adicionar o horário para o $nome]</a>";
 
