@@ -27,7 +27,7 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
     </head>
 
     <body align="center">
-        <h1>Painel Administrativo - Edição</h1>
+        <h1>Editar Lição</h1>
         <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
