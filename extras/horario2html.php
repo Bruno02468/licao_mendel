@@ -23,8 +23,8 @@ function intervalo($n) {
 
 
 
+$aulatimes = ["7:05", "7:50", "8:35", "9:45", "10:30", "11:40", "12:25", "13:10"];
 for ($aula = 1; $aula <= 8; $aula++) {
-    $aulatimes = ["7:05", "7:50", "8:35", "9:45", "10:30", "11:40", "12:25", "13:10"];
     $time = $aulatimes[$aula-1];
     $others .= "<tr><td class=\"hororange\">${aula}ª Aula ($time)</td>";
     for ($dia = 0; $dia <= 4; $dia++) {
