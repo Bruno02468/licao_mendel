@@ -2,7 +2,7 @@
 
 include("../extras/funcs.php");
 
-include("../auth/authfunctions.php");
+include("auth/authfunctions.php");
 require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
 
@@ -10,7 +10,7 @@ $id = req_get('id');
 
 $pasta = "../salas/" . $sala . "/";
 $arquivo = $pasta . $id;
-if (!file_exists($pasta) or !file_exists($arquivo)) {
+if (!file_exists($pasta) || !file_exists($arquivo)) {
     die("404");
 }
 

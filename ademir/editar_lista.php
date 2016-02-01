@@ -51,7 +51,7 @@ foreach ($arquivos as $file) {
     $iden .= " $data";
 
     // Coloca os links na lista final de links.
-    $final .= "<a href='edita.php?sala=$sala&id=$bas'>$iden</a> -- ";
+    $final .= "<a href='edita.php?id=$bas'>$iden</a> -- ";
     $final .= "<a href='atuadores/deleta.php?sala=$sala&id=$bas&lista=1'>[Deletar]</a><br>";
 }
 
