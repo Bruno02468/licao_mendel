@@ -159,6 +159,9 @@ button, input[type=button], input[type=submit] {
 .horario td, .horario b {
     color: black; !important
     text-align: center;
+}
+
+.horario td {
     font-size: 90%;
 }
 
