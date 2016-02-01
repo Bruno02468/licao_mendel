@@ -7,7 +7,7 @@ $nome = $sala[0] . "º " . $sala[1];
 
 $link = "<a href=\"adicionar.php\">[Adicionar o horário para o $nome]</a>";
 
-if (file_exists("hors/$sala")) {
+if (file_exists("hors/$sala.horario")) {
     $link = "<a href=\"editar.php\">[Editar o horário para o $nome]</a>";
 }
 
