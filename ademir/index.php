@@ -21,7 +21,7 @@ $nome = $sala[0] . "º " . $sala[1];
         <br>
         <br>
         <br>
-        Você está logado como o representante do <?php echo $nome; ?>.
+        Você está logado como o administrador do <?php echo $nome; ?>.
         <br>
         <div class="h2">
             <a href="..">[Página inicial]</a><br>
@@ -30,7 +30,7 @@ $nome = $sala[0] . "º " . $sala[1];
             <br>
             <a href="editar_lista.php">[Editar lições]</a><br>
             <br>
-            <a href="horarios">[Edição dos Horários]</a><br>
+            <a href="horarios">[Edição do Horário]</a><br>
             <br>
         </div>
         Links restritos:<br>
