@@ -20,7 +20,7 @@ $conteudo = htmlspecialchars(file_get_contents($arquivo));
 
 <html>
     <head>
-        <title>Editando Lição <?php echo $sala . $id; ?></title>
+        <title>Editando Lição</title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
