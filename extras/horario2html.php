@@ -24,7 +24,7 @@ for ($aula = 1; $aula <= 8; $aula++) {
         $others .= maketd($mat);
     }
     $others .= "</tr>";
-    if ($aula == 2 || $aula == 5)
+    if ($aula == 3 || $aula == 5)
         $others .= $intervalo;
     $others .= "\n";
 }
