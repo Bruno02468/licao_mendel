@@ -18,6 +18,7 @@ foreach(glob($dir . '/*') as $file) {
 unlink($dir . "/.qc");
 rmdir($dir);
 
+unlink("../horarios/hors/$id.horario");
 
 redir("../salas.php");
 
