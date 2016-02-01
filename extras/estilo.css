@@ -149,6 +149,8 @@ button, input[type=button], input[type=submit] {
 
 .horario {
     table-layout: fixed;
+    text-align: center;
+    width: auto;
 }
 
 .horario td, .horario b {
