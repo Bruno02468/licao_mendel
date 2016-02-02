@@ -24,7 +24,7 @@ $nome = $sala[0] . "º " . $sala[1];
         Você está logado como o administrador do <?php echo $nome; ?>.
         <br>
         <div class="h2">
-            <a href="..">[Página inicial]</a><br>
+            <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
             <br>
             <a href="cadastra.php">[Adicionar lições]</a><br>
             <br>
