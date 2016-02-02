@@ -26,6 +26,8 @@ foreach ($arq as $line) {
         <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
+        <a href="..">[Voltar ao Painel]</a><br>
+        <br>
         Edita aí o horário.<br>
         <br>
         <form method="POST" action="atuadores/adiciona.php">

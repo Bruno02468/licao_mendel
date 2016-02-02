@@ -19,6 +19,8 @@ $nome = $sala[0] + "º " + $sala[1];
         <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
+        <a href="..">[Voltar ao Painel]</a><br>
+        <br>
         Digita aí seu horário.<br>
         <br>
         <form method="POST" action="atuadores/adiciona.php">

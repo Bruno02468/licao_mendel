@@ -7,6 +7,12 @@ require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
 $nome = $sala[0] . "º " . $sala[1];
 
+$link = "<a href=\"horarios/adicionar.php\">[Adicionar o horário do $nome]</a>";
+
+if (file_exists("horarios/hors/$sala.horario")) {
+    $link = "<a href=\"horarios/editar.php\">[Editar o horário do $nome]</a>";
+}
+
 ?>
 <html>
     <head>
@@ -21,7 +27,7 @@ $nome = $sala[0] . "º " . $sala[1];
         <br>
         <br>
         <br>
-        Você está logado como o administrador do <?php echo $nome; ?>.
+        <b>Você está logado como o administrador do <u><?php echo $nome; ?></u>.</b>
         <br>
         <div class="h2">
             <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
@@ -30,7 +36,7 @@ $nome = $sala[0] . "º " . $sala[1];
             <br>
             <a href="editar_lista.php">[Editar lições]</a><br>
             <br>
-            <a href="horarios">[Edição do Horário]</a><br>
+            <?php echo $link; ?><br>
             <br>
         </div>
         Links restritos:<br>

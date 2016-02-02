@@ -16,5 +16,5 @@ for ($i = 1; $i <= 8; $i++) {
 $arq = trim($arq);
 
 file_put_contents("../hors/$sala.horario", $arq);
-redir("..");
+redir("../..");
 ?>
