@@ -5,14 +5,41 @@ include("extras/funcs.php");
 
 $scan = scandir("salas/");
 
-$link = "";
-$js = "var salas = [];";
+$anos = array();
+$js = "var anos = [];";
 foreach ($scan as $sala) {
     if ($sala[0] == '.') continue;
-    $nome = $sala[0] . "º " . $sala[1];
-    $link .= "<a href=\"javascript:void(0)\" onclick=\"ir('$sala')\">$nome</a><br><br>";
-    $js .= "salas.push(\"$sala\");";
+    $ano = $sala[0];
+    if (!array_key_exists($ano, $anos)) {
+        $anos[$ano] = array();
+    }
+    array_push($anos[$ano], $sala);
+    $js .= "anos.push(\"$sala\");";
 }
+
+$tabela = "<table class=\"listaanos\"><tr class=\"listaano\">";
+$longest = 0;
+foreach(array_keys($anos) as $ano) {
+    $tabela .= "<td>${ano}<sup class=\"os\"><u>os</u></sup></td>";
+    if (count($anos[$ano]) > $longest) $longest = count($anos[$ano]);
+}
+$tabela .= "</tr>";
+
+for ($i = 1; $i <= $longest; $i++) {
+    $tabela .= "<tr>";
+    foreach(array_keys($anos) as $ano) {
+        if (count($anos[$ano]) >= $i) {
+            $sala = $anos[$ano][$i-1];
+            $nome = "${ano}º " . $sala[1];
+            $tabela .= "<td><a href=\"javascript:void(0)\" onclick=\"ir('$sala')\">$nome</a></td>";
+        } else {
+            $tabela .= "<td></td>";
+        }
+    }
+    $tabela .= "</tr>";
+}
+
+$tabela .= "</table>";
 
 ?>
 <html>
@@ -37,13 +64,13 @@ foreach ($scan as $sala) {
             Escolha sua sala:
             <br>
             <br>
-            <?php echo $link; ?>
+            <?php echo $tabela; ?>
             <br>
         </big></big>
         <script>
             <?php echo $js; ?>
             var sala = localStorage["sala"];
-            if (sala != "" && salas.indexOf(sala) > -1) {
+            if (sala != "" && anos.indexOf(sala) > -1) {
                 location.href = "sala/" + sala;
             }
 
