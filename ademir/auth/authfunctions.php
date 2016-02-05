@@ -52,6 +52,7 @@ function require_login($sala = "") {
         headauth("Voce precisa fazer login para continuar!");
     } else {
         if (($username !== $sala && $sala != "") || ($username == "borginhos" && $sala == ""))  {
+            error_log("login incorreto, sala = $sala, username = $username");
             headauth("Esse login nao e o correto! Faca login!");
         }
         if (!isright($username, $password)) {
