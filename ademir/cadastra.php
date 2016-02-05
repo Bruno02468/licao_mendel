@@ -30,7 +30,7 @@ $nome = $sala[0] . "º " + $sala[1];
             <tr><td>Data de entrega <small><small>(aaaa/m/d, exemplo: 2015/3/12)</small></small>: </td><td><input type="text" id="data" name="data"></tr>
             <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="dados"></textarea></tr>
             </table>
-            <input type="submit" value="Adicionar">
+            <br><input type="submit" value="Adicionar">
         </form>
         <script>
             var data = new Date();

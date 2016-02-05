@@ -5,3 +5,4 @@ ademir/horarios/hors/*
 ademir/atuadores/motd.txt
 ademir/.htaccess
 ademir/auth/.shadow
+ademir/atuadores/ademires.txt

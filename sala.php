@@ -4,9 +4,11 @@
 include("extras/funcs.php");
 
 // Usar a minha sala como padrão, a não ser que outra seja especificada.
-$sala = "1E";
 if (isset($_GET["sala"])) {
     $sala = $_GET["sala"];
+} else {
+    redir("..");
+    die();
 }
 
 // Nome da sala.
@@ -17,7 +19,7 @@ $pasta = "salas/" . $sala . "/";
 
 // Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
 if (!file_exists($pasta) && isset($_GET["sala"])) {
-    redir("");
+    redir("..");
     die();
 }
 
@@ -28,7 +30,7 @@ if (file_exists("ademir/horarios/hors/$sala.horario")) {
 }
 
 // Formato de data usado nos arquivos.
-$formato = "Y/m/d";
+$formato = "Y/n/j";
 
 // Formato de data mostrado aos usuários.
 $formato_display = "d/m/Y";
@@ -158,7 +160,16 @@ foreach ($licoes as $licao) {
 }
 
 if ($final == "")
-    $final = "Nenhuma lição por enquanto..."
+    $final = "Nenhuma lição por enquanto...";
+
+$ademires_file = file("ademir/atuadores/ademires.txt");
+$adm = "Não se sabe o nome do admin da sala.";
+foreach ($ademires_file as $line) {
+    list($salaid, $nomeadm) = explode(":", $line);
+    if ($salaid === $sala) {
+        $adm = "Esta sala é administrada por <b>$nomeadm</b>. :D";
+    }
+}
 
 ?>
 <html>
@@ -185,8 +196,8 @@ if ($final == "")
             </div><br>
         </small>
         <br>
-        <a href="javascript:void(0)" onclick="mostrarHoje(this)"><br>[Mostrar lições para hoje]</a>
-        <br>
+        <?php echo $adm; ?><br>
+        <span id="hojeslink"></span>
         <br>
         <br>
         <?php echo $final; ?>

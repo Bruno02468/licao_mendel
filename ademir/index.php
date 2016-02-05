@@ -45,7 +45,9 @@ if (file_exists("horarios/hors/$sala.horario")) {
         <br>
         <a href="auth/">[Gerenciamento de Credenciais]</a><br>
         <br>
-        <a href="salas.php">[Gerenciamento de Salas]</a>
+        <a href="salas.php">[Gerenciamento de Salas]</a><br>
+        <br>
+        <a href="ademires.php">[Lista de Admins]</a>
         <script>
             document.getElementById("sala").value = localStorage["sala"];
         </script>

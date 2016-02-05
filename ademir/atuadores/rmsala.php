@@ -1,9 +1,8 @@
 <?php
 
-include("../../extras/funcs.php");
-
 include("../auth/authfunctions.php");
 require_login("borginhos");
+include("../../extras/funcs.php");
 
 $id = req_post("id");
 

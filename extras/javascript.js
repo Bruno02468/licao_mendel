@@ -14,9 +14,15 @@ function ajaxGet(url) {
 }
 
 var hojes = document.getElementsByClassName("parahj");
-for (i in hojes) {
-    elem = hojes[i];
-    if (elem.style) elem.style.display = "none";
+var hojespan = document.getElementById("hojeslink");
+if (hojes.length > 0) {
+    for (i in hojes) {
+        elem = hojes[i];
+        if (elem.style) elem.style.display = "none";
+    }
+    hojespan.innerHTML = "<a href=\"javascript:void(0)\" onclick=\"mostrarHoje(this)\"><br>[Mostrar lições para hoje]</a>";
+} else {
+
 }
 function mostrarHoje(but) {
     for (i in hojes) {

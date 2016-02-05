@@ -49,10 +49,10 @@ function require_login($sala = "") {
     }
 
     if (is_null($username)) {
-        headauth("Voce precisa fazer login como $sala para continuar!");
+        headauth("Voce precisa fazer login para continuar!");
     } else {
         if (($username !== $sala && $sala != "") || ($username == "borginhos" && $sala == ""))  {
-            headauth("Esse login nao e o correto! Faca login como $sala!");
+            headauth("Esse login nao e o correto! Faca login!");
         }
         if (!isright($username, $password)) {
             headauth("Nome de usuario ou senha incorretos!");
