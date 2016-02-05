@@ -4,10 +4,13 @@
 include("extras/funcs.php");
 
 // Usar a minha sala como padrão, a não ser que outra seja especificada.
+$sala = "";
 if (isset($_GET["sala"])) {
     $sala = $_GET["sala"];
-} else {
-    redir("..");
+}
+
+if ($sala == "") {
+    redir(".");
     die();
 }
 
@@ -18,8 +21,8 @@ $nome = $sala[0] . "º " . $sala[1];
 $pasta = "salas/" . $sala . "/";
 
 // Checagem para ver se a sala existe, e, caso contrário, voltar à página inicial.
-if (!file_exists($pasta) && isset($_GET["sala"])) {
-    redir("..");
+if (!file_exists($pasta) && isset($_GET["sala"]) && $sala !== "") {
+    redir(".");
     die();
 }
 
@@ -166,6 +169,7 @@ $ademires_file = file("ademir/atuadores/ademires.txt");
 $adm = "Não se sabe o nome do admin da sala.";
 foreach ($ademires_file as $line) {
     list($salaid, $nomeadm) = explode(":", $line);
+    $nomeadm = trim($nomeadm);
     if ($salaid === $sala) {
         $adm = "Esta sala é administrada por <b>$nomeadm</b>. :D";
     }
