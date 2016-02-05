@@ -38,8 +38,8 @@ function headauth($msg) {
 }
 
 // Exige um certo login para a exibição da página.
-// Se $sala == "", aceita qualquer login menos "borginhos".
-function require_login($sala = "") {
+// Se $wanted == "", aceita qualquer login menos "borginhos".
+function require_login($wanted = "") {
     $username = null;
     $password = null;
 
@@ -51,8 +51,8 @@ function require_login($sala = "") {
     if (is_null($username)) {
         headauth("Voce precisa fazer login para continuar!");
     } else {
-        if (($username !== $sala && $sala != "") || ($username == "borginhos" && $sala == ""))  {
-            error_log("login incorreto, sala = $sala, username = $username, at " . __FILE__);
+        if (($username !== $wanted && $wanted != "") || ($username == "borginhos" && $wanted == ""))  {
+            //error_log("login incorreto, wanted = $wanted, username = $username");
             headauth("Esse login nao e o correto! Faca login!");
         }
         if (!isright($username, $password)) {

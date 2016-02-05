@@ -12,6 +12,10 @@ function redir($relative) {
     header("Location: http://$host$uri/$relative");
 }
 
+function jsredir($relative) {
+    die("<script>location.href = \"$relative\";</script>");
+}
+
 // Traduz dias da semana... -_-'
 function semana($dia) {
     switch ($dia) {
