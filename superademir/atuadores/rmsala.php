@@ -19,6 +19,6 @@ rmdir($dir);
 
 unlink("../horarios/hors/$id.horario");
 
-jsredir("../salas.php");
+redir("../salas.php");
 
 ?>

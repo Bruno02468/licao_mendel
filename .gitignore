@@ -2,7 +2,6 @@ salas/
 salas/*
 ademir/horarios/hors
 ademir/horarios/hors/*
-ademir/atuadores/motd.txt
-ademir/.htaccess
-ademir/auth/.shadow
-ademir/atuadores/ademires.txt
+superademir/atuadores/motd.txt
+superademir/auth/.shadow
+superademir/atuadores/ademires.txt

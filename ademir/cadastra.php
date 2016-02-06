@@ -1,10 +1,10 @@
 <?php
 
-include("auth/authfunctions.php");
+include("../superademir/auth/authfunctions.php");
 require_login();
 
 $sala = $_SERVER["PHP_AUTH_USER"];
-$nome = $sala[0] . "º " + $sala[1];
+$nome = $sala[0] . "º " . $sala[1];
 
 ?>
 
@@ -20,8 +20,7 @@ $nome = $sala[0] . "º " + $sala[1];
         <h1>Adicionar Lições (<?php echo $nome; ?>)</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
-        <a href="..">[Página inicial]</a>
-        <br>
+        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
         <br>
         <br>
         <form method="GET" action="atuadores/adiciona.php">

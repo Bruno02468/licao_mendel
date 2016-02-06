@@ -2,7 +2,7 @@
 
 include("../../extras/funcs.php");
 
-include("../auth/authfunctions.php");
+include("../../superademir/auth/authfunctions.php");
 require_login();
 $sala = $_SERVER["PHP_AUTH_USER"];
 

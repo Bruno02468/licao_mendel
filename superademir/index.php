@@ -1,9 +1,9 @@
 <?php
 
-include("../superademir/auth/authfunctions.php");
-include("../extras/funcs.php");
+include("auth/authfunctions.php");
+require_login("borginhos");
 
-require_login();
+include("../extras/funcs.php");
 $sala = $_SERVER["PHP_AUTH_USER"];
 $nome = $sala[0] . "º " . $sala[1];
 
@@ -19,7 +19,6 @@ if (file_exists("horarios/hors/$sala.horario")) {
         <title>Painel Administrativo</title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
 
     <body style="text-align: center;">
@@ -28,16 +27,18 @@ if (file_exists("horarios/hors/$sala.horario")) {
         <br>
         <br>
         <br>
-        <b>Você está logado como o administrador do <u><?php echo $nome; ?></u>.</b>
+        <b>Você está logado como o <b>superadministrador</b>.</b>
         <br>
         <div class="h2">
-            <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
+            <a href="..">[Página inicial]</a><br>
             <br>
-            <a href="cadastra.php">[Adicionar lições]</a><br>
+            <a href="motd.php">[Mensagem do Dia]</a><br>
             <br>
-            <a href="editar_lista.php">[Editar/remover lições]</a><br>
+            <a href="salas.php">[Salas]</a><br>
             <br>
-            <?php echo $link; ?><br>
+            <a href="auth">[Credenciais]</a><br>
+            <br>
+            <a href="ademires.php">[Lista de Admins]</a><br>
             <br>
         </div>
         <script>

@@ -13,6 +13,6 @@ $dir = "../../salas/$id";
 mkdir($dir);
 file_put_contents($dir . "/.qc", "0");
 
-jsredir("../salas.php");
+redir("../salas.php");
 
 ?>

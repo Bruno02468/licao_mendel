@@ -165,7 +165,7 @@ foreach ($licoes as $licao) {
 if ($final == "")
     $final = "Nenhuma lição por enquanto...";
 
-$ademires_file = file("ademir/atuadores/ademires.txt");
+$ademires_file = file("superademir/atuadores/ademires.txt");
 $adm = "Não se sabe o nome do admin da sala.";
 foreach ($ademires_file as $line) {
     list($salaid, $nomeadm) = explode(":", $line);
@@ -196,7 +196,7 @@ foreach ($ademires_file as $line) {
             Tudo programado por <a target="_blank" href="../contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br>
             <small><a href="../ademir">[Administrar o Site]</a><br></small>
             <br>Mensagem do dia:<br>
-            <div class="mensagem"><?php echo formatar(file_get_contents("ademir/atuadores/motd.txt")); ?>
+            <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
             </div><br>
         </small>
         <br>
