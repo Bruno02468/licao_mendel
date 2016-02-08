@@ -1,7 +1,3 @@
-salas/
-salas/*
-ademir/horarios/hors
-ademir/horarios/hors/*
 superademir/atuadores/motd.txt
-superademir/auth/.shadow
-superademir/atuadores/ademires.txt
+extras/database.json
+extras/.supershadow

@@ -1,16 +1,15 @@
 <?php
 
-include("../superademir/auth/authfunctions.php");
-include("../extras/funcs.php");
+include("../extras/database.php");
 
 require_login();
-$sala = $_SERVER["PHP_AUTH_USER"];
-$nome = $sala[0] . "º " . $sala[1];
+$sala = getUser();
+$nome = nomeSala($sala);
 
-$link = "<a href=\"horarios/adicionar.php\">[Adicionar o horário do $nome]</a>";
+$link = "<a href=\"adicionar_horario.php\">[Adicionar o horário do $nome]</a>";
 
-if (file_exists("horarios/hors/$sala.horario")) {
-    $link = "<a href=\"horarios/editar.php\">[Editar o horário do $nome]</a>";
+if (hasHorario($sala)) {
+    $link = "<a href=\"editar_horario.php\">[Editar o horário do $nome]</a>";
 }
 
 ?>
@@ -33,9 +32,9 @@ if (file_exists("horarios/hors/$sala.horario")) {
         <div class="h2">
             <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
             <br>
-            <a href="cadastra.php">[Adicionar lições]</a><br>
+            <a href="adicionar_licao.php">[Adicionar lições]</a><br>
             <br>
-            <a href="editar_lista.php">[Editar/remover lições]</a><br>
+            <a href="lista_licoes.php">[Editar/remover lições]</a><br>
             <br>
             <?php echo $link; ?><br>
             <br>

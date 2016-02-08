@@ -1,13 +1,11 @@
 <?php
 
 // Inclui o arquivo com as funções compartilhadas.
-include("extras/funcs.php");
-
-$scan = scandir("salas/");
+include("extras/database.php");
 
 $anos = array();
 $js = "var anos = [];";
-foreach ($scan as $sala) {
+foreach (getFullJSON() as $sala => $props) {
     if ($sala[0] == '.') continue;
     $ano = $sala[0];
     if (!array_key_exists($ano, $anos)) {

@@ -1,11 +1,10 @@
 <?php
 
-include("../auth/authfunctions.php");
+include("../../extras/database.php");
 require_login("borginhos");
 
-include("../../extras/funcs.php");
 
-$dados = htmlspecialchars_decode(req_post("dados"));
+$dados = htmlspecialchars_decode(req_post("motd"));
 $arquivo = "motd.txt";
 file_put_contents($arquivo, $dados);
 

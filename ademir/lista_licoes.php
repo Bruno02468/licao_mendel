@@ -7,52 +7,39 @@
 
 
 // Inclui o arquivo com as funções compartilhadas.
-include("../extras/funcs.php");
-
-include("../superademir/auth/authfunctions.php");
+include("../extras/database.php");
 require_login();
-$sala = $_SERVER["PHP_AUTH_USER"];
-
-// Pasta com os arquivos da sala.
-$pasta = "../salas/$sala/";
+$sala = getUser();
 
 // Lê os arquivos da sala e os ordena por data de criação.
-$arquivos = glob($pasta . "*");
-usort($arquivos, function($a, $b) {
-    return filectime($a) < filectime($b);
+$licoes = getProperty($sala, "licoes");
+usort($licoes, function($a, $b) {
+    return dataToTime($b["para"]) < dataToTime($a["para"]);
 });
 
 // Variável para manter cada um dos links das lições.
 $final = "";
 
 // Ler cada um dos arquivos.
-foreach ($arquivos as $file) {
-    // Checagem sobre o nome base do arquivo para pular arquivos padrão e o contador.
-    $bas = basename($file);
-    if ('.' === $bas) continue;
-    if ('..' === $bas) continue;
-    if ('.qc' === $bas) continue;
-
-    // Lista das linhas do arquivo.
-    $arr = file($file);
+foreach ($licoes as $id => $licao) {
 
     // Matéria da lição.
-    $mat = "<b>" . trim($arr[0]) . "</b>";
+    $mat = "<b>" . $licao["materia"] . "</b>";
 
     // Data de entrega.
-    $data = "<b>" . date("d/m/Y", strtotime(trim($arr[1]))) . "</b>";
+    $data = "<b>" . date("d/m/Y", dataToTime($licao["para"])) . "</b>";
 
     // Identificação da lição.
     $iden = "Lição de $mat, para";
 
-    if (strpos($mat, "PROVA - ") !== false)
-        $iden = "Prova de " . str_replace("PROVA - ", "", $mat) . ", em";
+    if ($licao["prova"])
+        $iden = "Prova de $mat, em";
 
     $iden .= " $data";
 
     // Coloca os links na lista final de links.
-    $final .= "<a href='edita.php?id=$bas'>$iden</a> -- ";
-    $final .= "<a href='atuadores/deleta.php?sala=$sala&id=$bas&lista=1'>[Deletar]</a><br>";
+    $final .= "<a href=\"editar_licao.php?id=$id\">$iden</a> -- ";
+    $final .= "<a href=\"atuadores/deleta_licao.php?id=$id\">[Deletar]</a><br>";
 }
 
 // Cobre casos em que a sala é inválida ou não há nenhuma lição.

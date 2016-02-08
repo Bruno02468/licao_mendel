@@ -1,6 +1,6 @@
 <?php
 
-include("auth/authfunctions.php");
+include("../extras/database.php");
 require_login("borginhos");
 
 ?>
@@ -27,7 +27,7 @@ require_login("borginhos");
             <table align="center">
             <tr>
                 <td>Mensagem do dia: </td>
-                <td><textarea rows="20" cols="75" name="dados"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></td>
+                <td><textarea rows="20" cols="75" name="motd"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></td>
             </tr>
             </table>
             <input type="submit" value="Salvar">

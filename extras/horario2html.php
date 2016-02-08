@@ -1,6 +1,6 @@
 <?php
 
-include("funcs.php");
+include("database.php");
 
 function maketd($s) {
     $res = "<td";
@@ -13,7 +13,7 @@ function maketd($s) {
 }
 
 $sala = req_get("sala");
-$arq = file("../ademir/horarios/hors/$sala.horario");
+$arr = getProperty($sala, "horario");
 $others = "";
 
 function intervalo($n) {
@@ -21,14 +21,12 @@ function intervalo($n) {
     return "<tr class=\"horgray\"></td><td><b>${n}º Intervalo ($time)</b></td><td><b>Intervalo</b></td><td><b>Intervalo</b></td><td><b>Intervalo</b></td><td><b>Intervalo</b></td><td><b>Intervalo</b></td></tr>";
 }
 
-
-
 $aulatimes = ["7:05", "7:50", "8:35", "9:45", "10:30", "11:40", "12:25", "13:10"];
 for ($aula = 1; $aula <= 8; $aula++) {
     $time = $aulatimes[$aula-1];
     $others .= "<tr><td class=\"hororange\">${aula}ª Aula ($time)</td>";
     for ($dia = 0; $dia <= 4; $dia++) {
-        $mat = substituir_global("/;/", "", trim($arq[($aula-1)*5 + $dia]));
+        $mat = $arr[($aula-1)*5 + $dia];
         $others .= maketd($mat);
     }
     $others .= "</tr>";

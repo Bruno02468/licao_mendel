@@ -1,28 +1,26 @@
 <?php
 
-include("auth/authfunctions.php");
+include("../extras/database.php");
 require_login("borginhos");
 
-include("../extras/funcs.php");
-$sala = $_SERVER["PHP_AUTH_USER"];
-$nome = $sala[0] . "º " . $sala[1];
-
-$link = "<a href=\"horarios/adicionar.php\">[Adicionar o horário do $nome]</a>";
-
-if (file_exists("horarios/hors/$sala.horario")) {
-    $link = "<a href=\"horarios/editar.php\">[Editar o horário do $nome]</a>";
+$links = "";
+$json = getFullJSON();
+foreach ($json as $id => $sala) {
+    $nome = nomeSala($id);
+    $links .= "<a href=\"editar_sala.php?id=$id\">$nome</a><br>";
 }
 
 ?>
 <html>
     <head>
-        <title>Painel Administrativo</title>
+        <title>Painel Superadministrativo</title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
 
     <body style="text-align: center;">
-        <h1>Painel Administrativo</h1>
+        <h1>Painel Superadministrativo</h1>
         <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
         <br>
         <br>
@@ -34,15 +32,16 @@ if (file_exists("horarios/hors/$sala.horario")) {
             <br>
             <a href="motd.php">[Mensagem do Dia]</a><br>
             <br>
-            <a href="salas.php">[Salas]</a><br>
+            Mudar senha mestra:
+            <form action="atuadores/set_god.php" method="POST">
+                <input type="password" name="pass">
+                <input type="submit" value="Pode rodar!">
+            </form>
+            <a href="nova_sala.php">[Nova sala]</a><br>
             <br>
-            <a href="auth">[Credenciais]</a><br>
+            Editar salas:
             <br>
-            <a href="ademires.php">[Lista de Admins]</a><br>
-            <br>
+            <?php echo $links; ?>
         </div>
-        <script>
-            document.getElementById("sala").value = localStorage["sala"];
-        </script>
     </body>
 </html>
