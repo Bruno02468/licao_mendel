@@ -7,9 +7,10 @@ $json = getFullJSON();
 foreach ($json as $id => $sala) {
     foreach ($sala["licoes"] as $index => $licao) {
         if (!isset($licao["guid"])) {
-            $sala["licoes"][$index]["guid"] = make_guid();
+            $json[$id]["licoes"][$index]["guid"] = make_guid();
         }
     }
 }
+setNewJSON($json);
 
 ?>
