@@ -42,7 +42,7 @@ $info = htmlspecialchars($licao["info"]);
                     Dia <input class="datasel" type="number" min="1" max="31" id="dia" name="dia" value="<?php echo $dia; ?>">
                     do <input class="datasel" type="number" min="1" max="12" id="mes" name="mes" value="<?php echo $mes; ?>">
                     de <input class="yearsel" type="number" min="2016" max="2100" id="ano" name="ano" value="<?php echo $ano; ?>"></tr>
-                <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="info" value="<?php echo $info; ?>"></textarea></tr>
+                <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="info"><?php echo $info; ?></textarea></tr>
             </table>
             <input type="submit" value="Atualizar">
         </form>
