@@ -51,7 +51,7 @@ foreach (scandir("salas/") as $pasta) {
         // Ler as informações e formatá-las.
         unset($arquivo[0]);
         unset($arquivo[1]);
-        $licao["info"] = implode($arquivo, "\n");
+        $licao["info"] = implode($arquivo, "");
         // Ler a data de criação.
         $licao["passada"] = timeToData(filectime($full));
         // Adicionar nossa lição à array.
