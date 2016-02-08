@@ -121,7 +121,7 @@ function getFullJSON() {
 }
 
 function setNewJSON($new_json) {
-    file_put_contents(currentDir() . "database.json", json_encode($new_json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    file_put_contents(currentDir() . "database.json", json_encode($new_json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
 }
 
 function addSala($id, $opaque, $salt, $ademir) {
