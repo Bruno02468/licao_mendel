@@ -32,22 +32,20 @@ function mostrarHoje(but) {
     but.style.display = "none";
 }
 
-var feitas;
-eval("feitas = [" + (localStorage["feitas"] || "") + "];");
-
+var feitas = localStorage["feitas"].split(",");
 
 function toggleFeita(id) {
-    id = parseInt(id);
     var i = feitas.indexOf(id);
+    console.log("toogled " + id);
     if (i > -1)
         feitas.splice(i, 1);
     else
-        feitas.push(parseInt(id));
+        feitas.push(id);
     localStorage["feitas"] = feitas.toString();
 }
 
 for (var index in feitas) {
-    var id = parseInt(feitas[index]);
+    var id = feitas[index];
     var checkbox = document.getElementById(id);
     if (!checkbox) {
         toggleFeita(id);
@@ -56,6 +54,9 @@ for (var index in feitas) {
     checkbox.checked = true;
 }
 
+function clearFeitas() {
+    localStorage["feitas"] = "";
+}
 
 var hor = document.getElementById("hor");
 function horario() {

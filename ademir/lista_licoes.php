@@ -22,7 +22,7 @@ $final = "";
 
 // Ler cada um dos arquivos.
 foreach ($licoes as $licao) {
-    if ($licao["removed"]) continue;
+    if (isset($licao["removed"])) if ($licao["removed"]) continue;
 
     $guid = $licao["guid"];
     $mat = "<b>" . $licao["materia"] . "</b>";

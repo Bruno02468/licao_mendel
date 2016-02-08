@@ -71,6 +71,7 @@ foreach ($licoes as $id => $licao) {
         ($licao["para"] == $dois || $licao["para"] == $tres));
     $perto = ($semanal == "segunda") ? "<b>Segunda</b>" : "<b>Amanhã</b>";
     $parahj = ($licao["para"] == $hoje_data);
+    $guid = $licao["guid"];
 
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
     $classes = ($passadahj ? " hoje" : "") . ($licao["prova"] ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
@@ -80,7 +81,7 @@ foreach ($licoes as $id => $licao) {
     $tabela .= make_tr("Matéria:", formatar($licao["materia"]))
         . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m/Y", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
-        . make_tr("Feita?", "<input type=\"checkbox\" id=\"$id\" onclick=\"toggleFeita(this.id)\">Feita!");
+        . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!");
 
 
     $tabela .= "</table>";
