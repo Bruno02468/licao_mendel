@@ -57,11 +57,13 @@ $sextaousabado = ($hoje_semana == "sexta" || $hoje_semana == "sábado");
 foreach ($licoes as $id => $licao) {
     $passada_timestamp = dataToTime($licao["passada"]);
     $entrega_timestamp = dataToTime($licao["para"]);
+    $guid = $licao["guid"];
 
     if ($entrega_timestamp < $hoje_timestamp) {
-        removeLicao($sala, $id);
+        removeLicao($sala, $guid);
         continue;
     }
+    if (isset($licao["removed"])) if ($licao["removed"]) continue;
 
     $semanal = semana(date("l", $entrega_timestamp));
     $passadahj = ($licao["passada"] == $hoje_data);
@@ -71,7 +73,6 @@ foreach ($licoes as $id => $licao) {
         ($licao["para"] == $dois || $licao["para"] == $tres));
     $perto = ($semanal == "segunda") ? "<b>Segunda</b>" : "<b>Amanhã</b>";
     $parahj = ($licao["para"] == $hoje_data);
-    $guid = $licao["guid"];
 
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
     $classes = ($passadahj ? " hoje" : "") . ($licao["prova"] ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
