@@ -5,9 +5,9 @@ require_login();
 $sala = getUser();
 $nome = nomeSala($sala);
 
-$id = req_get("id");
+$guid = req_get("guid");
 
-$licao = getProperty($sala, "licoes")[$id];
+$licao = getProperty($sala, "licoes")[getIndexByGuid($sala, $guid)];
 
 $materia = htmlspecialchars($licao["materia"]);
 $dia = htmlspecialchars($licao["para"]["dia"]);
@@ -34,7 +34,7 @@ $info = htmlspecialchars($licao["info"]);
         <br>
         <br>
         <form method="POST" action="atuadores/edita_licao.php">
-            <input type="hidden" value="<?php echo $id; ?>" name="id">
+            <input type="hidden" value="<?php echo $guid; ?>" name="guid">
             <table align="center">
                 <tr><td>É prova? </td><td><input type="checkbox" name="prova"<?php echo $prova; ?>></tr>
                 <tr><td>Matéria: </td><td><input type="text" name="materia" value="<?php echo $materia; ?>"></tr>

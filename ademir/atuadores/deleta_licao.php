@@ -3,9 +3,9 @@
 include("../../extras/database.php");
 require_login();
 $sala = getUser();
-$id = req_get("id");
+$guid = req_get("guid");
 
-removeLicao($sala, $id);
+removeLicao($sala, $guid);
 
 redir("../lista_licoes.php");
 

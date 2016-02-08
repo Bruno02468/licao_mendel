@@ -121,7 +121,8 @@ function getFullJSON() {
 }
 
 function setNewJSON($new_json) {
-    file_put_contents(currentDir() . "database.json", json_encode($new_json, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE));
+    file_put_contents(currentDir() . "database.json", json_encode($new_json, JSON_HEX_TAG
+    | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
 }
 
 function addSala($id, $opaque, $salt, $ademir) {
@@ -206,6 +207,13 @@ function dataIgual($a, $b) {
         && $a["ano"] === $b["ano"];
 }
 
+function getIndexByGuid($sala, $guid) {
+    $licoes = getProperty($sala, "licoes");
+    foreach ($licoes as $index => $licao) {
+        if ($licao["guid"] === $guid) return $index;
+    }
+}
+
 function addLicao($sala, $materia, $prova, $para, $infos) {
     $json = getFullJSON();
     $licao = array(
@@ -213,29 +221,33 @@ function addLicao($sala, $materia, $prova, $para, $infos) {
         "prova" => $prova,
         "para" => $para,
         "passada" => timeToData(time()),
-        "info" => $infos
+        "info" => $infos,
+        "guid" => make_guid(),
+        "removed" => false
     );
     array_push($json[$sala]["licoes"], $licao);
     setNewJSON($json);
 }
 
-function editLicao($sala, $id, $materia, $prova, $para, $infos) {
+function editLicao($sala, $guid, $materia, $prova, $para, $infos) {
     $json = getFullJSON();
+    $index = getIndexByGuid($sala, $guid);
     $licao = array(
         "materia" => $materia,
         "prova" => $prova,
         "para" => $para,
-        "passada" => $json[$sala]["licoes"][$id]["passada"],
-        "info" => $infos
+        "info" => $infos,
+        "removed" => $json[$sala]["licoes"][$index]["removed"],
+        "passada" => $json[$sala]["licoes"][$index]["passada"],
+        "guid" => $json[$sala]["licoes"][$index]["guid"]
     );
-    $json[$sala]["licoes"][$id] = $licao;
+    $json[$sala]["licoes"][$index] = $licao;
     setNewJSON($json);
 }
 
-function removeLicao($sala, $id) {
+function removeLicao($sala, $guid) {
     $json = getFullJSON();
-    unset($json[$sala]["licoes"][$id]);
-    $json[$sala]["licoes"] = array_values($json[$sala]["licoes"]);
+    $json[$sala]["licoes"][getIndexByGuid($sala, $guid)]["removed"] = true;
     setNewJSON($json);
 }
 
@@ -245,7 +257,24 @@ function hasHorario($sala) {
 
 // Gera um salt mais ou menos seguro.
 function make_salt() {
-    return uniqid("", true);
+    return uniqid(rand(), true);
+}
+
+function make_guid() {
+    if (function_exists('com_create_guid')){
+        return com_create_guid();
+    }else{
+        mt_srand((double)microtime()*10000);//optional for php 4.2.0 and up.
+        $charid = strtoupper(md5(uniqid(rand(), true)));
+        $hyphen = chr(45);// "-"
+        $uuid =
+             substr($charid, 0, 8).$hyphen
+            .substr($charid, 8, 4).$hyphen
+            .substr($charid,12, 4).$hyphen
+            .substr($charid,16, 4).$hyphen
+            .substr($charid,20,12);
+        return $uuid;
+    }
 }
 
 // Checa se um login consta no banco de dados.

@@ -4,7 +4,7 @@ include("../../extras/database.php");
 require_login();
 $sala = getUser();
 
-$id = req_post("id");
+$guid = req_post("guid");
 $materia = req_post("materia");
 $prova = isset($_POST["prova"]) ? true : false;
 $para = array(
@@ -14,7 +14,7 @@ $para = array(
 );
 $info = req_post("info");
 
-editLicao($sala, $id, $materia, $prova, $para, $info);
+editLicao($sala, $guid, $materia, $prova, $para, $info);
 
 redir("..");
 

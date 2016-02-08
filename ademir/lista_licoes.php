@@ -21,25 +21,20 @@ usort($licoes, function($a, $b) {
 $final = "";
 
 // Ler cada um dos arquivos.
-foreach ($licoes as $id => $licao) {
+foreach ($licoes as $licao) {
+    if ($licao["removed"]) continue;
 
-    // Matéria da lição.
+    $guid = $licao["guid"];
     $mat = "<b>" . $licao["materia"] . "</b>";
-
-    // Data de entrega.
     $data = "<b>" . date("d/m/Y", dataToTime($licao["para"])) . "</b>";
-
-    // Identificação da lição.
     $iden = "Lição de $mat, para";
 
     if ($licao["prova"])
         $iden = "Prova de $mat, em";
-
     $iden .= " $data";
 
-    // Coloca os links na lista final de links.
-    $final .= "<a href=\"editar_licao.php?id=$id\">$iden</a> -- ";
-    $final .= "<a href=\"atuadores/deleta_licao.php?id=$id\">[Deletar]</a><br>";
+    $final .= "<a href=\"editar_licao.php?guid=$guid\">$iden</a> -- ";
+    $final .= "<a href=\"atuadores/deleta_licao.php?guid=$guid\">[Deletar]</a><br>";
 }
 
 // Cobre casos em que a sala é inválida ou não há nenhuma lição.
