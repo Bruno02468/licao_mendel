@@ -78,7 +78,6 @@ function formatar($texto) {
     $texto = htmlspecialchars($texto);
     $texto = substituir_global("/\{l\}/", "ℓ", $texto);
     $texto = substituir_global("/\{g\}/", "[sup]↗[/sup]", $texto);
-    $texto = substituir_global("/\n/", "<br>", $texto);
     $texto = substituir_global($fourreg, $fourrep, $texto);
     $texto = substituir_global($linkreg, $linkrep, $texto);
     $texto = substituir_global($nbspreg, $nbsprep, $texto);
