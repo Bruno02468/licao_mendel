@@ -4,6 +4,7 @@ include("../extras/database.php");
 require_login("borginhos");
 
 $id = req_get("id");
+$nome = nomeSala($id);
 if (!salaExists($id)) die("Sala não existe!");
 
 $ademir = getProperty($id, "ademir");
@@ -12,7 +13,7 @@ $ademir = getProperty($id, "ademir");
 
 <html>
     <head>
-        <title>Adicionar Lições</title>
+        <title>Editando <?php echo $id; ?></title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
