@@ -36,7 +36,6 @@ var feitas = localStorage["feitas"].split(",");
 
 function toggleFeita(id) {
     var i = feitas.indexOf(id);
-    console.log("toogled " + id);
     if (i > -1)
         feitas.splice(i, 1);
     else
