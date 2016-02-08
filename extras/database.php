@@ -148,6 +148,7 @@ function nomeSala($id) {
 }
 
 function getProperty($sala, $name) {
+    if (!getFullJSON()[$sala][$name]) error_log("error getting $sala :: $nome");
     return getFullJSON()[$sala][$name];
 }
 

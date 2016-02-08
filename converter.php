@@ -16,6 +16,7 @@ foreach (scandir("salas/") as $pasta) {
     $sala = array("horario" => array(), "licoes" => array());
     foreach (file("shadow") as $line) {
         list($rightuser, $hashed, $salt) = explode("§", $line);
+        if ($rightuser !== $id) continue;
         $salt = trim($salt);
         $sala["opaque"] = $hashed;
         $sala["salt"] = $salt;
@@ -23,7 +24,7 @@ foreach (scandir("salas/") as $pasta) {
     foreach (file("ademires.txt") as $line) {
         list($salaid, $nomeadm) = explode(":", $line);
         $nomeadm = trim($nomeadm);
-        if ($salaid === $sala) {
+        if ($salaid === $id) {
             $sala["ademir"] = trim($nomeadm);
         }
     }
@@ -60,6 +61,6 @@ foreach (scandir("salas/") as $pasta) {
     $arr[$id] = $sala;
 }
 
-file_put_contents("newdb.json", json_encode($arr, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+file_put_contents("database.json", json_encode($arr, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
 ?>
