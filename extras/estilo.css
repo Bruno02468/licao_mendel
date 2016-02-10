@@ -235,6 +235,10 @@ button, input[type=button], input[type=submit] {
     color: inherit;
 }
 
+tt, code, kbd, samp {
+    font-family: monospace;
+}
+
 * {
     color: #D1FFD6;
     font-family: 'Open Sans', sans-serif;
