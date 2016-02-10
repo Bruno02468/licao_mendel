@@ -3,14 +3,23 @@
  * Altas programações :-)
  */
 
-console.log("confia no borginhos e para de ler o console javascript po");
-
 function ajaxGet(url) {
-    var request = null;
-    request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send(null);
     return request.responseText;
+}
+
+var hor = document.getElementById("hor");
+var horframe = document.getElementById("horframe");
+var showing = false;
+function horario() {
+    if (showing) {
+        hor.style.display = "none";
+    } else {
+        hor.style.display = "inline-block";
+    }
+    showing = !showing;
 }
 
 var hojes = document.getElementsByClassName("parahj");
@@ -51,24 +60,4 @@ for (var index in feitas) {
         continue;
     }
     checkbox.checked = true;
-}
-
-function clearFeitas() {
-    localStorage["feitas"] = "";
-}
-
-var hor = document.getElementById("hor");
-function horario() {
-    var got = ajaxGet("../extras/horario2html.php?sala=" + sala);
-    if (hor.innerHTML == "") {
-        hor.innerHTML = got;
-    } else {
-        hor.innerHTML = "";
-    }
-}
-
-var link = document.getElementById("meulink");
-if (location.href.indexOf("agenda") > -1) {
-    link.innerHTML = "[Ver lições por ordem de entrega]";
-    link.href = "index.php";
 }

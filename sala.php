@@ -2,6 +2,7 @@
 
 // Inclui o arquivo com as funções compartilhadas.
 include("extras/database.php");
+include("extras/horario2html.php");
 
 // Usar a minha sala como padrão, a não ser que outra seja especificada.
 $sala = "";
@@ -25,8 +26,9 @@ if (!salaExists($sala) && isset($_GET["sala"]) && $sala !== "") {
 
 $horario = "";
 if (hasHorario($sala)) {
+    $conts = getHorario($sala);
     $horario = "<br><a href=\"javascript:void(0)\" onclick=\"horario();\">[Horário do $nome]</a><br>\n
-    <span id=\"hor\"></span>";
+    <span id=\"hor\">$conts</span>";
 }
 
 $licoes = getProperty($sala, "licoes");
