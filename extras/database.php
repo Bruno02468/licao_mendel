@@ -149,7 +149,7 @@ function nomeSala($id) {
 }
 
 function getProperty($sala, $name) {
-    if (!getFullJSON()[$sala][$name]) error_log("error getting $sala :: $nome");
+    // if (!isset(getFullJSON()[$sala][$name])) error_log("error getting $sala :: $name");
     return getFullJSON()[$sala][$name];
 }
 
@@ -276,7 +276,7 @@ function make_guid() {
 // Checa se um login consta no banco de dados.
 function isright($user, $pass) {
     if (!salaExists($user) && $user !== "borginhos") return false;
-    
+
     list($opaque, $salt) = file(currentDir() . ".supershadow");
     $opaque = trim($opaque);
     $salt = trim($salt);
@@ -314,10 +314,10 @@ function require_login($wanted = "") {
             headauth("Esse usuario nao existe!");
         }
         if (($username !== $wanted && $wanted != "") || ($username == "borginhos" && $wanted == ""))  {
-            headauth("Esse login nao e o correto! Faca login!");
+            headauth("Esse login nao e o correto!");
         }
         if (!isright($username, $password)) {
-            headauth("Nome de senha incorreta!");
+            headauth("Senha incorreta!");
         }
     }
 }
