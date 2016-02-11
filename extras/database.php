@@ -275,6 +275,8 @@ function make_guid() {
 
 // Checa se um login consta no banco de dados.
 function isright($user, $pass) {
+    if (!salaExists($user) && $user !== "borginhos") return false;
+    
     list($opaque, $salt) = file(currentDir() . ".supershadow");
     $opaque = trim($opaque);
     $salt = trim($salt);
@@ -308,11 +310,14 @@ function require_login($wanted = "") {
     if (is_null($username)) {
         headauth("Voce precisa fazer login para continuar!");
     } else {
+        if (!salaExists($username) && $username !== "borginhos") {
+            headauth("Esse usuario nao existe!");
+        }
         if (($username !== $wanted && $wanted != "") || ($username == "borginhos" && $wanted == ""))  {
             headauth("Esse login nao e o correto! Faca login!");
         }
         if (!isright($username, $password)) {
-            headauth("Nome de usuario ou senha incorretos!");
+            headauth("Nome de senha incorreta!");
         }
     }
 }
