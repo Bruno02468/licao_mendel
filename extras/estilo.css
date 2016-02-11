@@ -239,6 +239,11 @@ tt, code, kbd, samp {
     font-family: monospace;
 }
 
+.licform textarea {
+    width: 100%;
+    height: 20em;
+}
+
 * {
     color: #D1FFD6;
     font-family: 'Open Sans', sans-serif;

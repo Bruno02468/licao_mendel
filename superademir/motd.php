@@ -23,11 +23,11 @@ require_login("borginhos");
         <br>
         <br>
         <br>
-        <form method="POST" action="atuadores/set_motd.php">
+        <form method="POST" action="atuadores/set_motd.php" class="licform">
             <table align="center">
             <tr>
                 <td>Mensagem do dia: </td>
-                <td><textarea rows="20" cols="75" name="motd"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></td>
+                <td><textarea name="motd"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea></td>
             </tr>
             </table>
             <input type="submit" value="Salvar">

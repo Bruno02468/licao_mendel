@@ -23,7 +23,7 @@ $nome = nomeSala($sala);
         <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
         <br>
         <br>
-        <form method="POST" action="atuadores/adiciona_licao.php">
+        <form method="POST" action="atuadores/adiciona_licao.php" class="licform">
             <table align="center">
             <tr><td>Matéria: </td><td><input type="text" name="materia"></tr>
             <tr><td>É prova? </td><td><input type="checkbox" name="prova"></tr>
@@ -31,7 +31,7 @@ $nome = nomeSala($sala);
                 Dia <input class="datasel" type="number" min="1" max="31" id="dia" name="dia">
                 do <input class="datasel" type="number" min="1" max="12" id="mes" name="mes">
                 de <input class="yearsel" type="number" min="2016" max="2100" id="ano" name="ano"></tr>
-            <tr><td>Informações: </td><td><textarea rows="20" cols="75" name="info"></textarea></tr>
+            <tr><td>Informações: </td><td><textarea name="info"></textarea></tr>
             </table>
             <br><input type="submit" value="Adicionar lição">
         </form>
