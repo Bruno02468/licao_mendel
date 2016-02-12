@@ -10,6 +10,7 @@
 include("../extras/database.php");
 require_login();
 $sala = getUser();
+$nome = nomeSala($sala);
 
 // Lê os arquivos da sala e os ordena por data de criação.
 $licoes = getProperty($sala, "licoes");
@@ -44,7 +45,7 @@ if ($final == "")
 ?>
 <html>
     <head>
-        <title>Editar lições do 1ºE</title>
+        <title>Editar lições do <?php echo $nome; ?></title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -58,7 +59,7 @@ if ($final == "")
         <br>
         <br>
         <br>
-        Lista de lições do <?php echo $sala[0] . "º " . $sala[1]; ?>:<br>
+        Lista de lições do <?php echo $nome; ?>:<br>
         <br>
         <br>
         <?php echo $final; ?>
