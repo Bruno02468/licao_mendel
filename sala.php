@@ -87,7 +87,7 @@ foreach ($licoes as $id => $licao) {
         . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!");
 
 
-    $tabela .= "</table>";
+    $tabela .= "</table><br><br>";
     $final .= $tabela;
 }
 
