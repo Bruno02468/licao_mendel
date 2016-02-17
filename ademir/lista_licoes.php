@@ -55,7 +55,7 @@ if ($final == "")
         <h1>Lista de Lições</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
-        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
+        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a>
         <br>
         <br>
         <br>
