@@ -45,17 +45,17 @@ if ($final == "")
 ?>
 <html>
     <head>
-        <title>Editar lições do <?php echo $nome; ?></title>
+        <title>Lista de lições do <?php echo $nome; ?></title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
 
     <body align="center">
-        <h1>Edição de Lições</h1>
+        <h1>Lista de Lições</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
-        <a href="..">[Página inicial]</a>
+        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
         <br>
         <br>
         <br>
