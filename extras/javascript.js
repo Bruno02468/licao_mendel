@@ -11,13 +11,15 @@ function ajaxGet(url) {
 }
 
 var hor = document.getElementById("hor");
-var horframe = document.getElementById("horframe");
+var horlink = document.getElementById("horlink");
 var showing = false;
 function horario() {
     if (showing) {
         hor.style.display = "none";
+        horlink.innerHTML = "[Ver horário de aulas]";
     } else {
         hor.style.display = "inline-block";
+        horlink.innerHTML = "[Esconder horário]";
     }
     showing = !showing;
 }

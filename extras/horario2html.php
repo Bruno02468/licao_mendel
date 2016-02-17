@@ -44,4 +44,48 @@ function getHorario($sala) {
     </table>";
 }
 
+function getHorarioAdder($sala) {
+    $arr = getProperty($sala, "horario");
+
+    $dia = new DateTime();
+    $weekdays = array(
+        "Monday" => "",
+        "Tuesday" => "",
+        "Wednesday" => "",
+        "Thursday" => "",
+        "Friday" => ""
+    );
+    for ($add = 0; $add <= 20; $add++) {
+        if ($add > 0) $dia->add(new DateInterval("P1D"));
+        $semana = $dia->format("l");
+        if ($semana !== "Saturday" && $semana !== "Sunday") {
+            $disp = $dia->format("j/n");
+            $link = "<a class=\"dialink\" href=\"javascript:void(0)\" onclick=\"setData('$disp')\">$disp</a>";
+            $weekdays[$semana] .= $link;
+            if ($add < 14) $weekdays[$semana] .= ", ";
+        }
+    }
+
+    $others = "";
+    for ($aula = 1; $aula <= 8; $aula++) {
+        for ($dia = 0; $dia <= 4; $dia++) {
+            $mat = $arr[($aula-1)*5 + $dia];
+            $others .= maketd($mat);
+        }
+        $others .= "</tr>";
+        $others .= "\n";
+    }
+    return "
+    <table class=\"horario adder\">
+        <tr class=\"hordias\">
+            <td>Segunda<br>(" . $weekdays["Monday"] . ")</td>
+            <td>Terça<br>(" . $weekdays["Tuesday"] . ")</td>
+            <td>Quarta<br>(" . $weekdays["Wednesday"] . ")</td>
+            <td>Quinta<br>(" . $weekdays["Thursday"] . ")</td>
+            <td>Sexta<br>(" . $weekdays["Friday"] . ")</td>
+        </tr>
+        $others
+    </table><br>";
+}
+
 ?>

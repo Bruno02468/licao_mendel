@@ -47,12 +47,17 @@ input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, te
     border: 2px solid #3DFF33;
 }
 
+input[type=checkbox] {
+    width: 1.1em;
+    height: 1.1em;
+}
+
 .datasel {
-    max-width: 45px;
+    max-width: 60px;
 }
 
 .yearsel {
-    max-width: 55px;
+    max-width: 75px;
 }
 
 /* Botões. */
@@ -84,6 +89,8 @@ button, input[type=button], input[type=submit] {
     border-spacing: 0;
     border-radius: 8px;
 	margin-bottom: 20px;
+    max-width: 1080px;
+    min-width: 40%;
 }
 
 .entrada td, .entrada th {
@@ -195,6 +202,7 @@ button, input[type=button], input[type=submit] {
 
 .hordias td {
     background-color: #99ccff;
+    font-weight: bold;
 }
 
 .listaanos {
@@ -239,9 +247,17 @@ tt, code, kbd, samp {
     font-family: monospace;
 }
 
+.licform {
+    line-height: 37px;
+}
+
 .licform textarea {
     width: 100%;
     height: 15em;
+}
+
+.licform input[type=text] {
+    width: 100%;
 }
 
 .licao_tr td:first-child {
@@ -261,6 +277,19 @@ tt, code, kbd, samp {
 .licao_tr td:last-child {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.dialink {
+    color: red;
+}
+
+.dialink:hover {
+    color: rgb(208, 0, 0);
+}
+
+.adder tr:first-child td {
+    padding-top: 3px;
+    padding-bottom: 5px;
 }
 
 * {

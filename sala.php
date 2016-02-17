@@ -27,7 +27,7 @@ if (!salaExists($sala) && isset($_GET["sala"]) && $sala !== "") {
 $horario = "";
 if (hasHorario($sala)) {
     $conts = getHorario($sala);
-    $horario = "<br><a href=\"javascript:void(0)\" onclick=\"horario();\">[Horário do $nome]</a><br>\n
+    $horario = "<br><a id=\"horlink\" href=\"javascript:void(0)\" onclick=\"horario();\">[Ver horário de aulas]</a><br>\n
     <span id=\"hor\">$conts</span>";
 }
 
