@@ -15,7 +15,7 @@ $nome = nomeSala($sala);
 // Lê os arquivos da sala e os ordena por data de criação.
 $licoes = getProperty($sala, "licoes");
 usort($licoes, function($a, $b) {
-    return dataToTime($b["para"]) < dataToTime($a["para"]);
+    return dataToTime($b["para"]) > dataToTime($a["para"]);
 });
 
 // Variável para manter cada um dos links das lições.
@@ -24,23 +24,24 @@ $final = "";
 // Ler cada um dos arquivos.
 foreach ($licoes as $licao) {
     if (isset($licao["removed"])) if ($licao["removed"]) continue;
+    $trs .= "<tr class=\"licao_tr\">";
 
     $guid = $licao["guid"];
-    $mat = "<b>" . $licao["materia"] . "</b>";
-    $data = "<b>" . date("d/m/Y", dataToTime($licao["para"])) . "</b>";
-    $iden = "Lição de $mat, para";
+    $mat = $licao["materia"];
+    $data = date("d/m/Y", dataToTime($licao["para"]));
+    $edit_link = "<a href=\"editar_licao.php?guid=$guid\">Editar</a>";
+    $delete_link = "<a href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a><br>";
 
     if ($licao["prova"])
-        $iden = "Prova de $mat, em";
-    $iden .= " $data";
+        $mat = " (<b>prova</b>)";
 
-    $final .= "<a href=\"editar_licao.php?guid=$guid\">$iden</a> -- ";
-    $final .= "<a href=\"atuadores/deleta_licao.php?guid=$guid\">[Deletar]</a><br>";
+    $trs .= "<td>$mat</td><td>$data</td><td>$edit_link ou $delete_link</td></tr>\n";
 }
 
 // Cobre casos em que a sala é inválida ou não há nenhuma lição.
-if ($final == "")
-    $final = "Nenhuma lição disponível para edição.<br><br><a href=\".\">Voltar ao Painel</a><br>";
+if ($trs == "")
+    $final = "Nenhuma lição disponível para edição.<br>
+        <br><a href=\".\">Voltar ao Painel</a><br>";
 
 ?>
 <html>
@@ -61,8 +62,18 @@ if ($final == "")
         <br>
         Lista de lições do <?php echo $nome; ?>:<br>
         <br>
+        <table class="listaanos lista_licoes">
+            <tr><td>Matéria</td><td>Entrega</td><td>Links</td></tr>
+            <?php echo $trs; ?>
+        </table>
         <br>
         <?php echo $final; ?>
         </form>
+        <script>
+            function deletar(guid) {
+                if (confirm("Você deseja mesmo deletar essa lição?"))
+                    location.href = "atuadores/deleta_licao.php?guid=" + guid;
+            }
+        </script>
     </body>
 </html>

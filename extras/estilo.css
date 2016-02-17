@@ -244,6 +244,25 @@ tt, code, kbd, samp {
     height: 15em;
 }
 
+.licao_tr td:first-child {
+    font-weight: bold;
+}
+
+.lista_licoes tr:first-child {
+    font-size: 1.33em;
+}
+
+.lista_licoes tr:first-child td {
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.licao_tr td:last-child {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 * {
     color: #D1FFD6;
     font-family: 'Open Sans', sans-serif;

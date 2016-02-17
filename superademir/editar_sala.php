@@ -21,7 +21,7 @@ $ademir = getProperty($id, "ademir");
 
     <body style="text-align: center;">
         <h1>Adicionar Sala</h1>
-        <a href=".">[Voltar ao Painel]</a><br>
+        <a href=".">[Voltar ao Superpainel]</a><br>
         <br>
         <a href="..">[Página inicial]</a><br>
         <br>
