@@ -16,6 +16,6 @@ $info = req_post("info");
 
 editLicao($sala, $guid, $materia, $prova, $para, $info);
 
-redir("..");
+redir("../lista_licoes.php");
 
 ?>

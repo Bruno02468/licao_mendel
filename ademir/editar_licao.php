@@ -28,7 +28,7 @@ $info = htmlspecialchars($licao["info"]);
 
     <body align="center">
         <h1>Editando Lição (<?php echo $nome; ?>)</h1>
-        <a href=".">[Voltar ao Painel]</a><br>
+        <a href="lista_licoes.php">[Voltar à lista de lições]</a><br>
         <br>
         <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
         <br>
