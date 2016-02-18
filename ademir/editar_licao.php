@@ -10,9 +10,9 @@ $guid = req_get("guid");
 $licao = getProperty($sala, "licoes")[getIndexByGuid($sala, $guid)];
 
 $materia = htmlspecialchars($licao["materia"]);
-$dia = htmlspecialchars($licao["para"]["dia"]);
-$mes = htmlspecialchars($licao["para"]["mes"]);
-$ano = htmlspecialchars($licao["para"]["ano"]);
+
+$calen = date("Y-m-d", dataToTime($licao["para"]));
+
 $prova = $licao["prova"] ? " checked" : "";
 $info = htmlspecialchars($licao["info"]);
 
@@ -20,9 +20,7 @@ include("../extras/horario2html.php");
 
 $horario = "";
 if (hasHorario($sala)) {
-    $conts = getHorarioAdder($sala);
-    $horario = "<br><a id=\"horlink\" href=\"javascript:void(0)\" onclick=\"horario();\">[Ver horário de aulas]</a><br>\n
-    <span id=\"hor\">$conts</span>";
+    $horario = getHorarioAdder($sala);
 }
 
 ?>
@@ -45,11 +43,9 @@ if (hasHorario($sala)) {
         <br>
         <form method="POST" action="atuadores/edita_licao.php" class="licform">
             <input type="hidden" value="<?php echo $guid; ?>" name="guid">
-            <input type="text" name="materia" value="<?php echo $materia; ?>"></br>
+            <input type="text" name="materia" id="materia" value="<?php echo $materia; ?>"></br>
             <input type="checkbox" name="prova"<?php echo $prova; ?>>É prova</br>
-            Dia <input class="datasel" type="number" min="1" max="31" id="dia" name="dia" value="<?php echo $dia; ?>">
-            do <input class="datasel" type="number" min="1" max="12" id="mes" name="mes" value="<?php echo $mes; ?>">
-            de <input class="yearsel" type="number" min="2016" max="2100" id="ano" name="ano" value="<?php echo $ano; ?>"></br>
+            Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $calen; ?>"><br>
             <textarea name="info"><?php echo $info; ?></textarea></br>
             <input type="submit" value="Atualizar">
         </form>

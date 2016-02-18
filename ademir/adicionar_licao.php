@@ -10,10 +10,10 @@ include("../extras/horario2html.php");
 
 $horario = "";
 if (hasHorario($sala)) {
-    $conts = getHorarioAdder($sala);
-    $horario = "<br><a id=\"horlink\" href=\"javascript:void(0)\" onclick=\"horario();\">[Ver horário de aulas]</a><br>\n
-    <span id=\"hor\">$conts</span>";
+    $horario = getHorarioAdder($sala);
 }
+
+$hj = date("Y-m-d");
 
 ?>
 
@@ -29,25 +29,22 @@ if (hasHorario($sala)) {
         <h1>Adicionar Lições (<?php echo $nome; ?>)</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
-        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a>
+        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
+        <br>
+        <a href="lista_licoes.php">[Ir para lista de lições]</a>
+        <br>
         <br>
         <?php echo $horario; ?>
         <br>
         <form method="POST" action="atuadores/adiciona_licao.php" class="licform">
-            <input type="text" name="materia" placeholder="Matéria da lição/prova"><br>
+            <input type="text" name="materia" id="materia" placeholder="Matéria da lição/prova"><br>
             <input type="checkbox" name="prova">É prova<br>
-            Dia <input class="datasel" type="number" min="1" max="31" id="dia" name="dia">
-            do <input class="datasel" type="number" min="1" max="12" id="mes" name="mes">
-            de <input class="yearsel" type="number" min="2016" max="2100" id="ano" name="ano"><br>
+            Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $hj; ?>"><br>
             <textarea name="info" placeholder="Coloque aqui as informações a respeito da lição/prova."></textarea><br>
             <br><input type="submit" value="Adicionar lição">
         </form>
         <script src="../extras/add_edit.js"></script>
         <script>
-            var data = new Date();
-            ano.value = data.getFullYear();
-            mes.value = data.getMonth() + 1;
-            dia.value = data.getDate();
         </script>
     </body>
 </html>

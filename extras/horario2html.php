@@ -1,11 +1,9 @@
 <?php
 
 function maketd($s) {
-    $res = "<td";
-    if ($s === "")
-        $res .= " class=\"horgray\"";
-    else
-        $res .= " class=\"horgreen\"";
+    $res = "<td class=\"horgr";
+    if ($s === "") $res .= "ay\"";
+    else           $res .= "een\"";
     $res .= ">$s</td>";
     return $res;
 }
@@ -55,14 +53,20 @@ function getHorarioAdder($sala) {
         "Thursday" => "",
         "Friday" => ""
     );
-    for ($add = 0; $add <= 20; $add++) {
-        if ($add > 0) $dia->add(new DateInterval("P1D"));
+    for ($add = 1; $add <= 21; $add++) {
+        $dia->add(new DateInterval("P1D"));
         $semana = $dia->format("l");
         if ($semana !== "Saturday" && $semana !== "Sunday") {
-            $disp = $dia->format("j/n");
-            $link = "<a class=\"dialink\" href=\"javascript:void(0)\" onclick=\"setData('$disp')\">$disp</a>";
+            $isodat = $dia->format("Y-m-d");
+            $disp= $dia->format("j/n");
+            $linkid = "";
+            if ($add < 7) {
+                $dia_n = array_search($semana, array_keys($weekdays));
+                $linkid = " id=\"dialink-$dia_n\"";
+            }
+            $link = "<a class=\"dialink\"$linkid href=\"javascript:void(0)\" onclick=\"calendario.value = '$isodat';\">$disp</a>";
             $weekdays[$semana] .= $link;
-            if ($add < 14) $weekdays[$semana] .= ", ";
+            if ($add <= 14) $weekdays[$semana] .= ", ";
         }
     }
 
@@ -70,7 +74,10 @@ function getHorarioAdder($sala) {
     for ($aula = 1; $aula <= 8; $aula++) {
         for ($dia = 0; $dia <= 4; $dia++) {
             $mat = $arr[($aula-1)*5 + $dia];
-            $others .= maketd($mat);
+            $link = "<a href=\"javascript:void(0)\"
+                onclick=\"setDataMat('$mat', $dia);\"
+                class=\"matlink\">$mat</a>";
+            $others .= maketd($link);
         }
         $others .= "</tr>";
         $others .= "\n";
@@ -85,7 +92,9 @@ function getHorarioAdder($sala) {
             <td>Sexta<br>(" . $weekdays["Friday"] . ")</td>
         </tr>
         $others
-    </table><br>";
+    </table>
+    <small>Macete: clique nos links em vermelho para usar esse dia.<br>
+    Macete²: clique nas aulas para colocar a próxima data dessa aula <i>e a matéria</i>!</small><br><br>";
 }
 
 ?>

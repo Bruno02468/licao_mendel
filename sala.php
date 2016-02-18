@@ -83,7 +83,7 @@ foreach ($licoes as $id => $licao) {
 
     $tabela .= make_tr("Matéria:", formatar($licao["materia"]))
         . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
-        . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m/Y", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
+        . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
         . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!");
 
 

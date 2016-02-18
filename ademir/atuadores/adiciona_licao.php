@@ -6,10 +6,11 @@ $sala = getUser();
 
 $materia = req_post("materia");
 $prova = isset($_POST["prova"]) ? true : false;
+list($ano, $mes, $dia) = explode("-", req_post("calendario"));
 $para = array(
-    "dia" => req_post("dia"),
-    "mes" => req_post("mes"),
-    "ano" => req_post("ano")
+    "dia" => $dia,
+    "mes" => $mes,
+    "ano" => $ano
 );
 $info = req_post("info");
 

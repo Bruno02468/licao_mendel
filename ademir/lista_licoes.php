@@ -20,6 +20,7 @@ usort($licoes, function($a, $b) {
 
 // Variável para manter cada um dos links das lições.
 $final = "";
+$trs = "";
 
 // Ler cada um dos arquivos.
 foreach ($licoes as $licao) {
@@ -56,8 +57,9 @@ if ($trs == "")
         <h1>Lista de Lições</h1>
         <a href=".">[Voltar ao Painel]</a><br>
         <br>
-        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a>
+        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
         <br>
+        <a href="adicionar_licao.php">[Adicionar lições]</a><br>
         <br>
         <br>
         Lista de lições do <?php echo $nome; ?>:<br>
