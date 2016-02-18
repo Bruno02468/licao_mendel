@@ -58,7 +58,7 @@ function formatar($texto) {
     $nbspreg = "/^ +/";
     $nbsprep = "&nbsp;";
     $imgreg = "/\[imagem:($not_bracket+)\]/";
-    $imgrep = "<a target=\"_blank\" title=\"Clique para ver o tamanho completo.\" href=\"$1\"><img src=\"$1\"></a>";
+    $imgrep = "<a target=\"_blank\" title=\"Clique para ver o tamanho completo.\" href=\"$1\"><img class=\"userimg\" src=\"$1\"></a>";
     $h4reg = "/\[big\]/";
     $h4rep = "<div class=\"big\">";
     $hcreg = "/\[\/big\]/";

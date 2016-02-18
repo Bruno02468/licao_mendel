@@ -292,6 +292,11 @@ tt, code, kbd, samp {
     padding-bottom: 5px;
 }
 
+.userimg {
+    max-width: 200px;
+    max-height: 200px;
+}
+
 * {
     color: #D1FFD6;
     font-family: 'Open Sans', sans-serif;
