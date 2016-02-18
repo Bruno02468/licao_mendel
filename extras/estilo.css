@@ -254,6 +254,8 @@ tt, code, kbd, samp {
 .licform textarea {
     width: 100%;
     height: 15em;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .licform input[type=text] {

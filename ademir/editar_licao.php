@@ -45,7 +45,7 @@ if (hasHorario($sala)) {
             <input type="hidden" value="<?php echo $guid; ?>" name="guid">
             <input type="text" name="materia" id="materia" value="<?php echo $materia; ?>"></br>
             <input type="checkbox" name="prova"<?php echo $prova; ?>>É prova</br>
-            Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $calen; ?>"><br>
+            Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $calen; ?>">
             <textarea name="info"><?php echo $info; ?></textarea></br>
             <input type="submit" value="Atualizar">
         </form>

@@ -40,7 +40,7 @@ $hj = date("Y-m-d");
             <input type="text" name="materia" id="materia" placeholder="Matéria da lição/prova"><br>
             <input type="checkbox" name="prova">É prova<br>
             Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $hj; ?>"><br>
-            <textarea name="info" placeholder="Coloque aqui as informações a respeito da lição/prova."></textarea><br>
+            <textarea name="info" placeholder="Coloque aqui as informações a respeito da lição/prova."></textarea>
             <br><input type="submit" value="Adicionar lição">
         </form>
         <script src="../extras/add_edit.js"></script>
