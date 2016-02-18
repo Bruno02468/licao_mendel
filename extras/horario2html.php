@@ -94,7 +94,7 @@ function getHorarioAdder($sala) {
         $others
     </table>
     <small>Macete: clique nos links em vermelho para usar esse dia.<br>
-    Macete²: clique nas aulas para colocar a próxima data dessa aula <i>e a matéria</i>!</small><br><br>";
+    Macete²: clique nas aulas para colocar a próxima data dessa aula <i>e a matéria</i>!</small><br>";
 }
 
 ?>
