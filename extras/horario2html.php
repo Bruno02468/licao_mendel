@@ -60,7 +60,7 @@ function getHorarioAdder($sala) {
             $isodat = $dia->format("Y-m-d");
             $disp= $dia->format("j/n");
             $linkid = "";
-            if ($add < 7) {
+            if ($add <= 7) {
                 $dia_n = array_search($semana, array_keys($weekdays));
                 $linkid = " id=\"dialink-$dia_n\"";
             }
