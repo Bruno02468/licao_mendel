@@ -33,6 +33,14 @@ if (hasHorario($sala)) {
 
 $licoes = getProperty($sala, "licoes");
 
+foreach ($licoes as $index => $licao) {
+    if (!isset($licao["guid"])
+     || !isset($licao["passada"])
+     || !isset($licao["para"])) {
+        deleteLicaoForever($sala, $id);
+    }
+}
+
 // Variável para guardar o HTML
 $final = "";
 
@@ -57,10 +65,6 @@ $sextaousabado = ($hoje_semana == "sexta" || $hoje_semana == "sábado");
 
 // Gerar o HTML das lições
 foreach ($licoes as $id => $licao) {
-    if (!isset($licao["guid"])) {
-        deleteLicaoForever($sala, $id);
-        continue;
-    }
     $guid = $licao["guid"];
     $passada_timestamp = dataToTime($licao["passada"]);
     $entrega_timestamp = dataToTime($licao["para"]);
