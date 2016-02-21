@@ -37,7 +37,7 @@ foreach ($licoes as $index => $licao) {
     if (!isset($licao["guid"])
      || !isset($licao["passada"])
      || !isset($licao["para"])) {
-        deleteLicaoForever($sala, $id);
+        deleteLicaoForever($sala, $index);
     }
 }
 
