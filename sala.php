@@ -33,14 +33,6 @@ if (hasHorario($sala)) {
 
 $licoes = getProperty($sala, "licoes");
 
-foreach ($licoes as $index => $licao) {
-    if (!isset($licao["guid"])
-     || !isset($licao["passada"])
-     || !isset($licao["para"])) {
-        deleteLicaoForever($sala, $index);
-    }
-}
-
 // Variável para guardar o HTML
 $final = "";
 
