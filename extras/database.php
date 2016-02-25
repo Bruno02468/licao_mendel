@@ -251,12 +251,6 @@ function removeLicao($sala, $guid) {
     setNewJSON($json);
 }
 
-function deleteLicaoForever($sala, $index) {
-    $json = getFullJSON();
-    unset($json[$sala]["licoes"][$index]);
-    setNewJSON($json);
-}
-
 function hasHorario($sala) {
     return getProperty($sala, "horario") !== [];
 }

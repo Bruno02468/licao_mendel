@@ -62,7 +62,6 @@ foreach ($licoes as $id => $licao) {
     $entrega_timestamp = dataToTime($licao["para"]);
 
     if ($entrega_timestamp < $hoje_timestamp) {
-        removeLicao($sala, $guid);
         continue;
     }
     if (isset($licao["removed"])) if ($licao["removed"]) continue;
