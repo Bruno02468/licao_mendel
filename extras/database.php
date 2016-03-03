@@ -150,7 +150,16 @@ function nomeSala($id) {
 
 function getProperty($sala, $name) {
     // if (!isset(getFullJSON()[$sala][$name])) error_log("error getting $sala :: $name");
-    return getFullJSON()[$sala][$name];
+    $json = getFullJSON();
+    if (isset($json[$sala][$name])) {
+        return $json[$sala][$name];
+    } else {
+        return false;
+    }
+}
+
+function hasProperty($sala, $name) {
+    return isset(getFullJSON()[$sala][$name]);
 }
 
 function setProperty($sala, $nome, $value) {
@@ -252,7 +261,19 @@ function removeLicao($sala, $guid) {
 }
 
 function hasHorario($sala) {
-    return getProperty($sala, "horario") !== [];
+    if (hasProperty($sala, "horario")) {
+        return getProperty($sala, "horario") !== [];
+    } else {
+        return false;
+    }
+}
+
+function hasMsg($sala) {
+    if (hasProperty($sala, "msg")) {
+        return getProperty($sala, "msg") !== "";
+    } else {
+        return false;
+    }
 }
 
 // Gera um salt mais ou menos seguro.

@@ -15,16 +15,25 @@ $nome = nomeSala($sala);
 // Lê os arquivos da sala e os ordena por data de criação.
 $licoes = getProperty($sala, "licoes");
 usort($licoes, function($a, $b) {
-    return dataToTime($b["para"]) > dataToTime($a["para"]);
+    if (!isset($a["guid"]) || !isset($b["guid"])) return false;
+    return dataToTime($b["para"]) < dataToTime($a["para"]);
 });
 
 // Variável para manter cada um dos links das lições.
 $final = "";
 $trs = "";
 
+$hoje_data = timeToData(time());
+$hoje_timestamp = dataToTime($hoje_data);
+
 // Ler cada um dos arquivos.
 foreach ($licoes as $licao) {
+    if (!isset($licao["guid"])) continue;
     if (isset($licao["removed"])) if ($licao["removed"]) continue;
+    $passada_timestamp = dataToTime($licao["passada"]);
+    $entrega_timestamp = dataToTime($licao["para"]);
+    if ($entrega_timestamp < $hoje_timestamp) continue;
+
     $trs .= "<tr class=\"licao_tr\">";
 
     $guid = $licao["guid"];

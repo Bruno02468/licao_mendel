@@ -31,6 +31,14 @@ if (hasHorario($sala)) {
     <span id=\"hor\">$conts</span>";
 }
 
+$msg = "";
+if (hasMsg($sala)) {
+    $conteudo = formatar(getProperty($sala, "msg"));
+    $msg = "<br>
+    Mensagem do seu admin:<br>
+    <small><div class=\"mensagem\">$conteudo</div></small><br>";
+}
+
 $licoes = getProperty($sala, "licoes");
 
 // Variável para guardar o HTML
@@ -38,6 +46,7 @@ $final = "";
 
 // Ordenar a array de acordo
 usort($licoes, function($a, $b) {
+    if (!isset($a["guid"]) || !isset($b["guid"])) return false;
     return dataToTime($b["para"]) < dataToTime($a["para"]);
 });
 
@@ -57,15 +66,14 @@ $sextaousabado = ($hoje_semana == "sexta" || $hoje_semana == "sábado");
 
 // Gerar o HTML das lições
 foreach ($licoes as $id => $licao) {
-    $guid = $licao["guid"];
-    $passada_timestamp = dataToTime($licao["passada"]);
-    $entrega_timestamp = dataToTime($licao["para"]);
-
-    if ($entrega_timestamp < $hoje_timestamp) {
-        continue;
-    }
+    if (!isset($licao["guid"])) continue;
     if (isset($licao["removed"])) if ($licao["removed"]) continue;
 
+    $passada_timestamp = dataToTime($licao["passada"]);
+    $entrega_timestamp = dataToTime($licao["para"]);
+    if ($entrega_timestamp < $hoje_timestamp) continue;
+
+    $guid = $licao["guid"];
     $semanal = semana(date("l", $entrega_timestamp));
     $passadahj = ($licao["passada"] == $hoje_data);
 
@@ -114,12 +122,12 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
         <?php echo $horario; ?>
         <br>
             <small><a href="../ademir">[Administrar o Site]</a><br><br>
-            <small><a href="../superademir">[Superadministrar o Site]</a></small><br>
-            <br>Mensagem do dia:<br>
+            Mensagem global:<br>
             <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
             </div><br></small>
         <br>
         <?php echo $adm; ?><br>
+        <?php echo $msg; ?>
         <span id="hojeslink"></span>
         <br>
         <br>

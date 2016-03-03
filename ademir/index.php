@@ -6,10 +6,14 @@ require_login();
 $sala = getUser();
 $nome = nomeSala($sala);
 
-$link = "<a href=\"adicionar_horario.php\">[Adicionar o horário do $nome]</a>";
-
+$horlink = "<a href=\"adicionar_horario.php\">[Adicionar o horário do $nome]</a>";
 if (hasHorario($sala)) {
-    $link = "<a href=\"editar_horario.php\">[Editar o horário do $nome]</a>";
+    $horlink = "<a href=\"editar_horario.php\">[Editar o horário do $nome]</a>";
+}
+
+$msglink = "<a href=\"adicionar_msg.php\">[Adicionar uma mensagem do admin]</a>";
+if (hasMsg($sala)) {
+    $msglink = "<a href=\"editar_msg.php\">[Editar a mensagem do admin]</a>";
 }
 
 ?>
@@ -36,8 +40,9 @@ if (hasHorario($sala)) {
             <br>
             <a href="lista_licoes.php">[Editar/remover lições]</a><br>
             <br>
-            <?php echo $link; ?><br>
+            <?php echo $horlink; ?><br>
             <br>
+            <?php echo $msglink; ?>
         </div>
         <script>
             document.getElementById("sala").value = localStorage["sala"];
