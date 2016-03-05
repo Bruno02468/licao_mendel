@@ -35,7 +35,7 @@ $msg = "";
 if (hasMsg($sala)) {
     $conteudo = formatar(getProperty($sala, "msg"));
     $msg = "<br>
-    Mensagem do seu admin:<br>
+    Mensagem da sala:<br>
     <small><div class=\"mensagem\">$conteudo</div></small><br>";
 }
 

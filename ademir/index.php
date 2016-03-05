@@ -11,9 +11,9 @@ if (hasHorario($sala)) {
     $horlink = "<a href=\"editar_horario.php\">[Editar o horário do $nome]</a>";
 }
 
-$msglink = "<a href=\"adicionar_msg.php\">[Adicionar uma mensagem do admin]</a>";
+$msglink = "<a href=\"adicionar_msg.php\">[Adicionar uma mensagem da sala]</a>";
 if (hasMsg($sala)) {
-    $msglink = "<a href=\"editar_msg.php\">[Editar a mensagem do admin]</a>";
+    $msglink = "<a href=\"editar_msg.php\">[Editar a mensagem da sala]</a>";
 }
 
 ?>
