@@ -43,7 +43,13 @@ function mostrarHoje(but) {
     but.style.display = "none";
 }
 
-var feitas = localStorage["feitas"].split(",");
+var feitas;
+if (localStorage["feitas"] === undefined) {
+    localStorage["feitas"] = "";
+    feitas = [];
+} else {
+    feitas = localStorage["feitas"].split(",");
+}
 
 function toggleFeita(id) {
     var i = feitas.indexOf(id);
@@ -62,4 +68,30 @@ for (var index in feitas) {
         continue;
     }
     checkbox.checked = true;
+}
+
+function escolherSala() {
+    localStorage["sala"] = "";
+    location.href = "..";
+}
+
+function deletar(guid) {
+    if (confirm("Você deseja mesmo deletar essa lição?"))
+        location.href = "../ademir/atuadores/deleta_licao.php?guid=" + guid + "&admvisao";
+}
+
+var admwarn = document.getElementById("admwarn");
+if (localStorage["admvisao"]) {
+    var addstyle = document.createElement("style");
+    addstyle.innerHTML = ".admvisao { display: table-row; }";
+    document.head.appendChild(addstyle);
+    admwarn.style.display = "block";
+}
+
+function desadm() {
+    localStorage["admvisao"] = "";
+    var desstyle = document.createElement("style");
+    desstyle.innerHTML = ".admvisao { display: none; }";
+    document.head.appendChild(desstyle);
+    admwarn.style.display = "none";
 }

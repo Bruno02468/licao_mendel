@@ -149,32 +149,5 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
             nome = "<?php echo $nome; ?>";
         </script>
         <script src="../extras/javascript.js"></script>
-        <script>
-            function escolherSala() {
-                localStorage["sala"] = "";
-                location.href = "..";
-            }
-
-            function deletar(guid) {
-                if (confirm("Você deseja mesmo deletar essa lição?"))
-                    location.href = "../ademir/atuadores/deleta_licao.php?guid=" + guid + "&admvisao";
-            }
-
-            var admwarn = document.getElementById("admwarn");
-            if (localStorage["admvisao"]) {
-                var addstyle = document.createElement("style");
-                addstyle.innerHTML = ".admvisao { display: table-row; }";
-                document.head.appendChild(addstyle);
-                admwarn.style.display = "block";
-            }
-
-            function desadm() {
-                localStorage["admvisao"] = "";
-                var desstyle = document.createElement("style");
-                desstyle.innerHTML = ".admvisao { display: none; }";
-                document.head.appendChild(desstyle);
-                admwarn.style.display = "none";
-            }
-        </script>
     </body>
 </html>
