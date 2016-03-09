@@ -105,8 +105,6 @@ foreach ($licoes as $id => $licao) {
 if ($final == "")
     $final = "Nenhuma lição por enquanto...";
 
-$adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b>!";
-
 ?>
 <html>
     <head>
@@ -138,7 +136,7 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
                 <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
             </div><br></small>
         <br>
-        <?php echo $adm; ?><br>
+        Esta sala é administrada por <b><?php echo getProperty($sala, "ademir"); ?></b>!<br>
         <?php echo $msg; ?>
         <span id="hojeslink"></span>
         <br>
