@@ -86,7 +86,7 @@ foreach ($licoes as $id => $licao) {
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
     $classes = ($passadahj ? " hoje" : "") . ($licao["prova"] ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
 
-    $editlink = "<a href=\"../ademir/editar_licao.php?guid=$guid&admvisao\">editar</a>";
+    $editlink = "<a href=\"../ademir/reqsala.php?sala=$sala&ir=editar_licao.php%3Fguid%3D$guid%26admvisao\">editar</a>";
     $deletelink = "<a href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a>";
 
     $tabela = "<table class=\"entrada$classes\"$display>\n";

@@ -16,7 +16,7 @@ $msg = htmlspecialchars(getProperty($sala, "msg"));
     </head>
 
     <body style="text-align: center;">
-        <h1>Adicionar Mensagem do Admin</h1>
+        <h1>Adicionar Mensagem da Sala</h1>
         <small>
             Tudo programado por Bruno Borges Paschoalinoto (2º F)<br><br>
         </small>

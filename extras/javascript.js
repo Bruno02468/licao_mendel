@@ -77,7 +77,7 @@ function escolherSala() {
 
 function deletar(guid) {
     if (confirm("Você deseja mesmo deletar essa lição?"))
-        location.href = "../ademir/atuadores/deleta_licao.php?guid=" + guid + "&admvisao";
+        location.href = "../ademir/reqsala.php?sala=" + sala + "&ir=atuadores%2Fdeleta_licao.php%3Fguid%3D" + guid + "%26admvisao";
 }
 
 var admwarn = document.getElementById("admwarn");

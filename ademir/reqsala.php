@@ -7,6 +7,10 @@ if (isset($_GET["sala"])) {
     require_login();
 }
 
-redir(".");
+if (isset($_GET["ir"])) {
+    redir($_GET["ir"]);
+} else {
+    redir(".");
+}
 
 ?>
