@@ -17,6 +17,10 @@ $info = req_post("info");
 
 editLicao($sala, $guid, $materia, $prova, $para, $info);
 
-redir("../lista_licoes.php");
+if (isset($_POST["admvisao"])) {
+    redir("../../sala/$sala");
+} else {
+    redir("../lista_licoes.php");
+}
 
 ?>

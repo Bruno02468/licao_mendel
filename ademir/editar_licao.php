@@ -23,6 +23,11 @@ if (hasHorario($sala)) {
     $horario = getHorarioAdder($sala);
 }
 
+$admvisao = "";
+if (isset($_GET["admvisao"])) {
+    $admvisao = "<input type=\"hidden\" name=\"admvisao\" value=\"on\">";
+}
+
 ?>
 
 <html>
@@ -43,6 +48,7 @@ if (hasHorario($sala)) {
         <br>
         <form method="POST" action="atuadores/edita_licao.php" class="licform">
             <input type="hidden" value="<?php echo $guid; ?>" name="guid">
+            <?php echo $admvisao; ?>
             <input type="text" name="materia" id="materia" value="<?php echo $materia; ?>"></br>
             <input type="checkbox" name="prova"<?php echo $prova; ?>>É prova</br>
             Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $calen; ?>">

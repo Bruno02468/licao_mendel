@@ -45,7 +45,7 @@ if (hasMsg($sala)) {
             <?php echo $msglink; ?>
         </div>
         <script>
-            document.getElementById("sala").value = localStorage["sala"];
+            localStorage["admvisao"] = true;
         </script>
     </body>
 </html>

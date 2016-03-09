@@ -308,6 +308,10 @@ tt, code, kbd, samp {
     font-weight: bold;
 }
 
+.admvisao {
+    display: none; !important
+}
+
 * {
     color: #D1FFD6;
     font-family: 'Open Sans', sans-serif;

@@ -7,6 +7,10 @@ $guid = req_get("guid");
 
 removeLicao($sala, $guid);
 
-redir("../lista_licoes.php");
+if (isset($_GET["admvisao"])) {
+    redir("../../sala/$sala");
+} else {
+    redir("../lista_licoes.php");
+}
 
 ?>

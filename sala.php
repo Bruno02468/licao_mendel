@@ -86,12 +86,16 @@ foreach ($licoes as $id => $licao) {
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
     $classes = ($passadahj ? " hoje" : "") . ($licao["prova"] ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
 
+    $editlink = "<a href=\"../ademir/editar_licao.php?guid=$guid&admvisao\">editar</a>";
+    $deletelink = "<a href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a>";
+
     $tabela = "<table class=\"entrada$classes\"$display>\n";
 
     $tabela .= make_tr("Matéria:", formatar($licao["materia"]))
         . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
-        . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!");
+        . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!")
+        . "<tr class=\"admvisao\"><td>Administrar!</td><td>$editlink | $deletelink</td></tr>";
 
 
     $tabela .= "</table>";
@@ -121,9 +125,17 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
         <a href="javascript:void(0)" onclick="escolherSala()">[Escolha sua sala]</a><br>
         <?php echo $horario; ?>
         <br>
-            <small><a href="../ademir">[Administrar o Site]</a><br><br>
-            Mensagem global:<br>
-            <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
+            <small>
+                <a href="../ademir/reqsala.php?sala=<?php echo $sala; ?>">[Administrar esta sala]</a><br>
+                <br>
+                <div class="admvisao" id="admwarn">
+                    <a href="../ademir/adicionar_licao.php">[Adicionar lições]</a><br><br>
+                    <b>Os novos links de administrador estão ativos!<br>
+                    <a href="javascript:void(0)" onclick="desadm()">Clique se quiser desligar, ou não for um administrador.</a></b><br>
+                    <br>
+                </div>
+                Mensagem global:<br>
+                <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
             </div><br></small>
         <br>
         <?php echo $adm; ?><br>
@@ -141,6 +153,27 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
             function escolherSala() {
                 localStorage["sala"] = "";
                 location.href = "..";
+            }
+
+            function deletar(guid) {
+                if (confirm("Você deseja mesmo deletar essa lição?"))
+                    location.href = "../ademir/atuadores/deleta_licao.php?guid=" + guid + "&admvisao";
+            }
+
+            var admwarn = document.getElementById("admwarn");
+            if (localStorage["admvisao"]) {
+                var addstyle = document.createElement("style");
+                addstyle.innerHTML = ".admvisao { display: table-row; }";
+                document.head.appendChild(addstyle);
+                admwarn.style.display = "block";
+            }
+
+            function desadm() {
+                localStorage["admvisao"] = "";
+                var desstyle = document.createElement("style");
+                desstyle.innerHTML = ".admvisao { display: none; }";
+                document.head.appendChild(desstyle);
+                admwarn.style.display = "none";
             }
         </script>
     </body>

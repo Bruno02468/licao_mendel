@@ -219,6 +219,7 @@ function dataIgual($a, $b) {
 function getIndexByGuid($sala, $guid) {
     $licoes = getProperty($sala, "licoes");
     foreach ($licoes as $index => $licao) {
+        if (!isset($licao["guid"])) continue;
         if ($licao["guid"] === $guid) return $index;
     }
 }
@@ -314,7 +315,7 @@ function headauth($msg) {
     header("WWW-Authenticate: Basic realm=\"$msg\"");
     header("HTTP/1.0 401 Unauthorized");
     echo $msg;
-    die();
+    die("<br><br>Eu disse que tinha que fazer login...");
 }
 
 // Exige um certo login para a exibição da página.
