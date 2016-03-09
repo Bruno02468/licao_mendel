@@ -129,7 +129,7 @@ $adm = "Esta sala é administrada por <b>" . getProperty($sala, "ademir") . "</b
                 <a href="../ademir/reqsala.php?sala=<?php echo $sala; ?>">[Administrar esta sala]</a><br>
                 <br>
                 <div class="admvisao" id="admwarn">
-                    <a href="../ademir/adicionar_licao.php">[Adicionar lições]</a><br><br>
+                    <a href="../ademir/reqsala.php?sala=<?php echo $sala; ?>&ir=adicionar_licao.php">[Adicionar lições]</a><br><br>
                     <b>Os novos links de administrador estão ativos!<br>
                     <a href="javascript:void(0)" onclick="desadm()">Clique se quiser desligar, ou não for um administrador.</a></b><br>
                     <br>
