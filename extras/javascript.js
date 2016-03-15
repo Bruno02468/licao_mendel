@@ -76,7 +76,7 @@ function deletar(guid) {
 }
 
 var admwarn = document.getElementById("admwarn");
-if (localStorage["admvisao"]) {
+if (localStorage["admvisao"] && localStorage["lastSalaADM"] === sala) {
     var addstyle = document.createElement("style");
     addstyle.innerHTML = ".admvisao { display: table-row; }";
     document.head.appendChild(addstyle);

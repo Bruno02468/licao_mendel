@@ -46,6 +46,7 @@ if (hasMsg($sala)) {
         </div>
         <script>
             localStorage["admvisao"] = true;
+            localStorage["lastSalaADM"] = "<?php echo $sala; ?>";
         </script>
     </body>
 </html>
