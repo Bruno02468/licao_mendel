@@ -5,9 +5,12 @@ require_login("borginhos");
 
 $links = "";
 $json = getFullJSON();
+$counter = 1;
 foreach ($json as $id => $sala) {
     $nome = nomeSala($id);
-    $links .= "<a class=\"buttonlink smallbtn btnblue\" href=\"editar_sala.php?id=$id\">$nome</a>&nbsp;<br>";
+    $links .= "<a class=\"buttonlink smallbtn btnblue\" href=\"editar_sala.php?id=$id\">$nome</a>&nbsp;";
+    if ($counter % 4 == 0) $links .= "<br>";
+    $counter++;
 }
 
 ?>
