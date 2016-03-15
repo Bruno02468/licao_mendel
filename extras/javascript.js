@@ -16,29 +16,24 @@ var showing = false;
 function horario() {
     if (showing) {
         hor.style.display = "none";
-        horlink.innerHTML = "[Ver horário de aulas]";
+        horlink.innerHTML = "Ver horário de aulas";
     } else {
         hor.style.display = "inline-block";
-        horlink.innerHTML = "[Esconder horário]";
+        horlink.innerHTML = "Esconder horário";
     }
     showing = !showing;
 }
 
-var hojes = document.getElementsByClassName("parahj");
+var hojes = document.getElementsByClassName("parahj");''
 var hojespan = document.getElementById("hojeslink");
 if (hojes.length > 0) {
-    for (i in hojes) {
-        elem = hojes[i];
-        if (elem.style) elem.style.display = "none";
-    }
-    hojespan.innerHTML = "<a href=\"javascript:void(0)\" onclick=\"mostrarHoje(this)\"><br>[Mostrar lições para hoje]</a>";
-} else {
-
+    hojespan.innerHTML = "<br><a class=\"buttonlink\" href=\"javascript:void(0)\" onclick=\"mostrarHoje(this)\">Mostrar lições para hoje</a>";
 }
+
 function mostrarHoje(but) {
     for (i in hojes) {
         elem = hojes[i];
-        if (elem.style) elem.style.display = "";
+        if (elem.style) elem.setAttribute("style", "display: block;");
     }
     but.style.display = "none";
 }

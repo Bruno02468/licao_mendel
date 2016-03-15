@@ -26,8 +26,8 @@ $msg = htmlspecialchars(getProperty($sala, "msg"));
         <br>
         <form method="POST" action="atuadores/seta_msg.php" class="licform">
             <textarea name="msg"><?php echo $msg ?></textarea><br>
-            <input type="submit" value="Salvar">
+            <input class="buttonlink btnblue" type="submit" value="Salvar">
         </form>
-        ou você pode <a href="atuadores/deleta_msg.php">clicar aqui para removê-la</a>.
+        ou você pode <a class="buttonlink btnred" href="atuadores/deleta_msg.php">removê-la</a>.
     </body>
 </html>

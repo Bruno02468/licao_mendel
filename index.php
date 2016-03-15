@@ -15,7 +15,7 @@ foreach (getFullJSON() as $sala => $props) {
     $js .= "anos.push(\"$sala\");";
 }
 
-$tabela = "<table class=\"listaanos\"><tr class=\"listaano\">";
+$tabela = "<table class=\"listaanos_noborder\"><tr class=\"listaano\">";
 $longest = 0;
 foreach(array_keys($anos) as $ano) {
     $tabela .= "<td>${ano}<sup class=\"os\"><u>os</u></sup></td>";
@@ -29,7 +29,7 @@ for ($i = 1; $i <= $longest; $i++) {
         if (count($anos[$ano]) >= $i) {
             $sala = $anos[$ano][$i-1];
             $nome = "${ano}º " . $sala[1];
-            $tabela .= "<td><a href=\"javascript:void(0)\" onclick=\"ir('$sala')\">$nome</a></td>";
+            $tabela .= "<td><a class=\"buttonlink bigbtn\" href=\"javascript:void(0)\" onclick=\"irsala('$sala')\">$nome</a></td>";
         } else {
             $tabela .= "<td></td>";
         }
@@ -52,14 +52,12 @@ $tabela .= "</table>";
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de Lições</h1>
-        <small>
-            Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br>
-            <a href="ademir">[Administrar o Site]</a><br><br>
-            <small>
-                <a href="superademir">[Superadministrar o site]</a><br>
-            </small>
-            </div><br>
-        </small>
+        <a class="buttonlink btnorange" href="//licoes.com/resumos">Site de Resumos</a><br>
+        <br>
+        Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br>
+        <br>
+        <a class="buttonlink btnblue" href="ademir/">Administrar o Site</a><br><br>
+        <a class="buttonlink btnblue smallbtn" href="superademir/">Superadministrar o site</a><br>
         <big><big>
             <br>
             Escolha sua sala:
@@ -69,15 +67,18 @@ $tabela .= "</table>";
             <br>
         </big></big>
         <script>
-            <?php echo $js; ?>
-            var sala = localStorage["sala"];
-            if (sala != "" && anos.indexOf(sala) > -1) {
-                location.href = "sala/" + sala;
+            function irsala(idsala) {
+                if (window.localStorage)
+                    localStorage["sala"] = idsala;
+                location.href = "sala/" + idsala;
             }
 
-            function ir(idsala) {
-                localStorage["sala"] = idsala;
-                location.href = "sala/" + idsala;
+            <?php echo $js; ?>
+            var sala = "";
+            if (window.localStorage)
+            sala = localStorage["sala"];
+            if (sala != "" && anos.indexOf(sala) > -1) {
+                location.href = "sala/" + sala;
             }
         </script>
     </body>

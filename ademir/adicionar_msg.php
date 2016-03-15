@@ -25,7 +25,7 @@ require_login();
         <br>
         <form method="POST" action="atuadores/seta_msg.php" class="licform">
             <textarea name="msg"></textarea><br>
-            <input type="submit" value="Adicionar">
+            <input class="buttonlink btnblue" type="submit" value="Adicionar">
         </form>
     </body>
 </html>

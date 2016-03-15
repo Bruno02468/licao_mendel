@@ -39,8 +39,8 @@ foreach ($licoes as $licao) {
     $guid = $licao["guid"];
     $mat = $licao["materia"];
     $data = date("d/m/Y", dataToTime($licao["para"]));
-    $edit_link = "<a href=\"editar_licao.php?guid=$guid\">Editar</a>";
-    $delete_link = "<a href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a><br>";
+    $edit_link = "<a class=\"buttonlink btnblue smallbtn\" href=\"editar_licao.php?guid=$guid\">Editar</a>";
+    $delete_link = "<a class=\"buttonlink btnred smallbtn\" href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a><br>";
 
     if ($licao["prova"])
         $mat = " (<b>prova</b>)";

@@ -36,9 +36,9 @@ foreach ($horario as $aula) {
                 </tr>
             </table>
             <br>
-            <input type="submit" value="Salvar horário">
+            <input class="buttonlink btnblue" type="submit" value="Salvar horário">
         </form>
-        ou você pode <a href="atuadores/deleta_horario.php">deletar este horário.</a>
+        ou você pode <a class="buttonlink btnred" href="atuadores/deleta_horario.php">deletar o horário.</a>
         <script>
             <?php echo $js; ?>
             var tabela = document.getElementById("horario");

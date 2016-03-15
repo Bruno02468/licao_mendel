@@ -228,7 +228,7 @@ button, input[type=button], input[type=submit] {
 
 .listaanos tr:first-child td {
     border-top: none;
-    color: #31b1b5;
+    color: #00ff47;
     font-size: 110%;
     font-weight: bold;
     padding: 1px;
@@ -310,6 +310,96 @@ tt, code, kbd, samp {
 
 .admvisao {
     display: none; !important
+}
+
+.buttonlink {
+    background: #00ed4f;
+    background-image: linear-gradient(to bottom, #00ed4f, #00a806);
+    border-radius: 50px;
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border-bottom: 10px;
+    line-height: 20px;
+}
+
+.buttonlink:hover {
+    background: #00ff51;
+    background-image: linear-gradient(to bottom, #00ff51, #0fb300);
+    text-decoration: none;
+    color: black;
+}
+
+.btnred {
+    background: #de0000;
+    background-image: linear-gradient(to bottom, #de0000, #870000);
+}
+
+.btnred:hover {
+    background: #eb0000;
+    background-image: linear-gradient(to bottom, #eb0000, #a60000);
+}
+
+.btnblue, .admvisao .buttonlink {
+    background: #00bceb;
+    background-image: linear-gradient(to bottom, #00bceb, #00799e);
+}
+
+.btnblue:hover, .admvisao .buttonlink:hover {
+    background: #00d0eb;
+    background-image: linear-gradient(to bottom, #00d0eb, #008da6);
+}
+
+.btnorange {
+    background: #ff8c12;
+    background-image: linear-gradient(to bottom, #ff8c12, #f76b00);
+}
+
+.btnorange:hover {
+    background: #ffa200;
+    background-image: linear-gradient(to bottom, #ffa200, #ff7700);
+}
+
+.smallbtn {
+    padding: 2px 8px 2px 8px;
+}
+
+.bigbtn {
+    font-size: 20px;
+    padding: 6px 15px 6px 15px;
+    line-height: 25px;
+}
+
+.parahj {
+    display: none;
+}
+
+.listaanos_noborder {
+
+}
+
+.listaanos_noborder {
+    border: none;
+	margin-bottom: 20px;
+    display: inline-block;
+    font-size: 100%;
+}
+
+.listaanos_noborder td, .listaanos_noborder th {
+    border: none;
+    padding-top: 18px;
+    padding-right: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.listaanos_noborder tr:first-child td {
+    border-top: none;
+    color: #46a1ff;
+    font-size: 110%;
+    font-weight: bold;
+    padding: 1px;
 }
 
 * {

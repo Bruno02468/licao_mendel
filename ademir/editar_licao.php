@@ -53,7 +53,7 @@ if (isset($_GET["admvisao"])) {
             <input type="checkbox" name="prova"<?php echo $prova; ?>>É prova</br>
             Data de entrega: <input type="date" name="calendario" id="calendario" value="<?php echo $calen; ?>">
             <textarea name="info"><?php echo $info; ?></textarea></br>
-            <input type="submit" value="Atualizar">
+            <input class="buttonlink btnblue" type="submit" value="Atualizar">
         </form>
         <script src="../extras/add_edit.js"></script>
     </body>

@@ -27,7 +27,7 @@ if (!salaExists($sala) && isset($_GET["sala"]) && $sala !== "") {
 $horario = "";
 if (hasHorario($sala)) {
     $conts = getHorario($sala);
-    $horario = "<br><a id=\"horlink\" href=\"javascript:void(0)\" onclick=\"horario();\">[Ver horário de aulas]</a><br>\n
+    $horario = "<br><a class=\"buttonlink\" id=\"horlink\" href=\"javascript:void(0)\" onclick=\"horario();\">Ver horário de aulas</a><br>\n
     <span id=\"hor\">$conts</span>";
 }
 
@@ -86,8 +86,8 @@ foreach ($licoes as $id => $licao) {
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
     $classes = ($passadahj ? " hoje" : "") . ($licao["prova"] ? " prova" : "") . ($parahj ? " parahj" : "") . ($proxima ? " proxima" : "");
 
-    $editlink = "<a href=\"../ademir/reqsala.php?sala=$sala&ir=editar_licao.php%3Fguid%3D$guid%26admvisao\">editar</a>";
-    $deletelink = "<a href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a>";
+    $editlink = "<a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_licao.php%3Fguid%3D$guid%26admvisao\">editar</a>";
+    $deletelink = "<a class=\"buttonlink btnred smallbtn\" href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a>";
 
     $tabela = "<table class=\"entrada$classes\"$display>\n";
 
@@ -95,7 +95,7 @@ foreach ($licoes as $id => $licao) {
         . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
         . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!")
-        . "<tr class=\"admvisao\"><td>Administrar!</td><td>$editlink | $deletelink</td></tr>";
+        . "<tr class=\"admvisao\"><td>Administrar!</td><td>$editlink ou $deletelink</td></tr>";
 
 
     $tabela .= "</table>";
@@ -119,19 +119,21 @@ if ($final == "")
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
-        <small>Tudo programado por <a target="_blank" href="../contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br></small>
-        <a href="javascript:void(0)" onclick="escolherSala()">[Escolha sua sala]</a><br>
+        <a class="buttonlink btnorange smallbtn" href="//licoes.com/resumos">Site de Resumos</a><br><br>
+        <a class="buttonlink" href="javascript:void(0)" onclick="escolherSala()">Voltar para a lista de salas</a><br>
         <?php echo $horario; ?>
         <br>
             <small>
-                <a href="../ademir/reqsala.php?sala=<?php echo $sala; ?>">[Administrar esta sala]</a><br>
+                <a class="buttonlink btnblue" href="../ademir/reqsala.php?sala=<?php echo $sala; ?>">Administrar esta sala</a><br>
                 <br>
                 <div class="admvisao" id="admwarn">
-                    <a href="../ademir/reqsala.php?sala=<?php echo $sala; ?>&ir=adicionar_licao.php">[Adicionar lições]</a><br><br>
+                    <a class="buttonlink" href="../ademir/reqsala.php?sala=<?php echo $sala; ?>&amp;ir=adicionar_licao.php">Adicionar lições</a><br><br>
                     <b>Os novos links de administrador estão ativos!<br>
                     <a href="javascript:void(0)" onclick="desadm()">Clique se quiser desligar, ou não for um administrador.</a></b><br>
                     <br>
                 </div>
+                <br>
+                Tudo programado por <a target="_blank" href="../contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br>
                 Mensagem global:<br>
                 <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
             </div><br></small>

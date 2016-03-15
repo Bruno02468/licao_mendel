@@ -6,14 +6,14 @@ require_login();
 $sala = getUser();
 $nome = nomeSala($sala);
 
-$horlink = "<a href=\"adicionar_horario.php\">[Adicionar o horário do $nome]</a>";
+$horlink = "<a class=\"buttonlink bigbtn\" href=\"adicionar_horario.php\">Adicionar o horário do $nome</a>";
 if (hasHorario($sala)) {
-    $horlink = "<a href=\"editar_horario.php\">[Editar o horário do $nome]</a>";
+    $horlink = "<a class=\"buttonlink bigbtn\" href=\"editar_horario.php\">Editar o horário do $nome</a>";
 }
 
-$msglink = "<a href=\"adicionar_msg.php\">[Adicionar uma mensagem da sala]</a>";
+$msglink = "<a class=\"buttonlink bigbtn\" href=\"adicionar_msg.php\">Adicionar uma mensagem da sala</a>";
 if (hasMsg($sala)) {
-    $msglink = "<a href=\"editar_msg.php\">[Editar a mensagem da sala]</a>";
+    $msglink = "<a class=\"buttonlink bigbtn\" href=\"editar_msg.php\">Editar a mensagem da sala</a>";
 }
 
 ?>
@@ -34,11 +34,11 @@ if (hasMsg($sala)) {
         <b>Você está logado como o administrador do <u><?php echo $nome; ?></u>.</b>
         <br>
         <div class="h2">
-            <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
+            <a class="buttonlink bigbtn btnred" href="../sala/<?php echo $sala; ?>">Voltar para a página inicial</a><br>
             <br>
-            <a href="adicionar_licao.php">[Adicionar lições]</a><br>
+            <a class="buttonlink bigbtn btnblue" href="adicionar_licao.php">Adicionar lições</a><br>
             <br>
-            <a href="lista_licoes.php">[Editar/remover lições]</a><br>
+            <a class="buttonlink bigbtn" href="lista_licoes.php">Editar/remover lições</a><br>
             <br>
             <?php echo $horlink; ?><br>
             <br>

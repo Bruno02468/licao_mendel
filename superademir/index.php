@@ -7,7 +7,7 @@ $links = "";
 $json = getFullJSON();
 foreach ($json as $id => $sala) {
     $nome = nomeSala($id);
-    $links .= "<a href=\"editar_sala.php?id=$id\">$nome</a><br>";
+    $links .= "<a class=\"buttonlink smallbtn btnblue\" href=\"editar_sala.php?id=$id\">$nome</a>&nbsp;<br>";
 }
 
 ?>
@@ -28,17 +28,17 @@ foreach ($json as $id => $sala) {
         <b>Você está logado como o <b>superadministrador</b>.</b>
         <br>
         <div class="h2">
-            <a href="..">[Página inicial]</a><br>
+            <a class="buttonlink bigbtn btnred" href="..">Página inicial</a><br>
             <br>
-            <a href="motd.php">[Mensagem do Dia]</a><br>
+            <a class="buttonlink bigbtn btnblue" href="motd.php">Mensagem do Dia</a><br>
+            <br>
+            <a class="buttonlink bigbtn" href="nova_sala.php">Adicionar sala</a><br>
             <br>
             Mudar senha mestra:
             <form action="atuadores/set_god.php" method="POST">
                 <input type="password" name="pass">
-                <input type="submit" value="Pode rodar!">
+                <input class="buttonlink" type="submit" value="Pode rodar!">
             </form>
-            <a href="nova_sala.php">[Nova sala]</a><br>
-            <br>
             Editar salas:
             <br>
             <?php echo $links; ?>

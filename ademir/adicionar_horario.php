@@ -30,7 +30,7 @@ $nome = nomeSala($sala);
                 </tr>
             </table>
             <br>
-            <input type="submit" value="Adicionar horário">
+            <input class="buttonlink btnblue" type="submit" value="Adicionar horário">
         </form>
         <script>
             var tabela = document.getElementById("horario");
