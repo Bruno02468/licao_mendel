@@ -76,11 +76,13 @@ function deletar(guid) {
 }
 
 var admwarn = document.getElementById("admwarn");
+var msgadd = document.getElementById("msgadm");
 if (localStorage["admvisao"] && localStorage["lastSalaADM"] === sala) {
     var addstyle = document.createElement("style");
     addstyle.innerHTML = ".admvisao { display: table-row; }";
     document.head.appendChild(addstyle);
     admwarn.style.display = "block";
+    msgadm.style.display = "inline-block";
 }
 
 function desadm() {
@@ -89,4 +91,5 @@ function desadm() {
     desstyle.innerHTML = ".admvisao { display: none; }";
     document.head.appendChild(desstyle);
     admwarn.style.display = "none";
+    msgadm.style.display = "none";
 }

@@ -5,6 +5,11 @@ require_login();
 $sala = getUser();
 $msg = htmlspecialchars(getProperty($sala, "msg"));
 
+$admvisao = "";
+if (isset($_GET["admvisao"])) {
+    $admvisao = "<input type=\"hidden\" name=\"admvisao\" value=\"on\">";
+}
+
 ?>
 
 <html>
@@ -23,6 +28,7 @@ $msg = htmlspecialchars(getProperty($sala, "msg"));
         Digite uma mensagem para todos os da sua sala verem:<br>
         <br>
         <form method="POST" action="atuadores/seta_msg.php" class="licform">
+            <?php echo $admvisao; ?>
             <textarea name="msg"></textarea><br>
             <input class="buttonlink btnblue" type="submit" value="Adicionar">
         </form>

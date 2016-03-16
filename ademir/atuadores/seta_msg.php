@@ -6,6 +6,11 @@ $sala = getUser();
 $msg = req_post("msg");
 
 setProperty($sala, "msg", $msg);
-redir("..");
+
+if (isset($_POST["admvisao"])) {
+    redir("../../sala/$sala");
+} else {
+    redir("..");
+}
 
 ?>

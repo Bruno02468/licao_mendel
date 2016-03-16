@@ -22,11 +22,11 @@ require_login("borginhos");
         <br>
         <form method="POST" action="atuadores/adiciona_sala.php">
             <table align="center">
-            <tr><td>ID: </td><td><input type="text" name="id"></tr>
+            <tr><td>ID de sala: </td><td><input type="text" name="id"></tr>
             <tr><td>Nome do Administrador: </td><td><input type="text" name="ademir"></tr>
             <tr><td>Senha do Administrador: </td><td><input type="password" name="pass"></tr>
             </table>
-            <br><input type="submit" value="Adicionar sala">
+            <br><input class="buttonlink btnblue" type="submit" value="Adicionar sala">
         </form>
     </body>
 </html>

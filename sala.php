@@ -31,12 +31,15 @@ if (hasHorario($sala)) {
     <span id=\"hor\">$conts</span>";
 }
 
-$msg = "";
+$msg = "<div id=\"msgadm\" class=\"admvisao\"><br>
+    <a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_msg.php?admvisao\">Adicionar uma mensagem da sala</a><br><br></div>";
 if (hasMsg($sala)) {
     $conteudo = formatar(getProperty($sala, "msg"));
     $msg = "<br>
-    Mensagem da sala:<br>
-    <small><div class=\"mensagem\">$conteudo</div></small><br>";
+    Mensagem da sala: <div id=\"msgadm\" class=\"admvisao\"><a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_msg.php?admvisao\">editar</a>
+    <a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=atuadores%2Fdeleta_msg.php?admvisao\">deletar</a></div><br>
+    <small><div class=\"mensagem\">$conteudo</div></small>
+    <br>";
 }
 
 $licoes = getProperty($sala, "licoes");

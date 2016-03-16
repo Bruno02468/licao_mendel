@@ -5,6 +5,11 @@ require_login();
 $sala = getUser();
 
 setProperty($sala, "msg", "");
-redir("..");
+
+if (isset($_GET["admvisao"])) {
+    redir("../../sala/$sala");
+} else {
+    redir("..");
+}
 
 ?>

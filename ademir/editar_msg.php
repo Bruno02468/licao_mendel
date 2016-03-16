@@ -2,6 +2,13 @@
 
 include("../extras/database.php");
 require_login();
+$sala = getUser();
+$msg = getProperty($sala, "msg");
+
+$admvisao = "";
+if (isset($_GET["admvisao"])) {
+    $admvisao = "<input type=\"hidden\" name=\"admvisao\" value=\"on\">";
+}
 
 ?>
 
@@ -21,6 +28,7 @@ require_login();
         Edite a mensagem para as pessoas da sua sala:<br>
         <br>
         <form method="POST" action="atuadores/seta_msg.php" class="licform">
+            <?php echo $admvisao; ?>
             <textarea name="msg"><?php echo $msg ?></textarea><br>
             <input class="buttonlink btnblue" type="submit" value="Salvar">
         </form>
