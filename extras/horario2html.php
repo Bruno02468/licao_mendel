@@ -33,13 +33,13 @@ function getHorario($sala) {
         $others .= "\n";
     }
     return "
-    <table class=\"horario\">
+    <br><table class=\"horario\">
         <tr class=\"hordias\">
             <td>&nbsp;&nbsp;&nbsp;Aula/Dia&nbsp;&nbsp;&nbsp;</td><td>Segunda</td>
             <td>Terça</td><td>Quarta</td><td>Quinta</td><td>Sexta</td>
         </tr>
         $others
-    </table>";
+    </table><br>";
 }
 
 function getHorarioAdder($sala) {
