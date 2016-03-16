@@ -7,7 +7,7 @@ require_login("borginhos");
 
 <html>
     <head>
-        <title>Adicionar Lições</title>
+        <title>Adicionar Sala</title>
         <link rel="stylesheet" href="../extras/estilo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -15,9 +15,9 @@ require_login("borginhos");
 
     <body style="text-align: center;">
         <h1>Adicionar Sala</h1>
-        <a href=".">[Voltar ao Superpainel]</a><br>
+        <a class="buttonlink btnred" href=".">Voltar ao Superpainel</a><br>
         <br>
-        <a href="..">[Página inicial]</a><br>
+        <a class="buttonlink" href="..">Página inicial</a><br>
         <br>
         <br>
         <form method="POST" action="atuadores/adiciona_sala.php">

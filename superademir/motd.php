@@ -15,11 +15,9 @@ require_login("borginhos");
 
     <body style="text-align: center;">
         <h1>Mensagem do Dia</h1>
-        <small>
-            Tudo programado por Bruno Borges Paschoalinoto (2º F)<br>
-            <a href=".">[Voltar ao Superpainel]</a><br>
-            <a href="..">[Página inicial]</a>
-        </small>
+        <a class="buttonlink btnred" href=".">Voltar ao Superpainel</a><br>
+        <br>
+        <a class="buttonlink" href="..">Página inicial</a>
         <br>
         <br>
         <br>

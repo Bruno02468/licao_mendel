@@ -27,11 +27,11 @@ $hj = date("Y-m-d");
 
     <body style="text-align: center;">
         <h1>Adicionar Lições (<?php echo $nome; ?>)</h1>
-        <a href=".">[Voltar ao Painel]</a><br>
+        <a class="buttonlink btnred" href="../sala/<?php echo $sala; ?>">Página inicial</a><br>
         <br>
-        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
+        <a class="buttonlink" href=".">Voltar ao Painel</a><br>
         <br>
-        <a href="lista_licoes.php">[Ir para lista de lições]</a>
+        <a class="buttonlink btnblue" href="lista_licoes.php">Todas as lições...</a>
         <br>
         <br>
         <?php echo $horario; ?>

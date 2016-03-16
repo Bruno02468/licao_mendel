@@ -119,7 +119,7 @@ if ($final == "")
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de lições do <?php echo $nome; ?></h1>
-        <a class="buttonlink btnorange smallbtn" href="//licoes.com/resumos">Site de Resumos</a><br><br>
+        <a class="buttonlink btnorange smallbtn" href="//licoes.com/resumos">Resumos</a><br><br>
         <a class="buttonlink" href="javascript:void(0)" onclick="escolherSala()">Voltar para a lista de salas</a><br>
         <?php echo $horario; ?>
         <br>

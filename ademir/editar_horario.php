@@ -22,12 +22,8 @@ foreach ($horario as $aula) {
     </head>
     <body style="text-align: center;">
         <h1>Editar horário do <?php echo $nome; ?></h1>
-        <small>Tudo programado por Bruno Borges Paschoalinoto (2º F)</small>
+        <a class="buttonlink" href=".">Voltar ao Painel</a><br>
         <br>
-        <br>
-        <a href="..">[Voltar ao Painel]</a><br>
-        <br>
-        Edita aí o horário.<br>
         <br>
         <form method="POST" action="atuadores/adiciona_horario.php">
             <table id="horario">

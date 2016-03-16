@@ -20,10 +20,10 @@ $ademir = getProperty($id, "ademir");
     </head>
 
     <body style="text-align: center;">
-        <h1>Adicionar Sala</h1>
-        <a href=".">[Voltar ao Superpainel]</a><br>
+        <h1>Editando Sala <?php echo $id; ?></h1>
+        <a class="buttonlink btnred" href=".">Voltar ao Superpainel</a><br>
         <br>
-        <a href="..">[Página inicial]</a><br>
+        <a class="buttonlink" href="..">Página inicial</a>
         <br>
         <br>
         <form method="POST" action="atuadores/edita_sala.php">

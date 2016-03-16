@@ -332,13 +332,13 @@ tt, code, kbd, samp {
 }
 
 .btnred {
-    background: #de0000;
-    background-image: linear-gradient(to bottom, #de0000, #870000);
+    background: #e80000;
+    background-image: linear-gradient(to bottom, #e80000, #940000);
 }
 
 .btnred:hover {
-    background: #eb0000;
-    background-image: linear-gradient(to bottom, #eb0000, #a60000);
+    background: #ff0000;
+    background-image: linear-gradient(to bottom, #ff0000, #b00000);
 }
 
 .btnblue, .admvisao .buttonlink {

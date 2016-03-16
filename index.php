@@ -52,7 +52,7 @@ $tabela .= "</table>";
     <body>
         <?php include_once("extras/ga.php"); ?>
         <h1>Site de Lições</h1>
-        <a class="buttonlink btnorange" href="//licoes.com/resumos">Site de Resumos</a><br>
+        <a class="buttonlink btnorange" href="//licoes.com/resumos">Resumos</a><br>
         <br>
         Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br>
         <br>

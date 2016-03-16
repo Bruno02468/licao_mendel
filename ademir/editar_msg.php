@@ -2,8 +2,6 @@
 
 include("../extras/database.php");
 require_login();
-$sala = getUser();
-$msg = htmlspecialchars(getProperty($sala, "msg"));
 
 ?>
 
@@ -17,10 +15,8 @@ $msg = htmlspecialchars(getProperty($sala, "msg"));
 
     <body style="text-align: center;">
         <h1>Adicionar Mensagem da Sala</h1>
-        <small>
-            Tudo programado por Bruno Borges Paschoalinoto (2º F)<br><br>
-        </small>
-        <a href=".">[Voltar ao Painel]</a><br>
+        <a class="buttonlink" href=".">Voltar ao Painel</a><br>
+        <br>
         <br>
         Edite a mensagem para as pessoas da sua sala:<br>
         <br>

@@ -64,11 +64,9 @@ if ($trs == "")
 
     <body align="center">
         <h1>Lista de Lições</h1>
-        <a href=".">[Voltar ao Painel]</a><br>
+        <a class="buttonlink" href=".">Voltar ao Painel</a><br>
         <br>
-        <a href="../sala/<?php echo $sala; ?>">[Página inicial]</a><br>
-        <br>
-        <a href="adicionar_licao.php">[Adicionar lições]</a><br>
+        <a class="buttonlink btnblue" href="adicionar_licao.php">Adicionar lições</a><br>
         <br>
         <br>
         Lista de lições do <?php echo $nome; ?>:<br>
