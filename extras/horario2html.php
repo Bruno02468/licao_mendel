@@ -74,8 +74,9 @@ function getHorarioAdder($sala) {
     for ($aula = 1; $aula <= 8; $aula++) {
         for ($dia = 0; $dia <= 4; $dia++) {
             $mat = $arr[($aula-1)*5 + $dia];
+            $jsvar = preg_replace("/\'/", "\\'", $mat);
             $link = "<a href=\"javascript:void(0)\"
-                onclick=\"setDataMat('$mat', $dia);\"
+                onclick=\"setDataMat('$jsvar', $dia);\"
                 class=\"matlink\">$mat</a>";
             $others .= maketd($link);
         }
