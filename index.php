@@ -5,7 +5,9 @@ include("extras/database.php");
 
 $anos = array();
 $js = "var anos = [];";
-foreach (getFullJSON() as $sala => $props) {
+$json = getFullJSON();
+ksort($json);
+foreach ($json as $sala => $props) {
     if ($sala[0] == '.') continue;
     $ano = $sala[0];
     if (!array_key_exists($ano, $anos)) {
@@ -29,7 +31,7 @@ for ($i = 1; $i <= $longest; $i++) {
         if (count($anos[$ano]) >= $i) {
             $sala = $anos[$ano][$i-1];
             $nome = "${ano}º " . $sala[1];
-            $tabela .= "<td><a class=\"buttonlink bigbtn\" href=\"javascript:void(0)\" onclick=\"irsala('$sala')\">$nome</a></td>";
+            $tabela .= "<td><a class=\"buttonlink bigbtn\" href=\"sala/$sala\">$nome</a></td>";
         } else {
             $tabela .= "<td></td>";
         }
@@ -67,16 +69,11 @@ $tabela .= "</table>";
             <br>
         </big></big>
         <script>
-            function irsala(idsala) {
-                if (window.localStorage)
-                    localStorage["sala"] = idsala;
-                location.href = "sala/" + idsala;
-            }
 
             <?php echo $js; ?>
             var sala = "";
             if (window.localStorage)
-            sala = localStorage["sala"];
+                sala = localStorage["sala"];
             if (sala != "" && anos.indexOf(sala) > -1) {
                 location.href = "sala/" + sala;
             }

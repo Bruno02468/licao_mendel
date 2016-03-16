@@ -93,3 +93,7 @@ function desadm() {
     admwarn.style.display = "none";
     msgadm.style.display = "none";
 }
+
+if (window.localStorage) {
+    localStorage["sala"] = sala;
+}
