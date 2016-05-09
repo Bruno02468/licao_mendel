@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Lições Antigas</title>
+        <link rel="stylesheet" href="../extras/estilo.css">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    </head>
+    <body>
+        <?php include_once("extras/ga.php"); ?>
+        <h1>Ver lições antigas!</h1>
+        Tudo programado por <a target="_blank" href="contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br>
+        <br>
+        <br>
+        Aqui você pode acessar todo o arquivo de lições do site.<br>
+        Isso inclui as lições que foram removidas e já passaram.<br>
+        <br>
+        Campos deixados em branco são ignorados (não restringem a pesquisa).<br>
+        <br>
+        Divirta-se!<br>
+        <br>
+        <table style="display: inline-block;" class="licform">
+            <tr><td>Especificar sala: </td><td><input type="text" id="b_sala"></td></tr>
+            <tr><td>Especificar matéria: </td><td><input type="text" id="b_materia"></td></tr>
+            <tr><td>Passadas entre: </td><td><input type="date" id="b_data_min"> e <input type="date" id="b_data_max"></td></tr>
+            <tr><td>Para o dia: </td><td><input type="date" id="b_data_para"> <button onclick="in_data_para.value = '';" class="buttonlink btnblue smallbtn">limpar</button></td></tr>
+        </table><br>
+        <button onclick="iniciarBusca(false)" class="buttonlink">Buscar!</button><br>
+        <button onclick="iniciarBusca(true)" class="buttonlink smallbtn">Mostrar resultado em texto</button><br>
+        <br>
+        <br>
+        Resultados:<br>
+        <br>
+        <span id="txtresult"></span>
+        <script src="buscador.js"></script>
+    </body>
+</html>
