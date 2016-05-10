@@ -50,7 +50,7 @@ function licao_to_tables(arr) {
             + "<tr><td>Matéria:</td><td>" + arr[i]["materia"] + "</td></tr>"
             + "<tr><td>Passada em:</td><td>" + arr[i]["passada"]["dia"] + "/" + arr[i]["passada"]["mes"] + "/" + arr[i]["passada"]["ano"] + "</td></tr>"
             + "<tr><td>Para:</td><td>" + arr[i]["para"]["dia"] + "/" + arr[i]["para"]["mes"] + "/" + arr[i]["para"]["ano"] + "</td></tr>"
-            + "<tr><td>Informações:<td>" + arr[i].info.replace(/\[[^\]]+\]/g, "") + "</td></tr>"
+            + "<tr><td>Informações:<td>" + arr[i].info.replace(/\[[^\]]+\]/g, "").replace(/\n/g, "<br>") + "</td></tr>"
             + "</table>";
     }
     return result;
