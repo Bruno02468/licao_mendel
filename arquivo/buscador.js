@@ -4,19 +4,17 @@
 var banco = null;
 
 // Baixa o banco de dados na variável window.banco.
-function baixarBanco() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200) {
-            window.banco = JSON.parse(request.responseText);
-        }
-    };
-    request.open("GET", "../extras/database.json", false);
-    request.send(null);
-}
+var request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (request.readyState == 4 && request.status == 200) {
+        window.banco = JSON.parse(request.responseText);
+    }
+};
+request.open("GET", "../extras/database.json", false);
+request.send(null);
 
 // Objetos tirados do document ficam aqui.
-var in_sala = document.getElementById("b_sala");
+var select_sala = document.getElementById("b_select");
 var in_materia = document.getElementById("b_materia");
 var in_data_min = document.getElementById("b_data_min");
 var in_data_max = document.getElementById("b_data_max");
@@ -27,6 +25,20 @@ var txtresult = document.getElementById("txtresult");
 var ano = new Date().getFullYear();
 in_data_min.value = ano + "-01-01";
 in_data_max.value = ano + "-12-31";
+
+// Limitar as escolhas de sala num dropdown.
+for (var index in banco) {
+    if (banco.hasOwnProperty(index)) {
+        var opt = document.createElement("option");
+        opt.setAttribute("value", index);
+        opt.innerHTML = index[0] + "º " + index[1];
+        select_sala.appendChild(opt);
+    }
+}
+
+if (typeof(Storage) !== "undefined") {
+    select_sala.value = localStorage["sala"];
+}
 
 // Converte uma array de lições num texto bem bonitinho.
 var dotsy = "----------------------------------------------------------------";
@@ -59,11 +71,8 @@ function licao_to_tables(arr) {
 
 // Função por trás das restrições impostas pelo usuário.
 function iniciarBusca(txtformat) {
-    // Baixar o banco caso necessário.
-    if (banco == null) baixarBanco();
-    
     // Recebe os últimos valores digitados nos campos.
-    var sala = in_sala.value;
+    var sala = select_sala.value;
     var materia = in_materia.value.toLowerCase();
     var data_min = new Date(in_data_min.value).getTime();
     var data_max = new Date(in_data_max.value).getTime();
@@ -81,7 +90,6 @@ function iniciarBusca(txtformat) {
             licoes = licoes.concat(banco[index]["licoes"]);
         }
     }
-    console.log(licoes);
     
     // Limpar lições inválidas.
     var newlicoes = [];
@@ -129,8 +137,6 @@ function iniciarBusca(txtformat) {
         }
         licoes = newlicoes;
     }
-    
-    console.log(licoes);
     
     // Hora de colocar esses dados em ordem.
     if (txtformat) {

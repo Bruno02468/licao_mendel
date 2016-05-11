@@ -26,7 +26,7 @@ a:hover {
 }
 
 /* Entradas de texto. */
-input[type=text], input[type=number], input[type=password], input[type=date], textarea {
+input[type=text], input[type=number], input[type=password], input[type=date], textarea, select {
     /*-webkit-transition: all 0.30s ease-in-out;
     -moz-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
@@ -39,7 +39,7 @@ input[type=text], input[type=number], input[type=password], input[type=date], te
     border-radius: 2px;
 }
 
-input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=date]:focus, textarea:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=date]:focus, textarea:focus, select:focus {
     background: #40413E;
     box-shadow: 0 0 7px #3DFF33;
     padding: 3px 0px 3px 3px;
@@ -88,7 +88,7 @@ button, input[type=button], input[type=submit] {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
     max-width: 1080px;
     min-width: 40%;
 }
@@ -210,7 +210,7 @@ button, input[type=button], input[type=submit] {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
     display: inline-block;
     font-size: 100%;
 }
@@ -381,7 +381,7 @@ tt, code, kbd, samp {
 
 .listaanos_noborder {
     border: none;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
     display: inline-block;
     font-size: 100%;
 }
