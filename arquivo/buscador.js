@@ -30,7 +30,7 @@ in_data_max.value = ano + "-12-31";
 for (var index in banco) {
     if (banco.hasOwnProperty(index)) {
         var opt = document.createElement("option");
-        opt.setAttribute("value", index);
+        opt.value = index;
         opt.innerHTML = index[0] + "º " + index[1];
         select_sala.appendChild(opt);
     }
