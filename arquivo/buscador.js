@@ -40,6 +40,57 @@ if (typeof(Storage) !== "undefined") {
     select_sala.value = localStorage["sala"];
 }
 
+var dummy = document.createElement("div");
+function htmlspecialchars(string) {
+    if (!dummy) dummy = document.createElement("div");
+    var text = document.createTextNode(string);
+    dummy.appendChild(text);
+    var res = dummy.innerHTML;
+    dummy.innerHTML = "";
+    return res;
+}
+
+function formatar(texto) {
+    texto = htmlspecialchars(texto);
+    var linkreg = /\[([^\]]+)\|([^\]]+)\]/gi;
+    var linkrep = "<a target=\"_blank\" href=\"$1\">$2</a>";
+    var nbspreg = /^ +/gi;
+    var nbsprep = "&nbsp;";
+    var imgreg = /\[imagem:([^\]]+)\]/gi;
+    var imgrep = "<a target=\"_blank\" title=\"Clique para ver o tamanho completo.\" href=\"$1\"><img src=\"$1\"></a>";
+    var h4reg = /\[big\]/gi;
+    var h4rep = "<div class=\"big\">";
+    var hcreg = /\[\/big\]/gi;
+    var hcrep = "</div>";
+    var colorreg = /\[cor:([^\]]+)\]/gi;
+    var colorrep = "<span class=\"colored\" style=\"color: $1;\">";
+    var endcolorreg = /\[\/cor\]/gi;
+    var endcolorrep = "</span>";
+    var fourreg = /    /gi;
+    var fourrep = "&nbsp;&nbsp;&nbsp;&nbsp;";
+    var tagreg = /\[((table|tr|td|sub|sup|b|i|u|s|code|hr|br)|(\/(table|tr|td|sub|sup|b|i|u|s|code|hr|br)))\]/gi;
+    var tagrep = "<$1>";
+    var tablereg = /<table>/gi;
+    var tablerep = "<table class=\"restable\">";
+
+    texto = texto
+        .replace(/\n/g, "<br>")
+        .replace(/\{l\}/g, "ℓ")
+        .replace(/\{g\}/g, "[sup]↗[/sup]")
+        .replace(fourreg, fourrep)
+        .replace(linkreg, linkrep)
+        .replace(nbspreg, nbsprep)
+        .replace(imgreg, imgrep)
+        .replace(h4reg, h4rep)
+        .replace(hcreg, hcrep)
+        .replace(colorreg, colorrep)
+        .replace(endcolorreg, endcolorrep)
+        .replace(tagreg, tagrep)
+        .replace(tablereg, tablerep);
+
+    return texto;
+}
+
 // Converte uma array de lições num texto bem bonitinho.
 var dotsy = "----------------------------------------------------------------";
 function licao_to_txt(arr) {
@@ -62,7 +113,7 @@ function licao_to_tables(arr) {
             + "<tr><td>Matéria:</td><td>" + arr[i]["materia"] + "</td></tr>"
             + "<tr><td>Passada em:</td><td>" + arr[i]["passada"]["dia"] + "/" + arr[i]["passada"]["mes"] + "/" + arr[i]["passada"]["ano"] + "</td></tr>"
             + "<tr><td>Para:</td><td>" + arr[i]["para"]["dia"] + "/" + arr[i]["para"]["mes"] + "/" + arr[i]["para"]["ano"] + "</td></tr>"
-            + "<tr><td>Informações:<td>" + arr[i].info.replace(/\[[^\]]+\]/g, "").replace(/\n/g, "<br>") + "</td></tr>"
+            + "<tr><td>Informações:<td>" + formatar(arr[i]["info"]) + "</td></tr>"
             + "</table>";
     }
     return result;
