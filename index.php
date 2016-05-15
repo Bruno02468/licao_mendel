@@ -45,7 +45,7 @@ $tabela .= "</table>";
 <html>
     <head>
         <title>Lições</title>
-        <link rel="stylesheet" href="extras/estilo.css">
+        <link rel="stylesheet" href="extras/admiravel_estilo_novo.css">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <meta charset="UTF-8">

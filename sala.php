@@ -97,7 +97,7 @@ foreach ($licoes as $id => $licao) {
     $tabela .= make_tr("Matéria:", formatar($licao["materia"]))
         . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
         . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
-        . make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!")
+        //. make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!")
         . "<tr class=\"admvisao\"><td>Administrar!</td><td>$editlink ou $deletelink</td></tr>";
 
 
@@ -112,7 +112,7 @@ if ($final == "")
 <html>
     <head>
         <title>Lições do <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="../extras/estilo.css">
+        <link rel="stylesheet" href="../extras/admiravel_estilo_novo.css">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <meta charset="UTF-8">

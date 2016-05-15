@@ -1,0 +1,408 @@
+/* Tema base. */
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    background-color: #D9D9D9;
+    overflow-x: hidden;
+    text-align: center;
+    width: auto;
+    display: table-cell;
+}
+
+hr {
+    color: #5FFF57;
+}
+
+a {
+    color: #1A81A3;
+}
+
+a:hover {
+    color: #0B7396;
+}
+
+/* Entradas de texto. */
+input[type=text], input[type=number], input[type=password], input[type=date], textarea, select {
+    /*-webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;*/
+    background: #919191;
+    outline: none;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 2px solid #1F80A1;
+    border-radius: 2px;
+}
+
+input[type=text]:focus, input[type=number]:focus, input[type=password]:focus, input[type=date]:focus, textarea:focus, select:focus {
+    background: #A3A3A3;
+    box-shadow: 0 0 7px #1F80A1;
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 2px solid #1F80A1;
+}
+
+::-webkit-input-placeholder {
+    color: #595959;
+}
+
+input:-moz-placeholder {
+    color: #595959
+}
+
+input[type=checkbox] {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.datasel {
+    max-width: 60px;
+}
+
+.yearsel {
+    max-width: 75px;
+}
+
+/* Botões. */
+button, input[type=button], input[type=submit] {
+    color: black;
+    background-color: #6f706e;
+    border: 2px solid black;
+    border-radius: 2px;
+    margin: 5px 5px;
+}
+
+/* Formatação das tabelas de entradas. */
+.entrada {
+    border: 2px double #1A2B29;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-width: 1080px;
+    min-width: 40%;
+    background-color: #CCCCCC;
+}
+
+.entrada td, .entrada th {
+    border-top: 1px solid #1A2B29;
+    border-left: 1px solid #1A2B29;
+    padding: 5px;
+    padding-right: 5px;
+}
+
+.entrada td:first-child {
+    border-left: none;
+    color: #0A0A0A;
+    font-weight: bold;
+}
+
+.entrada tr:first-child td {
+    border-top: none;
+}
+
+.mensagem table {
+    display: inline-block;
+}
+
+.hoje {
+    border-color: #10A3C4;
+}
+
+.proxima {
+    border-color: #DB0B0B;
+}
+
+.parahj {
+    border-color: #117311;
+}
+
+.prova {
+    border-color: darkorange; !important
+}
+
+/* Borda e posicionamento da mensagem do dia. */
+.mensagem {
+    border: 2px double #1A2B29;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 10px;
+    padding-top: 4px;
+    padding-bottom: 7px;
+    width: auto;
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
+/* Réplica da tag H2, para padronização. */
+.h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+/* Tag [big] da formatação */
+.big {
+    font-size: 1.33em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#top {
+    align-self: center;
+    width: auto;
+}
+
+#hor {
+    display: none;
+}
+
+.horario {
+    text-align: center;
+    width: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.horario td, .horario b {
+    color: black; !important
+    text-align: center;
+}
+
+.horario td {
+    font-size: 90%;
+    border: 2px solid black;
+}
+
+.horario td {
+    padding-top: 2px;
+}
+
+.horgray {
+    background-color: #cccccc;
+}
+
+.horgreen {
+    background-color: #00ff66;
+}
+
+.hororange {
+    background-color: #ff9900;
+}
+
+.hordias td {
+    background-color: #99ccff;
+    font-weight: bold;
+}
+
+.listaanos {
+    border: 2px double #A4FFA4;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-size: 100%;
+}
+
+.listaanos td, .listaanos th {
+    border-top: 1px solid #A4FFA4;
+    border-left: 1px solid #A4FFA4;
+    padding: 6px;
+    text-align: center;
+}
+
+.listaanos td:first-child {
+    border-left: none;
+}
+
+.listaanos tr:first-child td {
+    border-top: none;
+    color: #00ff47;
+    font-size: 110%;
+    font-weight: bold;
+    padding: 1px;
+}
+
+.os {
+    color: inherit;
+    font-size: 50%;
+}
+
+.os * {
+    color: inherit;
+}
+
+tt, code, kbd, samp {
+    font-family: monospace;
+}
+
+.licform {
+    line-height: 37px;
+}
+
+.licform textarea {
+    width: 100%;
+    height: 15em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.licform input[type=text] {
+    width: 100%;
+}
+
+.licao_tr td:first-child {
+    font-weight: bold;
+}
+
+.lista_licoes tr:first-child {
+    font-size: 1.33em;
+}
+
+.lista_licoes tr:first-child td {
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.licao_tr td:last-child {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dialink {
+    color: red;
+}
+
+.dialink:hover {
+    color: rgb(208, 0, 0);
+}
+
+.adder tr:first-child td {
+    padding-top: 3px;
+    padding-bottom: 5px;
+}
+
+.userimg {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.matlink {
+    color: black;
+}
+
+.matlink:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.admvisao {
+    display: none; !important
+}
+
+.buttonlink {
+    background: #00ed4f;
+    background-image: linear-gradient(to bottom, #00ed4f, #00a806);
+    border-radius: 50px;
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border-bottom: 10px;
+    line-height: 20px;
+    border: 1px solid black;
+}
+
+.buttonlink:hover {
+    background: #00ff51;
+    background-image: linear-gradient(to bottom, #00ff51, #0fb300);
+    text-decoration: none;
+    color: black;
+}
+
+.btnred {
+    background: #e80000;
+    background-image: linear-gradient(to bottom, #e80000, #940000);
+}
+
+.btnred:hover {
+    background: #ff0000;
+    background-image: linear-gradient(to bottom, #ff0000, #b00000);
+}
+
+.btnblue, .admvisao .buttonlink {
+    background: #00bceb;
+    background-image: linear-gradient(to bottom, #00bceb, #00799e);
+}
+
+.btnblue:hover, .admvisao .buttonlink:hover {
+    background: #00d0eb;
+    background-image: linear-gradient(to bottom, #00d0eb, #008da6);
+}
+
+.btnorange {
+    background: #ff8c12;
+    background-image: linear-gradient(to bottom, #ff8c12, #f76b00);
+}
+
+.btnorange:hover {
+    background: #ffa200;
+    background-image: linear-gradient(to bottom, #ffa200, #ff7700);
+}
+
+.smallbtn {
+    padding: 2px 8px 2px 8px;
+}
+
+.bigbtn {
+    font-size: 20px;
+    padding: 6px 15px 6px 15px;
+    line-height: 25px;
+}
+
+.parahj {
+    display: none;
+}
+
+.listaanos_noborder {
+
+}
+
+.listaanos_noborder {
+    border: none;
+    margin-bottom: 20px;
+    display: inline-block;
+    font-size: 100%;
+}
+
+.listaanos_noborder td, .listaanos_noborder th {
+    border: none;
+    padding-top: 18px;
+    padding-right: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.listaanos_noborder tr:first-child td {
+    border-top: none;
+    color: #46a1ff;
+    font-size: 110%;
+    font-weight: bold;
+    padding: 1px;
+}
+
+* {
+    color: #1C1C1C;
+    font-family: 'Open Sans', sans-serif;
+}

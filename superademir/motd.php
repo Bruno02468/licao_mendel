@@ -8,7 +8,7 @@ require_login("borginhos");
 <html>
     <head>
         <title>Mensagem do Dia</title>
-        <link rel="stylesheet" href="../extras/estilo.css">
+        <link rel="stylesheet" href="../extras/admiravel_estilo_novo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
@@ -23,7 +23,8 @@ require_login("borginhos");
         <br>
         <form method="POST" action="atuadores/set_motd.php" class="licform">
             <textarea name="motd"><?php echo htmlspecialchars(file_get_contents("atuadores/motd.txt")); ?></textarea>
-            <input type="submit" value="Salvar">
+            <br>
+            <input class="buttonlink btnblue" type="submit" value="Salvar">
         </form>
     </body>
 </html>

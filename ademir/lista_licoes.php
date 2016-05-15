@@ -57,7 +57,7 @@ if ($trs == "")
 <html>
     <head>
         <title>Lista de lições do <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="../extras/estilo.css">
+        <link rel="stylesheet" href="../extras/admiravel_estilo_novo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     </head>
