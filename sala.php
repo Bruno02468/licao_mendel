@@ -38,8 +38,7 @@ if (hasMsg($sala)) {
     $msg = "<br>
     Mensagem da sala: <div id=\"msgadm\" class=\"admvisao\"><a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_msg.php?admvisao\">editar</a>
     <a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=atuadores%2Fdeleta_msg.php?admvisao\">deletar</a></div><br>
-    <small><div class=\"mensagem\">$conteudo</div></small>
-    <br>";
+    <small><div class=\"mensagem\">$conteudo</div></small>";
 }
 
 $licoes = getProperty($sala, "licoes");
@@ -53,9 +52,8 @@ usort($licoes, function($a, $b) {
     return dataToTime($b["para"]) < dataToTime($a["para"]);
 });
 
-// Função para gerar os TRs
-function make_tr($a, $b) {
-    return "<tr><td>$a</td><td>$b</td></tr>\n";
+function make_div($a, $c="") {
+    return "<div class=\"entradiv$c\">$a</div>";
 }
 
 
@@ -83,7 +81,7 @@ foreach ($licoes as $id => $licao) {
     $proxima = $licao["para"] == $amanha_data
         || ($semanal == "segunda" && $sextaousabado &&
         ($licao["para"] == $dois || $licao["para"] == $tres));
-    $perto = ($semanal == "segunda") ? "<b>Segunda</b>" : "<b>Amanhã</b>";
+    $perto = ($semanal == "segunda") ? "<b>segunda</b>" : "<b>amanhã</b>";
     $parahj = ($licao["para"] == $hoje_data);
 
     $display = ($parahj ? " style=\"display: 'none'\"" : "");
@@ -92,16 +90,16 @@ foreach ($licoes as $id => $licao) {
     $editlink = "<a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_licao.php%3Fguid%3D$guid%26admvisao\">editar</a>";
     $deletelink = "<a class=\"buttonlink btnred smallbtn\" href=\"javascript:void(0);\" onclick=\"deletar('$guid')\">deletar</a>";
 
-    $tabela = "<table class=\"entrada$classes\"$display>\n";
+    $tabela = "<div class=\"entrada$classes\"$display>\n";
 
-    $tabela .= make_tr("Matéria:", formatar($licao["materia"]))
-        . make_tr("Informações:", formatar_array(explode("\n", $licao["info"])))
-        . make_tr("Para:", ($proxima ? "<b>$perto</b>" : ($parahj ? "<b>Hoje</b>" : (date("d/m", dataToTime($licao["para"])) . " (<b>$semanal</b>)"))))
-        //. make_tr("Feita?", "<input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Feita!")
-        . "<tr class=\"admvisao\"><td>Administrar!</td><td>$editlink ou $deletelink</td></tr>";
+    $tabela .= make_div(formatar($licao["materia"]))
+        . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
+        . make_div("Para " . ($proxima ? "$perto" : ($parahj ? "hoje" : ("o dia " . date("d/m", dataToTime($licao["para"])) . " ($semanal)"))), " datas")
+        . make_div("<label class=\"checklabel\"><input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Marcar como feita</label>")
+        . make_div("$editlink ou $deletelink", " admvisao");
 
 
-    $tabela .= "</table>";
+    $tabela .= "</div>";
     $final .= $tabela;
 }
 
@@ -112,7 +110,7 @@ if ($final == "")
 <html>
     <head>
         <title>Lições do <?php echo $nome; ?></title>
-        <link rel="stylesheet" href="../extras/admiravel_estilo_novo.css">
+        <link rel="stylesheet" href="../extras/estilo.css">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <meta charset="UTF-8">
@@ -121,7 +119,7 @@ if ($final == "")
 
     <body>
         <?php include_once("extras/ga.php"); ?>
-        <h1>Site de lições do <?php echo $nome; ?></h1>
+        <h1>Lições do <?php echo $nome; ?></h1>
         <a class="buttonlink btnorange smallbtn" href="//licoes.com/resumos">Resumos</a><br><br>
         <a class="buttonlink" href="javascript:void(0)" onclick="escolherSala()">Voltar para a lista de salas</a><br>
         <?php echo $horario; ?>

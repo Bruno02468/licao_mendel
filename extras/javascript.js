@@ -27,7 +27,7 @@ function horario() {
 var hojes = document.getElementsByClassName("parahj");''
 var hojespan = document.getElementById("hojeslink");
 if (hojes.length > 0) {
-    hojespan.innerHTML = "<br><a class=\"buttonlink\" href=\"javascript:void(0)\" onclick=\"mostrarHoje(this)\">Mostrar lições para hoje</a>";
+    hojespan.innerHTML = "<br><br><a class=\"buttonlink lichj\" href=\"javascript:void(0)\" onclick=\"mostrarHoje(this)\">Lições para hoje ocultas; clique para ver.</a>";
 }
 
 function mostrarHoje(but) {
@@ -35,7 +35,7 @@ function mostrarHoje(but) {
         elem = hojes[i];
         if (elem.style) elem.setAttribute("style", "display: block;");
     }
-    but.style.display = "none";
+    hojeslink.innerHTML = "";
 }
 
 var feitas;
