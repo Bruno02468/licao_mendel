@@ -35,7 +35,7 @@ function mostrarHoje(but) {
         elem = hojes[i];
         if (elem.style) elem.setAttribute("style", "display: block;");
     }
-    hojeslink.innerHTML = "";
+    hojespan.innerHTML = "";
 }
 
 var feitas;

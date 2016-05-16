@@ -38,7 +38,7 @@ if (hasMsg($sala)) {
     $msg = "<br>
     Mensagem da sala: <div id=\"msgadm\" class=\"admvisao\"><a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=editar_msg.php?admvisao\">editar</a>
     <a class=\"buttonlink smallbtn\" href=\"../ademir/reqsala.php?sala=$sala&ir=atuadores%2Fdeleta_msg.php?admvisao\">deletar</a></div><br>
-    <small><div class=\"mensagem\">$conteudo</div></small>";
+    <small><div class=\"mensagem\">$conteudo</div></small><br>";
 }
 
 $licoes = getProperty($sala, "licoes");
@@ -92,7 +92,7 @@ foreach ($licoes as $id => $licao) {
 
     $tabela = "<div class=\"entrada$classes\"$display>\n";
 
-    $tabela .= make_div(formatar($licao["materia"]))
+    $tabela .= make_div(($licao["prova"] ? "Prova" : "Lição") . " de " . formatar($licao["materia"]))
         . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
         . make_div("Para " . ($proxima ? "$perto" : ($parahj ? "hoje" : ("o dia " . date("d/m", dataToTime($licao["para"])) . " ($semanal)"))), " datas")
         . make_div("<label class=\"checklabel\"><input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Marcar como feita</label>")
