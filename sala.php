@@ -92,7 +92,7 @@ foreach ($licoes as $id => $licao) {
 
     $tabela = "<div class=\"entrada$classes\"$display>\n";
 
-    $tabela .= make_div(($licao["prova"] ? "Prova" : "Lição") . " de " . formatar($licao["materia"]))
+    $tabela .= make_div(formatar($licao["materia"]))
         . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
         . make_div("Para " . ($proxima ? "$perto" : ($parahj ? "hoje" : ("o dia " . date("d/m", dataToTime($licao["para"])) . " ($semanal)"))), " datas")
         . make_div("<label class=\"checklabel\"><input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Marcar como feita</label>")
