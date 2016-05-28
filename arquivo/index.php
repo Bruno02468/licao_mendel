@@ -71,9 +71,9 @@ if (isset($_GET["sala"])) {
         $class = "entrada" . ($licao["prova"] ? " prova" : "");
         $resultados .= "<div class=\"$class\">"
             . make_div(formatar($licao["materia"]))
-            . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
             . make_div("Passada no dia " . date("d/m/Y", dataToTime($licao["passada"])), " datas")
             . make_div("Para o dia " . date("d/m", dataToTime($licao["para"])), " datas")
+            . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
             . "</div><br>";
         
         $found++;
