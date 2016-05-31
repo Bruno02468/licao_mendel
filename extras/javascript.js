@@ -77,9 +77,9 @@ function deletar(guid) {
 
 var admwarn = document.getElementById("admwarn");
 var msgadd = document.getElementById("msgadm");
+var addstyle = document.createElement("style");
 if (localStorage["admvisao"] && localStorage["lastSalaADM"] === sala) {
-    var addstyle = document.createElement("style");
-    addstyle.innerHTML = ".admvisao { display: table-row; }";
+    addstyle.innerHTML = ".entrada .admvisao { display: block !important; }";
     document.head.appendChild(addstyle);
     admwarn.style.display = "block";
     msgadm.style.display = "inline-block";
@@ -87,9 +87,7 @@ if (localStorage["admvisao"] && localStorage["lastSalaADM"] === sala) {
 
 function desadm() {
     localStorage["admvisao"] = "";
-    var desstyle = document.createElement("style");
-    desstyle.innerHTML = ".admvisao { display: none; }";
-    document.head.appendChild(desstyle);
+    addstyle.innerHTML = ".admvisao { display: none !important; }";
     admwarn.style.display = "none";
     msgadm.style.display = "none";
 }

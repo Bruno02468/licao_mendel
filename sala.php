@@ -96,7 +96,7 @@ foreach ($licoes as $id => $licao) {
         . make_div(formatar_array(explode("\n", $licao["info"])), " infos")
         . make_div("Para " . ($proxima ? "$perto" : ($parahj ? "hoje" : ("o dia " . date("d/m", dataToTime($licao["para"])) . " ($semanal)"))), " datas")
         . make_div("<label class=\"checklabel\"><input type=\"checkbox\" id=\"$guid\" onclick=\"toggleFeita(''+this.id)\">Marcar como feita</label>")
-        . make_div("$editlink ou $deletelink", " admvisao");
+        . "<div class=\"entradiv admvisao\">$editlink ou $deletelink</div>";
 
 
     $tabela .= "</div>";
@@ -133,7 +133,6 @@ if ($final == "")
                     <a href="javascript:void(0)" onclick="desadm()">Clique se quiser desligar, ou não for um administrador.</a></b><br>
                     <br>
                 </div>
-                <br>
                 Tudo programado por <a target="_blank" href="../contato.html">Bruno Borges Paschoalinoto</a> (2º F)<br><br>
                 Mensagem global:<br>
                 <div class="mensagem"><?php echo formatar(file_get_contents("superademir/atuadores/motd.txt")); ?>
