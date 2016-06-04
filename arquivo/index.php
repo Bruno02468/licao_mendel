@@ -6,7 +6,11 @@ $json = getFullJSON();
 
 $options = "";
 foreach ($json as $index => $sala) {
-    $options .= "<option value=\"$index\">" . nomeSala($index) . "</option>";
+    $selected = "";
+    if (isset($_GET["sala"])) {
+        if ($_GET["sala"] === $index) $selected = "selected=\"selected\"";
+    }
+    $options .= "<option value=\"$index\"$selected>" . nomeSala($index) . "</option>";
 }
 
 function make_div($a, $c="") {
@@ -107,7 +111,7 @@ if (isset($_GET["sala"])) {
         <br>
         <form action="index.php" method="GET">
             <table style="display: inline-block;" class="licform">
-                <tr><td>Especificar sala: </td><td><select id="sala" name="sala"<?php echo ifonly("sala"); ?>><?php echo $options; ?></select></tr>
+                <tr><td>Especificar sala: </td><td><select id="sala" name="sala"><?php echo $options; ?></select></tr>
                 <tr><td>Especificar matéria: </td><td><input type="text" name="materia"<?php echo ifonly("materia"); ?>></td></tr>
                 <tr><td>
                     Passadas entre: </td><td><input type="date" value="<?php echo $minpas ?>" name="passada_min"> e 
@@ -119,12 +123,14 @@ if (isset($_GET["sala"])) {
             </table><br>
             <input type="submit" class="buttonlink" value="Buscar!"><br>
         </form>
-        <script>
-            if (typeof(Storage) !== "undefined") {
-                document.getElementById("sala").value = localStorage["sala"];
-            }
-        </script>
-        
+        <?php 
+            if (!isset($_GET["sala"]))
+                echo "<script>
+                        if (typeof(Storage) !== \"undefined\") {
+                            document.getElementById(\"sala\").value = localStorage[\"sala\"];
+                        }
+                      </script>";
+        ?>
         <?php echo $resultados; ?>
     </body>
 </html>
