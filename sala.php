@@ -99,7 +99,7 @@ foreach ($licoes as $id => $licao) {
         . "<div class=\"entradiv admvisao\">$editlink ou $deletelink</div>";
 
 
-    $tabela .= "</div>";
+    $tabela .= "</div><br>";
     $final .= $tabela;
 }
 
